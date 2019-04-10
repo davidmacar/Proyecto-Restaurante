@@ -15,7 +15,7 @@ public class Restaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LKSDUHFGOIASBOIFASHOIFHASOIFBASOIPFHASOIFHASODHOAISDBSFDIUH;
+        HOLA QUE TAL ESTAS
     }
     
 }
