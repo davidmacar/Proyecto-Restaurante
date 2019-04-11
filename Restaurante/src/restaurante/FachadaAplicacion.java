@@ -25,4 +25,5 @@ public class FachadaAplicacion {
         VAutenticacion va = new VAutenticacion();
         va.setVisible(true);
     }
+    //hola mundo!
 }
