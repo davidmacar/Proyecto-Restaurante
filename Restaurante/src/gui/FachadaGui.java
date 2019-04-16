@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.util.*;
 import restaurante.*;
 
 /**
@@ -13,8 +14,14 @@ import restaurante.*;
  */
 public class FachadaGui {
     FachadaAplicacion fap;
+    VAutenticacion vac;
     
     public FachadaGui(FachadaAplicacion fap){
         this.fap = fap;
+        
+        this.vac = new VAutenticacion(fap);
+        fap.obtenerPlatos();
+        vac.setVisible(true);
     }
+    
 }

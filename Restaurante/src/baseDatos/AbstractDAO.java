@@ -9,7 +9,7 @@ package baseDatos;
  *
  * @author davidmacar
  */
-public class AbstractDAO {
+public abstract class AbstractDAO {
    private restaurante.FachadaAplicacion fa;
    private java.sql.Connection conexion;
 

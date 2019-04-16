@@ -7,6 +7,7 @@ package restaurante;
 
 import gui.*;
 import baseDatos.*;
+import java.util.*;
 
 /**
  *
@@ -15,15 +16,23 @@ import baseDatos.*;
 public class FachadaAplicacion {
     FachadaGui fgui;
     FachadaBaseDatos fbd;
+    GestionPlatos gp;
     
     public FachadaAplicacion(){
-        this.fgui = new FachadaGui(this);
         this.fbd = new FachadaBaseDatos(this);
+        this.fgui = new FachadaGui(this);
         
     }
     public static void main(String[] args) {
-        VAutenticacion va = new VAutenticacion();
-        va.setVisible(true);
+        FachadaAplicacion fa;
+        fa = new FachadaAplicacion();
     }
+    
+    public List<Plato> obtenerPlatos(){
+        List<Plato> ret = fbd.obtenerPlatos();
+        System.out.println("Hola");
+        return ret;
+    }
+    
 }
  //autenticación no es autentificación XD
