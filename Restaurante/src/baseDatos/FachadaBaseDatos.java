@@ -44,14 +44,14 @@ public class FachadaBaseDatos {
 
         } catch (FileNotFoundException f){
             System.out.println(f.getMessage());
-            fap.muestraExcepcion(f.getMessage());
+            //fap.muestraExcepcion(f.getMessage());
         } catch (IOException i){
             System.out.println(i.getMessage());
-            fap.muestraExcepcion(i.getMessage());
+            //fap.muestraExcepcion(i.getMessage());
         } 
         catch (java.sql.SQLException e){
             System.out.println(e.getMessage());
-            fap.muestraExcepcion(e.getMessage());
+            //fap.muestraExcepcion(e.getMessage());
         }
         
         

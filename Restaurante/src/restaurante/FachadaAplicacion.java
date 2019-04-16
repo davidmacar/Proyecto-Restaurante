@@ -25,12 +25,5 @@ public class FachadaAplicacion {
         VAutenticacion va = new VAutenticacion();
         va.setVisible(true);
     }
-    //hola mundo!
-    que onda way que pasa
-            aqui 
-            
-            Carambita carambooola
-                    I AM GROOT
-                            SPOILER: IRON-MAN MUERE Y LO MATA EL CAPITAN AMERICA :) 
 }
  //autenticación no es autentificación XD
