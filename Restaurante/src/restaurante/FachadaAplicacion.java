@@ -21,17 +21,24 @@ public class FachadaAplicacion {
     public FachadaAplicacion(){
         this.fbd = new FachadaBaseDatos(this);
         this.fgui = new FachadaGui(this);
-        
+        gp = new GestionPlatos(this.fgui, this.fbd);
     }
     public static void main(String[] args) {
         FachadaAplicacion fa;
         fa = new FachadaAplicacion();
+        fa.iniciaInterfaz();
     }
     
+    public void iniciaInterfaz(){
+        this.fgui.iniciaInterfaz();
+    }
     public List<Plato> obtenerPlatos(){
-        List<Plato> ret = fbd.obtenerPlatos();
-        System.out.println("Hola");
+        List<Plato> ret = gp.obtenerPlatos();
         return ret;
+    }
+    public void vistaCamarero(){
+        this.fgui.vistaCamarero();
+        
     }
     
 }

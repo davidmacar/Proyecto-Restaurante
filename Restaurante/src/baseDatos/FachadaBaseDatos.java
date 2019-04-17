@@ -20,7 +20,6 @@ public class FachadaBaseDatos {
     private java.sql.Connection conexion;
     private DAOPlatos daoPlatos;
     public FachadaBaseDatos(FachadaAplicacion fap){
-        this.daoPlatos = new DAOPlatos(this.conexion, this.fap);
         this.fap=fap;
         Properties configuracion = new Properties();
         FileInputStream arqConfiguracion;
@@ -54,6 +53,7 @@ public class FachadaBaseDatos {
             System.out.println(e.getMessage());
             //fap.muestraExcepcion(e.getMessage());
         }
+        this.daoPlatos = new DAOPlatos(this.conexion, this.fap);
     }
     
     public java.util.List<Plato> obtenerPlatos(){

@@ -5,15 +5,15 @@
  */
 package gui;
 
+import baseDatos.FachadaBaseDatos;
 import restaurante.*;
 
 /**
  *
  * @author davidmacar
  */
-public class VAutenticacion extends javax.swing.JDialog {
+public class VAutenticacion extends javax.swing.JFrame {
 
-    VCamarero vcam;
     FachadaAplicacion fap;
     /*el resto de menus principales*/
     
@@ -154,8 +154,7 @@ public class VAutenticacion extends javax.swing.JDialog {
             
         }
         else if(this.btnCamarero.isSelected()){
-            this.vcam = new VCamarero();
-            this.vcam.setVisible(true);
+            fap.vistaCamarero();
             this.setVisible(false);
         }
         else if(this.btnCocinero.isSelected()){

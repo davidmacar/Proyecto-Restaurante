@@ -24,7 +24,7 @@ public class DAOPlatos extends AbstractDAO{
         java.util.List<Plato> resultado=new java.util.ArrayList<Plato>();
         Connection con;
         PreparedStatement stmPlatos=null;
-        String statement = "select id_plato, apto_veganos, apto_celiacos, tipo, descrpicion " +
+        String statement = "select id_plato, apto_veganos, apto_celiacos, tipo, descripcion " +
                             "from platos";
         ResultSet rsPlatos;
 
@@ -43,10 +43,16 @@ public class DAOPlatos extends AbstractDAO{
 
 
         } catch (SQLException e){
-          System.out.println(e.getMessage());
+            e.printStackTrace();;
+            System.out.println(e.getMessage());
           //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         }finally{
-          try {stmPlatos.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+          try {
+              stmPlatos.close();
+          } 
+          catch (SQLException e){
+              e.printStackTrace();
+              System.out.println("Imposible cerrar cursores");}
         }
         return resultado;
     }

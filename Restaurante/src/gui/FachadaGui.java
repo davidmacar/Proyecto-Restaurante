@@ -18,10 +18,15 @@ public class FachadaGui {
     
     public FachadaGui(FachadaAplicacion fap){
         this.fap = fap;
-        
         this.vac = new VAutenticacion(fap);
-        fap.obtenerPlatos();
-        vac.setVisible(true);
+    }
+    
+    public void iniciaInterfaz(){
+        this.vac.setVisible(true);
+    }
+    public void vistaCamarero(){
+        VCamarero vcam = new VCamarero(this.vac, true, this.fap);
+        vcam.setVisible(true);
     }
     
 }
