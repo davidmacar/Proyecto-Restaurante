@@ -12,8 +12,8 @@ package restaurante;
 public class Empleado {
     //dni, salario, numero_tlf, fecha_entrada, fecha_salida, nombre, apellido1, apellido2, eMail
     private String dni;
-    private int salario;
-    private String numero_tlf;
+    private float salario;
+    private int numero_tlf;
     private String fecha_entrada;
     private String fecha_salida;
     private String nombre;
@@ -21,7 +21,7 @@ public class Empleado {
     private String apellido2;
     private String eMail;
 
-    public Empleado(String dni, int salario, String numero_tlf, String fecha_entrada, String fecha_salida, String nombre, String apellido1, String apellido2, String eMail) {
+    public Empleado(String dni, int salario, int numero_tlf, String fecha_entrada, String fecha_salida, String nombre, String apellido1, String apellido2, String eMail) {
         this.dni = dni;
         this.salario = salario;
         this.numero_tlf = numero_tlf;
@@ -41,7 +41,7 @@ public class Empleado {
         this.dni = dni;
     }
 
-    public int getSalario() {
+    public float getSalario() {
         return salario;
     }
 
@@ -49,11 +49,11 @@ public class Empleado {
         this.salario = salario;
     }
 
-    public String getNumero_tlf() {
+    public int getNumero_tlf() {
         return numero_tlf;
     }
 
-    public void setNumero_tlf(String numero_tlf) {
+    public void setNumero_tlf(int numero_tlf) {
         this.numero_tlf = numero_tlf;
     }
 

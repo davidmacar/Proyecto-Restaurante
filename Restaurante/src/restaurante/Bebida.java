@@ -9,14 +9,12 @@ package restaurante;
  *
  * @author davidmacar
  */
-public class Bebida extends MateriaPrima{
-    private int porcentaje_alcohol;
+public class Bebida extends MateriaPrima {
+    private float porcentaje_alcohol;
     
-    public Bebida(){
-        this.nombre = "";
-        this.cantidad = 0;
-        this.precio = 0;
-        this.porcentaje_alcohol = 0;
+    public Bebida(String nombre, int cantidad, float precio, float porcentaje_alcohol){
+        super();
+        this.porcentaje_alcohol = porcentaje_alcohol;
     }
 
     public int getPorcentaje_alcohol() {

@@ -7,7 +7,8 @@ package restaurante;
 
 import gui.*;
 import baseDatos.*;
-import java.util.*;
+import java.util.List;
+
 
 /**
  *
@@ -33,10 +34,12 @@ public class FachadaAplicacion {
     public void iniciaInterfaz(){
         this.fgui.iniciaInterfaz();
     }
+    
     public List<Plato> obtenerPlatos(){
         List<Plato> ret = gp.obtenerPlatos();
         return ret;
     }
+    
     public void vistaCamarero(){
         this.fgui.vistaCamarero();
         
