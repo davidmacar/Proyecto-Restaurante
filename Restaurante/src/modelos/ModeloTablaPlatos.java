@@ -21,11 +21,11 @@ public class ModeloTablaPlatos extends AbstractTableModel{
     private java.util.List<Plato> postres;
 
     public ModeloTablaPlatos(){
-        this.pinchos=new java.util.ArrayList<Plato>();
-        this.entrantes=new java.util.ArrayList<Plato>();
-        this.primeros=new java.util.ArrayList<Plato>();
-        this.segundos=new java.util.ArrayList<Plato>();
-        this.postres=new java.util.ArrayList<Plato>();
+        this.pinchos=new java.util.ArrayList<>();
+        this.entrantes=new java.util.ArrayList<>();
+        this.primeros=new java.util.ArrayList<>();
+        this.segundos=new java.util.ArrayList<>();
+        this.postres=new java.util.ArrayList<>();
     }
 
     @Override

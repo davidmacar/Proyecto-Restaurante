@@ -19,6 +19,7 @@ public class FachadaBaseDatos {
     private FachadaAplicacion fap;
     private java.sql.Connection conexion;
     private DAOPlatos daoPlatos;
+    
     public FachadaBaseDatos(FachadaAplicacion fap){
         this.fap=fap;
         Properties configuracion = new Properties();
@@ -31,7 +32,6 @@ public class FachadaBaseDatos {
 
             Properties usuario = new Properties();
      
-
             String gestor = configuracion.getProperty("gestor");
 
             usuario.setProperty("user", configuracion.getProperty("usuario"));
