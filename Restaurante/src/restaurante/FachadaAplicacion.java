@@ -41,8 +41,7 @@ public class FachadaAplicacion {
     }
     
     public void vistaCamarero(){
-        this.fgui.vistaCamarero();
-        
+        this.fgui.vistaCamarero();   
     }
     
 }
