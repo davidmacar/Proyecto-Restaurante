@@ -45,13 +45,9 @@ public class FachadaBaseDatos {
         } catch (FileNotFoundException f){
             System.out.println(f.getMessage());
             //fap.muestraExcepcion(f.getMessage());
-        } catch (IOException i){
+        } catch (IOException | java.sql.SQLException i){
             System.out.println(i.getMessage());
             //fap.muestraExcepcion(i.getMessage());
-        } 
-        catch (java.sql.SQLException e){
-            System.out.println(e.getMessage());
-            //fap.muestraExcepcion(e.getMessage());
         }
         this.daoPlatos = new DAOPlatos(this.conexion, this.fap);
     }
