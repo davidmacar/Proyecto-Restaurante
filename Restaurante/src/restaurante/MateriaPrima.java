@@ -14,7 +14,7 @@ public abstract class MateriaPrima {
     private int cantidad;
     private float precio;
 
-    public void MateriaPrima(String nombre, int cantidad, float precio){
+    public MateriaPrima(String nombre, int cantidad, float precio){
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio = precio;

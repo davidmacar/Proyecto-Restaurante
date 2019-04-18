@@ -9,6 +9,8 @@ package restaurante;
  *
  * @author davidmacar
  */
-public class Ingrediente extends MateriaPrima{
-    
+public class Ingrediente extends MateriaPrima {
+    public Ingrediente(String nombre, int cantidad, float precio, float porcentaje_alcohol){
+        super(nombre, cantidad, precio);
+    }
 }
