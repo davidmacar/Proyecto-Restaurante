@@ -95,7 +95,7 @@ public class ModeloTablaPlatos extends AbstractTableModel{
         }
             
         return resultado;
-        }
+    }
 
     @Override
     public int getRowCount() {

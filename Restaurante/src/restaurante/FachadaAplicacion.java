@@ -23,6 +23,7 @@ public class FachadaAplicacion {
         this.fgui = new FachadaGui(this);
         gp = new GestionPlatos(this.fgui, this.fbd);
     }
+    
     public static void main(String[] args) {
         FachadaAplicacion fa;
         fa = new FachadaAplicacion();
