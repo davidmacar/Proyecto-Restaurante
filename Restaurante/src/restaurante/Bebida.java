@@ -21,7 +21,7 @@ public class Bebida extends MateriaPrima {
         return porcentaje_alcohol;
     }
 
-    public void setPorcentaje_alcohol(int porcentaje_alcohol) {
+    public void setPorcentaje_alcohol(float porcentaje_alcohol) {
         this.porcentaje_alcohol = porcentaje_alcohol;
     }
 }

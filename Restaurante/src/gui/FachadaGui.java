@@ -5,7 +5,6 @@
  */
 package gui;
 
-import java.util.*;
 import restaurante.*;
 
 /**
@@ -24,6 +23,7 @@ public class FachadaGui {
     public void iniciaInterfaz(){
         this.vac.setVisible(true);
     }
+    
     public void vistaCamarero(){
         VCamarero vcam = new VCamarero(this.vac, true, this.fap);
         vcam.setVisible(true);

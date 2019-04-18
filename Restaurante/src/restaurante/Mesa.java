@@ -15,16 +15,10 @@ public class Mesa {
     private ArrayList<Plato> platos;
     private ArrayList<Bebida> bebidas;
     
-    
     public Mesa(int num_mesa){
         this.num_mesa = num_mesa;
-        this.platos = null;
-        this.bebidas = null;
-    }
-    public Mesa(){
-        this.num_mesa = 0;
-        this.platos = null;
-        this.bebidas = null;
+        this.platos = new ArrayList<>();
+        this.bebidas = new ArrayList<>();
     }
 
     public int getNum_mesa() {

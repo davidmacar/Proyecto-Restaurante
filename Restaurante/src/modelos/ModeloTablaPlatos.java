@@ -132,8 +132,9 @@ public class ModeloTablaPlatos extends AbstractTableModel{
         return platos;
     }
 
-    public Plato obtenerEjemplar(int i){
+    public Plato obtenerPlato(int i){
         //return this.platos.get(i);
-        return new Plato();
+        // COMPLETAR
+        return null;
     }
 }

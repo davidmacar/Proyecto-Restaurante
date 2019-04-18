@@ -90,6 +90,7 @@ public class VCamarero extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenu2ActionPerformed
@@ -103,8 +104,6 @@ public class VCamarero extends javax.swing.JDialog {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDevolver;
-    private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnMenu1;
     private javax.swing.JButton btnMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

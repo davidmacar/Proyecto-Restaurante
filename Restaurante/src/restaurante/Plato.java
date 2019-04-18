@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class Plato {
     //id_plato, apto_veganos, apto_celiacos, tipo, mesa, venta
-    private int id_palto;
+    private int id_plato;
     private boolean apto_veganos;
     private boolean apto_celiacos;
     private String tipo;
@@ -19,29 +19,21 @@ public class Plato {
     private Mesa mesa;
     private ArrayList<Ingrediente> ingredientes;
 
-    public Plato(int id_palto, boolean apto_veganos, boolean apto_celiacos, String tipo, String descripcion) {
-        this.id_palto = id_palto;
+    public Plato(int id_plato, boolean apto_veganos, boolean apto_celiacos, String tipo, String descripcion) {
+        this.id_plato = id_plato;
         this.apto_veganos = apto_veganos;
         this.apto_celiacos = apto_celiacos;
         this.tipo = tipo;
         this.mesa = null;
         this.descripcion = descripcion;
     }
-    public Plato(){
-        this.id_palto = 0;
-        this.apto_veganos = false;
-        this.apto_celiacos = false;
-        this.tipo = "";
-        this.descripcion ="";
-        this.mesa = null;
+
+    public int getId_plato() {
+        return id_plato;
     }
 
-    public int getId_palto() {
-        return id_palto;
-    }
-
-    public void setId_palto(int id_palto) {
-        this.id_palto = id_palto;
+    public void setId_plato(int id_plato) {
+        this.id_plato = id_plato;
     }
 
     public boolean isApto_veganos() {

@@ -20,39 +20,38 @@ public class DAOPlatos extends AbstractDAO{
         super.setConexion(conexion);
         super.setFachadaAplicacion(fa);
     }
+    
     public java.util.List<Plato> obtenerPlatos(){
-        java.util.List<Plato> resultado=new java.util.ArrayList<Plato>();
-        Connection con;
+        java.util.List<Plato> resultado=new java.util.ArrayList<>();
+        Connection con = super.getConexion();
         PreparedStatement stmPlatos=null;
-        String statement = "select id_plato, apto_veganos, apto_celiacos, tipo, descripcion " +
-                            "from platos";
         ResultSet rsPlatos;
-
-        con=super.getConexion();
+        
+        String statement = "select id_plato, apto_veganos, apto_celiacos, tipo, descripcion " +
+                           "from platos";
 
         try {
-        stmPlatos =con.prepareStatement(statement);
-        rsPlatos=stmPlatos.executeQuery();
-        while (rsPlatos.next())
-        {
-            Plato ej = new Plato(rsPlatos.getInt("id_plato"), rsPlatos.getBoolean("apto_veganos"), 
-                                    rsPlatos.getBoolean("apto_celiacos"), rsPlatos.getString("tipo"),
-                                    rsPlatos.getString("descripcion"));
-            resultado.add(ej);
+            stmPlatos = con.prepareStatement(statement);
+            rsPlatos=stmPlatos.executeQuery();
+            
+            while (rsPlatos.next()){
+                Plato ej = new Plato(rsPlatos.getInt("id_plato"), rsPlatos.getBoolean("apto_veganos"), 
+                                        rsPlatos.getBoolean("apto_celiacos"), rsPlatos.getString("tipo"),
+                                        rsPlatos.getString("descripcion"));
+                resultado.add(ej);
+            }
         }
-
-
-        } catch (SQLException e){
-            e.printStackTrace();;
+        catch (SQLException e){
             System.out.println(e.getMessage());
           //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
-        }finally{
-          try {
-              stmPlatos.close();
-          } 
-          catch (SQLException e){
-              e.printStackTrace();
-              System.out.println("Imposible cerrar cursores");}
+        }
+        finally{
+            try {
+                if(stmPlatos != null) stmPlatos.close();
+            }
+            catch (SQLException e){
+                System.out.println("Imposible cerrar cursores");
+            }
         }
         return resultado;
     }
