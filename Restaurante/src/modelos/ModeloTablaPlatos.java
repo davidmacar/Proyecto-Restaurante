@@ -13,18 +13,11 @@ import restaurante.*;
  * @author davidmacar
  */
 public class ModeloTablaPlatos extends AbstractTableModel{
-    private java.util.List<Plato> pinchos;
-    private java.util.List<Plato> entrantes;
-    private java.util.List<Plato> primeros;
-    private java.util.List<Plato> segundos;
-    private java.util.List<Plato> postres;
-
+    private java.util.List<Plato> lista;
+   
     public ModeloTablaPlatos(){
-        this.pinchos=new java.util.ArrayList<Plato>();
-        this.entrantes=new java.util.ArrayList<Plato>();
-        this.primeros=new java.util.ArrayList<Plato>();
-        this.segundos=new java.util.ArrayList<Plato>();
-        this.postres=new java.util.ArrayList<Plato>();
+        this.lista=new java.util.ArrayList<Plato>();
+        
     }
 
     @Override
@@ -32,7 +25,6 @@ public class ModeloTablaPlatos extends AbstractTableModel{
         return 5;
     }
 
-    @Override
     public int getRowCount(int col){
         int ret = -1;
         switch(col){
@@ -69,7 +61,6 @@ public class ModeloTablaPlatos extends AbstractTableModel{
         return nombre;
     }
 
-    @Override
     public Class getColumnClass(){
         Class clase= java.lang.String.class;
         return clase;

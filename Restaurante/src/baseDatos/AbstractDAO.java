@@ -5,12 +5,14 @@
  */
 package baseDatos;
 
+import restaurante.FachadaAplicacion;
+
 /**
  *
  * @author davidmacar
  */
 public class AbstractDAO {
-   private aplicacion.FachadaAplicacion fa;
+   private FachadaAplicacion fa;
    private java.sql.Connection conexion;
 
    
@@ -22,11 +24,11 @@ public class AbstractDAO {
         this.conexion=conexion;
     }
    
-   protected void setFachadaAplicacion(aplicacion.FachadaAplicacion fa){
+   protected void setFachadaAplicacion(FachadaAplicacion fa){
        this.fa=fa;
    }
    
-   protected aplicacion.FachadaAplicacion getFachadaAplicacion(){
+   protected FachadaAplicacion getFachadaAplicacion(){
        return fa;
    }
    
