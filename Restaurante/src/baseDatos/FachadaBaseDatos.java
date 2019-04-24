@@ -18,7 +18,7 @@ import restaurante.*;
 public class FachadaBaseDatos {
     private FachadaAplicacion fap;
     private java.sql.Connection conexion;
-    
+    private DAOPlatos daoPlatos;
     public FachadaBaseDatos(FachadaAplicacion fap){
         this.fap=fap;
         Properties configuracion = new Properties();
@@ -44,17 +44,19 @@ public class FachadaBaseDatos {
 
         } catch (FileNotFoundException f){
             System.out.println(f.getMessage());
-            fap.muestraExcepcion(f.getMessage());
+            //fap.muestraExcepcion(f.getMessage());
         } catch (IOException i){
             System.out.println(i.getMessage());
-            fap.muestraExcepcion(i.getMessage());
+            //fap.muestraExcepcion(i.getMessage());
         } 
         catch (java.sql.SQLException e){
             System.out.println(e.getMessage());
-            fap.muestraExcepcion(e.getMessage());
+            //fap.muestraExcepcion(e.getMessage());
         }
-        
-        
-        
+        this.daoPlatos = new DAOPlatos(this.conexion, this.fap);
+    }
+    
+    public java.util.List<Plato> obtenerPlatos(){
+        return this.daoPlatos.obtenerPlatos();
     }
 }

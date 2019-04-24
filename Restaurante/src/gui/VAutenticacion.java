@@ -5,16 +5,20 @@
  */
 package gui;
 
+import baseDatos.FachadaBaseDatos;
+import restaurante.*;
+
 /**
  *
  * @author davidmacar
  */
-public class VAutenticacion extends javax.swing.JDialog {
+public class VAutenticacion extends javax.swing.JFrame {
 
-    VCamarero vcam;
+    FachadaAplicacion fap;
     /*el resto de menus principales*/
     
-    public VAutenticacion() {
+    public VAutenticacion(FachadaAplicacion fap) {
+        this.fap = fap;
         initComponents();
     }
 
@@ -150,8 +154,7 @@ public class VAutenticacion extends javax.swing.JDialog {
             
         }
         else if(this.btnCamarero.isSelected()){
-            this.vcam = new VCamarero();
-            this.vcam.setVisible(true);
+            fap.vistaCamarero();
             this.setVisible(false);
         }
         else if(this.btnCocinero.isSelected()){
@@ -186,40 +189,6 @@ public class VAutenticacion extends javax.swing.JDialog {
         this.btnGerente.setSelected(false);
     }//GEN-LAST:event_btnCajeroActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VAutenticacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VAutenticacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VAutenticacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VAutenticacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VAutenticacion().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCajero;

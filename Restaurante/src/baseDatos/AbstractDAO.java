@@ -11,8 +11,8 @@ import restaurante.FachadaAplicacion;
  *
  * @author davidmacar
  */
-public class AbstractDAO {
-   private FachadaAplicacion fa;
+public abstract class AbstractDAO {
+   private restaurante.FachadaAplicacion fa;
    private java.sql.Connection conexion;
 
    
@@ -24,11 +24,11 @@ public class AbstractDAO {
         this.conexion=conexion;
     }
    
-   protected void setFachadaAplicacion(FachadaAplicacion fa){
+   protected void setFachadaAplicacion(restaurante.FachadaAplicacion fa){
        this.fa=fa;
    }
    
-   protected FachadaAplicacion getFachadaAplicacion(){
+   protected restaurante.FachadaAplicacion getFachadaAplicacion(){
        return fa;
    }
    

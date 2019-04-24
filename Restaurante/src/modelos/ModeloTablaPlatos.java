@@ -6,7 +6,8 @@
 package modelos;
 
 import javax.swing.table.AbstractTableModel;
-import restaurante.*;
+import restaurante.Plato;
+import java.util.*;
 
 /**
  *
@@ -61,6 +62,7 @@ public class ModeloTablaPlatos extends AbstractTableModel{
         return nombre;
     }
 
+    //@Override
     public Class getColumnClass(){
         Class clase= java.lang.String.class;
         return clase;
@@ -76,22 +78,22 @@ public class ModeloTablaPlatos extends AbstractTableModel{
         Object resultado=null;
         boolean alfa = false;
         switch(col){
-            case 0: resultado= pinchos.get(row).getNumEjemplar(); break;
-            case 1: resultado= entrantes.get(row).getLocalizador(); break;
-            case 2: resultado= primeros.get(row).getAnoCompra();break;
-            case 3: resultado= segundos.get(row).getAnoCompra();break;
-            case 4: resultado= postres.get(row).getAnoCompra();break;
+            //case 0: resultado= pinchos.get(row).getNumEjemplar(); break;
+            //case 1: resultado= entrantes.get(row).getLocalizador(); break;
+            //case 2: resultado= primeros.get(row).getAnoCompra();break;
+            //case 3: resultado= segundos.get(row).getAnoCompra();break;
+            //case 4: resultado= postres.get(row).getAnoCompra();break;
 
         }
             
-        }
         return resultado;
+        }
 
     @Override
     public int getRowCount() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    }
+    
 
     /*@Override
     public void setValueAt(Object v, int row, int col){
@@ -102,13 +104,13 @@ public class ModeloTablaPlatos extends AbstractTableModel{
     }*/
 
     public void setFilas(java.util.List<Plato> platos){
-        this.platos=platos;
+        //this.platos=platos;
         fireTableDataChanged();
     }
 
     public void nuevoPlato(Plato p){
-        this.platos.add(p);
-        fireTableRowsInserted(this.platos.size()-1, this.platos.size()-1);
+        //this.platos.add(p);
+        //fireTableRowsInserted(this.platos.size()-1, this.platos.size()-1);
     }
 
     /*public void borrarPlato(int plato){
@@ -117,10 +119,13 @@ public class ModeloTablaPlatos extends AbstractTableModel{
     }*/
 
     public java.util.List<Plato> getFilas(){
-        return this.platos;
+        //return this.platos;
+        ArrayList<Plato> platos = new ArrayList();
+        return platos;
     }
 
     public Plato obtenerEjemplar(int i){
-        return this.platos.get(i);
+        //return this.platos.get(i);
+        return new Plato();
     }
 }
