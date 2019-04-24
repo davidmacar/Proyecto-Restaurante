@@ -19,6 +19,10 @@ public class FachadaBaseDatos {
     private FachadaAplicacion fap;
     private java.sql.Connection conexion;
     private DAOPlatos daoPlatos;
+    private DAOBebidas daoBebidas;
+    private DAOEmpleados daoEmpleados;
+    private DAOIngredientes daoIngredientes;
+    private DAOMesas daoMesas;
     public FachadaBaseDatos(FachadaAplicacion fap){
         this.fap=fap;
         Properties configuracion = new Properties();

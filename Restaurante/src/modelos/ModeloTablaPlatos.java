@@ -52,7 +52,7 @@ public class ModeloTablaPlatos extends AbstractTableModel{
         }
         return ret;
     }
-
+*/
     @Override
     public String getColumnName(int col){
         String nombre="";

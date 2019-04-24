@@ -12,7 +12,7 @@ package restaurante;
 public class Empleado {
     //dni, salario, numero_tlf, fecha_entrada, fecha_salida, nombre, apellido1, apellido2, eMail
     private String dni;
-    private int salario;
+    private float salario;
     private String numero_tlf;
     private String fecha_entrada;
     private String fecha_salida;
@@ -41,7 +41,7 @@ public class Empleado {
         this.dni = dni;
     }
 
-    public int getSalario() {
+    public float getSalario() {
         return salario;
     }
 

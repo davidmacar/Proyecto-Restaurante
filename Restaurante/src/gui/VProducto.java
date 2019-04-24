@@ -9,7 +9,7 @@ package gui;
  *
  * @author davidmacar
  */
-public class VProducto extends javax.swing.JFrame {
+public class VProducto extends javax.swing.JDialog {
 
     /**
      * Creates new form VProducto
