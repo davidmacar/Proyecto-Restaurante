@@ -37,7 +37,7 @@ public class DAOPlatos extends AbstractDAO{
         {
             Plato ej = new Plato(rsPlatos.getInt("id_plato"), rsPlatos.getBoolean("apto_veganos"), 
                                     rsPlatos.getBoolean("apto_celiacos"), rsPlatos.getString("tipo"),
-                                    rsPlatos.getString("descripcion"));
+                                    rsPlatos.getString("descripcion"), rsPlatos.getString("descripcion"));
             resultado.add(ej);
         }
 
@@ -52,7 +52,9 @@ public class DAOPlatos extends AbstractDAO{
           } 
           catch (SQLException e){
               e.printStackTrace();
-              System.out.println("Imposible cerrar cursores");}
+              System.out.println("Imposible cerrar cursores");
+              System.out.println("");
+          }
         }
         return resultado;
     }
