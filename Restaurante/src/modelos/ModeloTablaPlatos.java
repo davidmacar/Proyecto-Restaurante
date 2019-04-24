@@ -8,40 +8,45 @@ package modelos;
 import javax.swing.table.AbstractTableModel;
 import restaurante.Plato;
 import java.util.*;
+import restaurante.*;
 
 /**
  *
  * @author davidmacar
  */
 public class ModeloTablaPlatos extends AbstractTableModel{
-    private java.util.List<Plato> lista;
+    private java.util.List<Plato> entrantes;
+    private java.util.List<Plato> primeros;
+    private java.util.List<Plato> segundos;
+    private java.util.List<Plato> postres;
    
+    
     public ModeloTablaPlatos(){
-        this.lista=new java.util.ArrayList<Plato>();
-        
+        this.entrantes=new java.util.ArrayList<Plato>();
+        this.primeros=new java.util.ArrayList<Plato>();
+        this.segundos=new java.util.ArrayList<Plato>();
+        this.postres=new java.util.ArrayList<Plato>();
     }
 
     @Override
     public int getColumnCount (){
-        return 5;
-    }
+        return 4;
+    } 
+    
 
     public int getRowCount(int col){
         int ret = -1;
         switch(col){
             case 0 :
-                ret = this.pinchos.size();
-                break;
-            case 1: 
                 ret = this.entrantes.size();
                 break;
-            case 2:
+            case 1: 
                 ret = this.primeros.size();
                 break;
-            case 3: 
+            case 2:
                 ret = this.segundos.size();
                 break;
-            case 4:
+            case 3: 
                 ret = this.postres.size();
                 break;
         }
@@ -53,11 +58,10 @@ public class ModeloTablaPlatos extends AbstractTableModel{
         String nombre="";
 
         switch (col){
-            case 0: nombre= "Pinchos"; break;
-            case 1: nombre= "Entrantes"; break;
-            case 2: nombre= "Primero"; break;
-            case 3: nombre= "Segundo"; break;
-            case 4: nombre= "Postre"; break;
+            case 0: nombre= "Entrantes"; break;
+            case 1: nombre= "Primero"; break;
+            case 2: nombre= "Segundo"; break;
+            case 3: nombre= "Postre"; break;
         }
         return nombre;
     }
@@ -78,33 +82,56 @@ public class ModeloTablaPlatos extends AbstractTableModel{
         Object resultado=null;
         boolean alfa = false;
         switch(col){
-            //case 0: resultado= pinchos.get(row).getNumEjemplar(); break;
-            //case 1: resultado= entrantes.get(row).getLocalizador(); break;
-            //case 2: resultado= primeros.get(row).getAnoCompra();break;
-            //case 3: resultado= segundos.get(row).getAnoCompra();break;
-            //case 4: resultado= postres.get(row).getAnoCompra();break;
+            case 0: 
+                if(row <= entrantes.size()-1)
+                    resultado= entrantes.get(row).getNombre(); 
+                break;
+            case 1: 
+                if(row <= primeros.size()-1)
+                    resultado= primeros.get(row).getNombre();
+                break;
+            case 2: 
+                if(row <= segundos.size()-1)
+                    resultado= segundos.get(row).getNombre();
+                break;
+            case 3: 
+                if(row <= postres.size()-1)
+                    resultado= postres.get(row).getNombre();
+                break;
 
         }
             
         return resultado;
         }
 
+    
     @Override
     public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Math.max(entrantes.size(), Math.max(primeros.size(), Math.max(segundos.size(), postres.size())));
     }
     
 
-    /*@Override
+    @Override
     public void setValueAt(Object v, int row, int col){
         switch (col){
-            case 1: ejemplares.get(row).setLocalizador((String) v); break;
-            case 2: ejemplares.get(row).setAnoCompra((String) v);break;
+            /*case 0: entrantes.get(row).setLocalizador((String) v); break;
+            case 1: primeros.get(row).setAnoCompra((String) v);break;
+            case 2: segundos.get(row).setAnoCompra((String) v);break;
+            case 3: postres.get(row).setAnoCompra((String) v);break;*/
         }
-    }*/
+    }
 
     public void setFilas(java.util.List<Plato> platos){
-        //this.platos=platos;
+        for(Plato plat : platos){
+            if(plat.getTipo().equalsIgnoreCase("entrante"))
+                this.entrantes.add(plat);
+            else if(plat.getTipo().equalsIgnoreCase("primero"))
+                this.primeros.add(plat);
+            else if(plat.getTipo().equalsIgnoreCase("segundo"))
+                this.segundos.add(plat);
+            else if(plat.getTipo().equalsIgnoreCase("postre"))
+                this.postres.add(plat);
+        }
         fireTableDataChanged();
     }
 
@@ -119,12 +146,11 @@ public class ModeloTablaPlatos extends AbstractTableModel{
     }*/
 
     public java.util.List<Plato> getFilas(){
-        //return this.platos;
         ArrayList<Plato> platos = new ArrayList();
         return platos;
     }
 
-    public Plato obtenerEjemplar(int i){
+    public Plato obtenerPlato(int i){
         //return this.platos.get(i);
         return new Plato();
     }
