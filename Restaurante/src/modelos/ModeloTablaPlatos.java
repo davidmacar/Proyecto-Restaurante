@@ -25,7 +25,7 @@ public class ModeloTablaPlatos extends AbstractTableModel{
     public int getColumnCount (){
         return 5;
     }
-
+/*
     public int getRowCount(int col){
         int ret = -1;
         switch(col){
@@ -47,7 +47,7 @@ public class ModeloTablaPlatos extends AbstractTableModel{
         }
         return ret;
     }
-
+*/
     @Override
     public String getColumnName(int col){
         String nombre="";
