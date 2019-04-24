@@ -5,7 +5,8 @@
  */
 package gui;
 
-import modelos.ModeloTablaCamareros;
+import java.util.List;
+import modelos.*;
 import restaurante.*;
 
 /**
@@ -43,8 +44,7 @@ public class VCamarero extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new ModeloTablaCamareros());
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaPlatos);
 
         btnMenu2.setText("VER MENU");
         btnMenu2.addActionListener(new java.awt.event.ActionListener() {
