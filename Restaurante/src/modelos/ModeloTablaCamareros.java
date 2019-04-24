@@ -67,6 +67,7 @@ public class ModeloTablaCamareros extends AbstractTableModel{
         return false;
     }
 
+    @Override
   public Object getValueAt(int row, int col){
         Object resultado=null;
 
@@ -83,6 +84,7 @@ public class ModeloTablaCamareros extends AbstractTableModel{
         }
         return resultado;
     }
+}
     
        
       
