@@ -5,6 +5,8 @@
  */
 package gui;
 
+import java.util.List;
+import modelos.ModeloTablaPlatos;
 import restaurante.*;
 
 /**
@@ -21,6 +23,9 @@ public class VCamarero extends javax.swing.JDialog {
         this.vaut = (VAutenticacion) parent;
         this.fap = fap;
         initComponents();
+        ModeloTablaPlatos mtp = new ModeloTablaPlatos();
+        this.tablaPlatos.setModel(mtp);
+        this.actualizarPlatos();
     }
 
     /**
@@ -33,24 +38,13 @@ public class VCamarero extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaPlatos = new javax.swing.JTable();
         btnMenu2 = new javax.swing.JButton();
         btnDevolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaPlatos);
 
         btnMenu2.setText("VER MENU");
         btnMenu2.addActionListener(new java.awt.event.ActionListener() {
@@ -100,13 +94,18 @@ public class VCamarero extends javax.swing.JDialog {
         fap.obtenerPlatos();
     }//GEN-LAST:event_btnDevolverActionPerformed
 
+    public void actualizarPlatos(){
+        List<Plato> platos;
+        platos = fap.obtenerPlatos();
+        ModeloTablaPlatos mtp;
+        mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
+        mtp.setFilas(platos);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDevolver;
-    private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnMenu1;
     private javax.swing.JButton btnMenu2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaPlatos;
     // End of variables declaration//GEN-END:variables
 }
