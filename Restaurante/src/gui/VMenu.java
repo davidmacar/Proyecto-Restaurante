@@ -9,7 +9,7 @@ package gui;
  *
  * @author davidmacar
  */
-public class VMenu extends javax.swing.JFrame {
+public class VMenu extends javax.swing.JDialog {
 
     /**
      * Creates new form VMenuPlatos
