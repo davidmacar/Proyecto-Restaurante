@@ -5,6 +5,7 @@
  */
 package gui;
 
+import modelos.ModeloTablaCamareros;
 import restaurante.*;
 
 /**
@@ -39,17 +40,7 @@ public class VCamarero extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(new ModeloTablaCamareros());
         jScrollPane1.setViewportView(jTable1);
 
         btnMenu2.setText("VER MENU");
@@ -103,8 +94,6 @@ public class VCamarero extends javax.swing.JDialog {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDevolver;
-    private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnMenu1;
     private javax.swing.JButton btnMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
