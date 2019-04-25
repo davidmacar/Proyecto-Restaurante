@@ -44,4 +44,8 @@ public class FachadaAplicacion {
         this.fgui.vistaMenu(vcam);
     }
     
+    public boolean autenticar(String usuario, String password){
+        return this.fbd.autenticar(usuario, password);
+    }
+    
 }

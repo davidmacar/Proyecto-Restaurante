@@ -26,17 +26,17 @@ public class DAOEmpleados extends AbstractDAO {
         String dni="", pass="";
         PreparedStatement stmUsuario=null;
         String statement = "select dni, password " +
-                            "from empleados "+
+                            "from personal "+
                             "where dni = ?";
         ResultSet rsUsuarios;
 
         con=super.getConexion();
 
         try {
-            stmUsuario.setString(1, usuario);
             stmUsuario =con.prepareStatement(statement);
+            stmUsuario.setString(1, usuario);
             rsUsuarios=stmUsuario.executeQuery();
-        while (rsUsuarios.next())
+        if (rsUsuarios.next())
         {
             dni = rsUsuarios.getString("dni");
             pass = rsUsuarios.getString("password");
@@ -44,7 +44,7 @@ public class DAOEmpleados extends AbstractDAO {
 
 
         } catch (SQLException e){
-            e.printStackTrace();;
+            e.printStackTrace();
             System.out.println(e.getMessage());
           //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         }finally{

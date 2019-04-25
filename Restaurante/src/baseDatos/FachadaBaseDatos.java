@@ -58,9 +58,13 @@ public class FachadaBaseDatos {
             //fap.muestraExcepcion(e.getMessage());
         }
         this.daoPlatos = new DAOPlatos(this.conexion, this.fap);
+        this.daoEmpleados = new DAOEmpleados(this.conexion, this.fap);
     }
     
     public java.util.List<Plato> obtenerPlatos(){
         return this.daoPlatos.obtenerPlatos();
+    }
+    public boolean autenticar(String usuario, String password){
+        return this.daoEmpleados.autenticar(usuario, password);
     }
 }
