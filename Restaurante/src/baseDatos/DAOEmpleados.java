@@ -23,11 +23,12 @@ public class DAOEmpleados extends AbstractDAO {
     
     public boolean autenticar(String usuario, String password){
         Connection con;
+        boolean correcto = false;
         String dni="", pass="";
         PreparedStatement stmUsuario=null;
-        String statement = "select dni, password " +
+        String statement = "select dni, contrasena " +
                             "from personal "+
-                            "where dni = ?";
+                            "where dni = ? and contrasena = ?";
         ResultSet rsUsuarios;
 
         con=super.getConexion();
@@ -35,12 +36,10 @@ public class DAOEmpleados extends AbstractDAO {
         try {
             stmUsuario =con.prepareStatement(statement);
             stmUsuario.setString(1, usuario);
+            stmUsuario.setString(2, password);
             rsUsuarios=stmUsuario.executeQuery();
         if (rsUsuarios.next())
-        {
-            dni = rsUsuarios.getString("dni");
-            pass = rsUsuarios.getString("password");
-        }
+            correcto = true;
 
 
         } catch (SQLException e){
@@ -57,9 +56,43 @@ public class DAOEmpleados extends AbstractDAO {
               System.out.println("");
           }
         }
-        if(password == pass)
-            return true;
-        else 
-            return false;
+        return correcto;
+    }
+    public Empleado autenticar(String usuario, String password){
+        Connection con;
+        boolean correcto = false;
+        String dni="", pass="";
+        PreparedStatement stmUsuario=null;
+        String statement = "select dni, contrasena " +
+                            "from personal "+
+                            "where dni = ? and contrasena = ?";
+        ResultSet rsUsuarios;
+
+        con=super.getConexion();
+
+        try {
+            stmUsuario =con.prepareStatement(statement);
+            stmUsuario.setString(1, usuario);
+            stmUsuario.setString(2, password);
+            rsUsuarios=stmUsuario.executeQuery();
+        if (rsUsuarios.next())
+            correcto = true;
+
+
+        } catch (SQLException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+          //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        }finally{
+          try {
+              stmUsuario.close();
+          } 
+          catch (SQLException e){
+              e.printStackTrace();
+              System.out.println("Imposible cerrar cursores");
+              System.out.println("");
+          }
+        }
+        return correcto;
     }
 }

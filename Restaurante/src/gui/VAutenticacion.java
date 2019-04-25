@@ -20,6 +20,7 @@ public class VAutenticacion extends javax.swing.JFrame {
     public VAutenticacion(FachadaAplicacion fap) {
         this.fap = fap;
         initComponents();
+        this.txtError.setVisible(false);
     }
 
     /**
@@ -35,15 +36,13 @@ public class VAutenticacion extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnCamarero = new javax.swing.JToggleButton();
-        btnGerente = new javax.swing.JToggleButton();
-        btnCocinero = new javax.swing.JToggleButton();
-        btnCajero = new javax.swing.JToggleButton();
         password = new javax.swing.JPasswordField();
+        combullita = new javax.swing.JComboBox<>();
+        txtError = new javax.swing.JLabel();
 
-        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsuarioActionPerformed(evt);
+        txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUsuarioMouseClicked(evt);
             }
         });
 
@@ -58,64 +57,53 @@ public class VAutenticacion extends javax.swing.JFrame {
 
         jLabel2.setText("Contraseña:");
 
-        btnCamarero.setText("CAMARERO");
-        btnCamarero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCamareroActionPerformed(evt);
+        password.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                passwordMouseClicked(evt);
             }
         });
 
-        btnGerente.setText("GERENTE");
-        btnGerente.addActionListener(new java.awt.event.ActionListener() {
+        combullita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Camarero", "Cocinero", "Gerente" }));
+        combullita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGerenteActionPerformed(evt);
+                combullitaActionPerformed(evt);
             }
         });
 
-        btnCocinero.setText("COCINERO");
-        btnCocinero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCocineroActionPerformed(evt);
-            }
-        });
-
-        btnCajero.setText("CAJERO");
-        btnCajero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCajeroActionPerformed(evt);
-            }
-        });
+        txtError.setForeground(new java.awt.Color(255, 0, 0));
+        txtError.setText("Contraseña incorrecta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCamarero)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                            .addComponent(txtUsuario))
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                                    .addComponent(txtUsuario)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(combullita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnGerente)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCocinero)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCajero)))
+                        .addGap(109, 109, 109)
+                        .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -125,78 +113,60 @@ public class VAutenticacion extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(28, Short.MAX_VALUE)
-                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCamarero)
-                    .addComponent(btnGerente)
-                    .addComponent(btnCocinero)
-                    .addComponent(btnCajero))
-                .addGap(22, 22, 22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(combullita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(15, 15, 15)
+                .addComponent(txtError)
+                .addGap(41, 41, 41))
         );
+
+        txtError.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsuarioActionPerformed
-
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         /*checkear el user password*/
-        if(this.btnCajero.isSelected()){
-            
-        }
-        else if(this.btnCamarero.isSelected() && 
-                fap.autenticar(this.txtUsuario.getText(), new String(this.password.getPassword()))){
-            fap.vistaCamarero();
-            this.setVisible(false);
-        }
-        else if(this.btnCocinero.isSelected()){
-            
-        }
-        else if(this.btnGerente.isSelected()){
-            
+        switch(this.combullita.getSelectedItem().toString()){
+            case "Camarero":
+                if(fap.autenticar(this.txtUsuario.getText(), new String(this.password.getPassword()))){
+                    fap.vistaCamarero();
+                    this.setVisible(false);
+                }
+                else 
+                    this.txtError.setVisible(true);
+                break;
+            case "Gerente":
+                break;
+            case "Cocinero":
+                break;
+                
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
-    private void btnCocineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCocineroActionPerformed
-        this.btnCajero.setSelected(false);
-        this.btnCamarero.setSelected(false);
-        this.btnCajero.setSelected(false);
-    }//GEN-LAST:event_btnCocineroActionPerformed
+    private void combullitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combullitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combullitaActionPerformed
 
-    private void btnCamareroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCamareroActionPerformed
-        this.btnCajero.setSelected(false);
-        this.btnCocinero.setSelected(false);
-        this.btnGerente.setSelected(false);
-    }//GEN-LAST:event_btnCamareroActionPerformed
+    private void txtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseClicked
+        this.txtError.setVisible(false);
+    }//GEN-LAST:event_txtUsuarioMouseClicked
 
-    private void btnGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenteActionPerformed
-        this.btnCajero.setSelected(false);
-        this.btnCamarero.setSelected(false);
-        this.btnCocinero.setSelected(false);
-    }//GEN-LAST:event_btnGerenteActionPerformed
-
-    private void btnCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCajeroActionPerformed
-        this.btnCocinero.setSelected(false);
-        this.btnCamarero.setSelected(false);
-        this.btnGerente.setSelected(false);
-    }//GEN-LAST:event_btnCajeroActionPerformed
+    private void passwordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordMouseClicked
+        this.txtError.setVisible(false);
+    }//GEN-LAST:event_passwordMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnCajero;
-    private javax.swing.JToggleButton btnCamarero;
-    private javax.swing.JToggleButton btnCocinero;
     private javax.swing.JButton btnEntrar;
-    private javax.swing.JToggleButton btnGerente;
+    private javax.swing.JComboBox<String> combullita;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField password;
+    private javax.swing.JLabel txtError;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
