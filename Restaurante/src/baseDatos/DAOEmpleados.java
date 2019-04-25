@@ -76,7 +76,7 @@ public class DAOEmpleados extends AbstractDAO {
             rsEmpleado=stmEmpleado.executeQuery();
         if (rsEmpleado.next())
             empleado = new Empleado(rsEmpleado.getString("dni"), rsEmpleado.getFloat("salario"), 
-                    rsEmpleado.getString("dni"), rsEmpleado.getString("fecha_entrada"),
+                    rsEmpleado.getString("numero_tlf"), rsEmpleado.getString("fecha_entrada"),
                     rsEmpleado.getString("fecha_salida"), rsEmpleado.getString("nombre"), 
                     rsEmpleado.getString("apellido_1"), rsEmpleado.getString("apellido_2"), rsEmpleado.getString("e_mail"));
 
