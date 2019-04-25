@@ -47,5 +47,8 @@ public class FachadaAplicacion {
     public boolean autenticar(String usuario, String password){
         return this.fbd.autenticar(usuario, password);
     }
+    public Empleado obtenerCamarero(String dni){
+        return fbd.obtenerCamarero(dni);
+    }
     
 }

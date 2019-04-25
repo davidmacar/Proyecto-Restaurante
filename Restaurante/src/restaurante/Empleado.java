@@ -21,7 +21,7 @@ public class Empleado {
     private String apellido2;
     private String eMail;
 
-    public Empleado(String dni, int salario, String numero_tlf, String fecha_entrada, String fecha_salida, String nombre, String apellido1, String apellido2, String eMail) {
+    public Empleado(String dni, float salario, String numero_tlf, String fecha_entrada, String fecha_salida, String nombre, String apellido1, String apellido2, String eMail) {
         this.dni = dni;
         this.salario = salario;
         this.numero_tlf = numero_tlf;

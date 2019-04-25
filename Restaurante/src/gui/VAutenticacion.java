@@ -133,6 +133,7 @@ public class VAutenticacion extends javax.swing.JFrame {
         switch(this.combullita.getSelectedItem().toString()){
             case "Camarero":
                 if(fap.autenticar(this.txtUsuario.getText(), new String(this.password.getPassword()))){
+                    fap.obtenerCamarero(this.txtUsuario.getText());
                     fap.vistaCamarero();
                     this.setVisible(false);
                 }

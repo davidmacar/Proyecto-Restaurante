@@ -67,4 +67,7 @@ public class FachadaBaseDatos {
     public boolean autenticar(String usuario, String password){
         return this.daoEmpleados.autenticar(usuario, password);
     }
+    public Empleado obtenerCamarero(String dni){
+        return this.daoEmpleados.obtenerCamarero(dni);
+    }
 }
