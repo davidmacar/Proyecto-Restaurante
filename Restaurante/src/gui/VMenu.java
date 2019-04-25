@@ -5,18 +5,25 @@
  */
 package gui;
 
+import modelos.*;
+import restaurante.FachadaAplicacion;
+
 /**
  *
  * @author davidmacar
  */
 public class VMenu extends javax.swing.JDialog {
 
-    /**
-     * Creates new form VMenuPlatos
-     */
-    public VMenu() {
+    FachadaAplicacion fap;
+    VCamarero vcam;
+    
+    public VMenu(java.awt.Dialog parent, boolean modal,FachadaAplicacion fap) {
+        super(parent,modal);
+        this.vcam = (VCamarero) parent;
+        this.fap = fap;
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,8 +35,10 @@ public class VMenu extends javax.swing.JDialog {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaPlatos = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaBebidas = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -37,38 +46,18 @@ public class VMenu extends javax.swing.JDialog {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaPlatos.setModel(new ModeloTablaPlatos());
+        jScrollPane1.setViewportView(tablaPlatos);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 673, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 238, Short.MAX_VALUE)
-        );
+        jTabbedPane1.addTab("Platos", jScrollPane1);
 
-        jTabbedPane1.addTab("Platos", jPanel1);
+        tablaBebidas.setModel(new ModeloTablaBebidas());
+        jScrollPane2.setViewportView(tablaBebidas);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 673, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 238, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Bebidas", jPanel2);
+        jTabbedPane1.addTab("Bebidas", jScrollPane2);
 
         jButton1.setText("Buscar");
 
@@ -151,9 +140,11 @@ public class VMenu extends javax.swing.JDialog {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tablaBebidas;
+    private javax.swing.JTable tablaPlatos;
     // End of variables declaration//GEN-END:variables
 }

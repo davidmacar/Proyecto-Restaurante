@@ -61,7 +61,7 @@ public class ModeloTablaBebidas extends AbstractTableModel{
             case 0: nombre= "Refrescos"; break;
             case 1: nombre= "Vinos"; break;
             case 2: nombre= "Cervezas"; break;
-            case 3: nombre= "cocteles"; break;
+            case 3: nombre= "Cocteles"; break;
         }
         return nombre;
     }

@@ -40,5 +40,8 @@ public class FachadaAplicacion {
         this.fgui.vistaCamarero();
         
     }
+    public void vistaMenu(VCamarero vcam){
+        this.fgui.vistaMenu(vcam);
+    }
     
 }
