@@ -13,7 +13,7 @@ public abstract class MateriaPrima {
     protected String nombre;
     protected int cantidad;
     protected int precio;
-
+    
     public void MateriaPrima(){
         this.nombre = "";
         this.cantidad = 0;

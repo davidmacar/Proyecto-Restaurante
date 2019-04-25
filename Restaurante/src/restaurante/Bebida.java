@@ -11,12 +11,22 @@ package restaurante;
  */
 public class Bebida extends MateriaPrima{
     private int porcentaje_alcohol;
+    private String tipo;
+    
+    public Bebida(String nombre, int cantidad, int precio, int porcentaje_alcohol, String tipo){
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.porcentaje_alcohol = porcentaje_alcohol;
+        this.tipo = tipo;
+    }
     
     public Bebida(){
         this.nombre = "";
         this.cantidad = 0;
         this.precio = 0;
         this.porcentaje_alcohol = 0;
+        this.tipo = "";
     }
 
     public int getPorcentaje_alcohol() {
@@ -26,6 +36,40 @@ public class Bebida extends MateriaPrima{
     public void setPorcentaje_alcohol(int porcentaje_alcohol) {
         this.porcentaje_alcohol = porcentaje_alcohol;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
     
     
 }
