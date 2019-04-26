@@ -23,6 +23,7 @@ public class FachadaBaseDatos {
     private DAOEmpleados daoEmpleados;
     private DAOIngredientes daoIngredientes;
     private DAOMesas daoMesas;
+    
     public FachadaBaseDatos(FachadaAplicacion fap){
         this.fap=fap;
         Properties configuracion = new Properties();
@@ -59,6 +60,8 @@ public class FachadaBaseDatos {
         }
         this.daoPlatos = new DAOPlatos(this.conexion, this.fap);
         this.daoEmpleados = new DAOEmpleados(this.conexion, this.fap);
+        this.daoMesas = new DAOMesas(this.conexion, this.fap);
+        this.daoBebidas = new DAOBebidas(this.conexion, this.fap);
     }
     
     public java.util.List<Plato> obtenerPlatos(){
@@ -69,5 +72,14 @@ public class FachadaBaseDatos {
     }
     public Empleado obtenerCamarero(String dni){
         return this.daoEmpleados.obtenerCamarero(dni);
+    }
+    public java.util.List<Mesa> obtenerMesas(){
+        return this.daoMesas.obtenerMesas();
+    }
+    public java.util.List<Plato> obtenerPlatosMesa(int mesa){
+        return daoPlatos.obtenerPlatosMesa(mesa);
+    }
+    public java.util.List<Bebida> obtenerBebidasMesa(int mesa){
+        return daoBebidas.obtenerBebidasMesa(mesa);
     }
 }

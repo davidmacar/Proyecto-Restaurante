@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.util.ArrayList;
 import java.util.List;
 import modelos.*;
 import restaurante.*;
@@ -24,8 +25,7 @@ public class VCamarero extends javax.swing.JDialog {
         this.fap = fap;
         initComponents();
         ModeloTablaPlatos mtp = new ModeloTablaPlatos();
-        //this.tablaPlatos.setModel(mtp);
-        this.actualizarPlatos();
+        this.actualizarMesas();
     }
 
     /**
@@ -47,7 +47,7 @@ public class VCamarero extends javax.swing.JDialog {
         jScrollPane3 = new javax.swing.JScrollPane();
         listMesas = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        listbebidas = new javax.swing.JList<>();
+        listBebidas = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -77,10 +77,15 @@ public class VCamarero extends javax.swing.JDialog {
         jScrollPane1.setViewportView(listPlatos);
 
         listMesas.setModel(new ModeloListaStrings());
+        listMesas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listMesasMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(listMesas);
 
-        listbebidas.setModel(new ModeloListaStrings());
-        jScrollPane4.setViewportView(listbebidas);
+        listBebidas.setModel(new ModeloListaStrings());
+        jScrollPane4.setViewportView(listBebidas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,12 +148,45 @@ public class VCamarero extends javax.swing.JDialog {
         fap.obtenerPlatos();
     }//GEN-LAST:event_btnDevolverActionPerformed
 
+    private void listMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasMouseClicked
+        this.actualizarPlatos();
+        this.actualizarBebidas();
+    }//GEN-LAST:event_listMesasMouseClicked
+    
+    public void actualizarMesas(){
+        List<Mesa> mesas;
+        mesas = fap.obtenerMesas();
+        int a;
+        List<String> strMesas = new ArrayList();
+        for(Mesa mesa : mesas){
+           strMesas.add(String.valueOf(mesa.getNum_mesa()));
+        }
+        
+        ModeloListaStrings mls;
+        mls = (ModeloListaStrings) this.listMesas.getModel();
+        mls.setElementos(strMesas);
+    }
     public void actualizarPlatos(){
         List<Plato> platos;
-        platos = fap.obtenerPlatos();
-        ModeloTablaPlatos mtp;
-        //mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
-        //mtp.setFilas(platos);
+        platos = fap.obtenerPlatosMesa(Integer.parseInt(this.listMesas.getSelectedValue()));
+        ArrayList<String> strPlatos = new ArrayList();
+        for(Plato plato : platos){
+            strPlatos.add(plato.getNombre());
+        }
+        ModeloListaStrings mls;
+        mls = (ModeloListaStrings) this.listPlatos.getModel();
+        mls.setElementos(strPlatos);
+    }
+    public void actualizarBebidas(){
+        List<Bebida> bebidas;
+        bebidas = fap.obtenerBebidasMesa(Integer.parseInt(this.listMesas.getSelectedValue()));
+        ArrayList<String> strPlatos = new ArrayList();
+        for(Bebida bebida : bebidas){
+            strPlatos.add(bebida.getNombre());
+        }
+        ModeloListaStrings mls;
+        mls = (ModeloListaStrings) this.listBebidas.getModel();
+        mls.setElementos(strPlatos);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -160,8 +198,8 @@ public class VCamarero extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JList<String> listBebidas;
     private javax.swing.JList<String> listMesas;
     private javax.swing.JList<String> listPlatos;
-    private javax.swing.JList<String> listbebidas;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,7 +12,7 @@ package restaurante;
 public abstract class MateriaPrima {
     protected String nombre;
     protected int cantidad;
-    protected int precio;
+    protected float precio;
     
     public void MateriaPrima(){
         this.nombre = "";
@@ -35,7 +35,7 @@ public abstract class MateriaPrima {
         this.cantidad = cantidad;
     }
 
-    public int getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 

@@ -50,5 +50,13 @@ public class FachadaAplicacion {
     public Empleado obtenerCamarero(String dni){
         return fbd.obtenerCamarero(dni);
     }
-    
+    public java.util.List<Mesa> obtenerMesas(){
+        return fbd.obtenerMesas();
+    }
+    public java.util.List<Plato> obtenerPlatosMesa(int mesa){
+        return fbd.obtenerPlatosMesa(mesa);
+    }
+    public java.util.List<Bebida> obtenerBebidasMesa(int mesa){
+        return fbd.obtenerBebidasMesa(mesa);
+    }
 }

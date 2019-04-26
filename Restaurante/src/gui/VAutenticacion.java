@@ -40,6 +40,8 @@ public class VAutenticacion extends javax.swing.JFrame {
         combullita = new javax.swing.JComboBox<>();
         txtError = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtUsuarioMouseClicked(evt);
@@ -132,8 +134,8 @@ public class VAutenticacion extends javax.swing.JFrame {
         /*checkear el user password*/
         switch(this.combullita.getSelectedItem().toString()){
             case "Camarero":
-                if(fap.autenticar(this.txtUsuario.getText(), new String(this.password.getPassword()))){
-                    fap.obtenerCamarero(this.txtUsuario.getText());
+                if(/*fap.autenticar(this.txtUsuario.getText(), new String(this.password.getPassword()))*/ true){
+                    //fap.obtenerCamarero(this.txtUsuario.getText());
                     fap.vistaCamarero();
                     this.setVisible(false);
                 }
