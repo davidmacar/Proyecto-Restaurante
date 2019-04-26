@@ -58,4 +58,41 @@ public class DAOMesas extends AbstractDAO {
         }
         return resultado;
     }
+    
+    public java.util.List<Mesa> obtenerMesa(int numMesa){
+        Mesa mesa;
+        Connection con;
+        PreparedStatement stmMesas=null;
+        String statement = "select *" +
+                            "from mesas";
+        ResultSet rsMesas;
+
+        con=super.getConexion();
+
+        try {
+        stmMesas =con.prepareStatement(statement);
+        rsMesas=stmMesas.executeQuery();
+        while (rsMesas.next())
+        {
+            Mesa ej = new Mesa(rsMesas.getInt("num_mesa"));
+            resultado.add(ej);
+        }
+
+
+        } catch (SQLException e){
+            e.printStackTrace();;
+            System.out.println(e.getMessage());
+          //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        }finally{
+          try {
+              stmMesas.close();
+          } 
+          catch (SQLException e){
+              e.printStackTrace();
+              System.out.println("Imposible cerrar cursores");
+              System.out.println("");
+          }
+        }
+        return resultado;
+    }
 }

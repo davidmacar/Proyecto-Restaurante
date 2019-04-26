@@ -7,6 +7,7 @@ package gui;
 
 import modelos.*;
 import restaurante.FachadaAplicacion;
+import restaurante.Mesa;
 
 /**
  *
@@ -16,8 +17,9 @@ public class VMenu extends javax.swing.JDialog {
 
     FachadaAplicacion fap;
     VCamarero vcam;
+    Mesa mesa;
     
-    public VMenu(java.awt.Dialog parent, boolean modal,FachadaAplicacion fap) {
+    public VMenu(java.awt.Dialog parent, boolean modal,FachadaAplicacion fap, int mesa) {
         super(parent,modal);
         this.vcam = (VCamarero) parent;
         this.fap = fap;

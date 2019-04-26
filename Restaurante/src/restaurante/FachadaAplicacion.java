@@ -40,8 +40,8 @@ public class FachadaAplicacion {
         this.fgui.vistaCamarero();
         
     }
-    public void vistaMenu(VCamarero vcam){
-        this.fgui.vistaMenu(vcam);
+    public void vistaMenu(VCamarero vcam, int mesa){
+        this.fgui.vistaMenu(vcam, mesa);
     }
     
     public boolean autenticar(String usuario, String password){
