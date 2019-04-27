@@ -9,6 +9,7 @@ import modelos.*;
 import restaurante.FachadaAplicacion;
 import restaurante.Mesa;
 
+
 /**
  *
  * @author davidmacar
@@ -26,11 +27,17 @@ public class VMenu extends javax.swing.JDialog {
         this.mesa = mesa;
         initComponents();
         ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
-        mtp.setFilas(fap.obtenerPlatos());
+       // mtp.setFilas(fap.obtenerPlatos());
         ModeloTablaBebidas mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
-        mtb.setFilas(this.fap.obtenerBebidas());
+       // mtb.setFilas(this.fap.obtenerBebidas());
     }
-    
+    private void actualizarModelo() {
+
+        ModeloTablaBebidas mtb = (ModeloTablaBebidas) tablaBebidas.getModel();
+        ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
+        mtb.setFilas(fap.obtenerBebidas());
+        mtp.setFilas(fap.obtenerPlatos());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -145,7 +152,15 @@ public class VMenu extends javax.swing.JDialog {
     }//GEN-LAST:event_btnInfoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        ModeloTablaBebidas mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
+        ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
+        actualizarModelo();
+        if (mtb.getRowCount() > 0){
+            tablaBebidas.setRowSelectionInterval(0,0);
+        }
+        if (mtp.getRowCount() > 0){
+            tablaPlatos.setRowSelectionInterval(0,0);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
 
