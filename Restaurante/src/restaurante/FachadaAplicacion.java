@@ -75,4 +75,6 @@ public class FachadaAplicacion {
         return gb.obtenerBebidas();
     }
     
+    //public fap.precioMesa(mesa)
+    
 }

@@ -44,11 +44,11 @@ public class VCamarero extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listPlatos = new javax.swing.JList<>();
+        listPlatos = new javax.swing.JList<String>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        listMesas = new javax.swing.JList<>();
+        listMesas = new javax.swing.JList<String>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        listBebidas = new javax.swing.JList<>();
+        listBebidas = new javax.swing.JList<String>();
         txtError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
