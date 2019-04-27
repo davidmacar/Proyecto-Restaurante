@@ -28,8 +28,8 @@ public class FachadaGui {
         VCamarero vcam = new VCamarero(this.vac, true, this.fap);
         vcam.setVisible(true);
     }
-    public void vistaMenu(VCamarero vcam, int mesa){
-        VMenu vmen = new VMenu(vcam, true, this.fap, int mesa);
+    public void vistaMenu(VCamarero vcam, Mesa mesa){
+        VMenu vmen = new VMenu(vcam, true, this.fap, mesa);
         vmen.setVisible(true);
     }
     

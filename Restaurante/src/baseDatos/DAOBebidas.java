@@ -23,24 +23,25 @@ public class DAOBebidas extends AbstractDAO {
         super.setFachadaAplicacion(fa);
     }
     
-    /*public java.util.List<Bebida> obtenerBebidas(){
+    public java.util.List<Bebida> obtenerBebidas(){
         List<Bebida> resultado=new ArrayList<Bebida>();
         Connection con;
-        PreparedStatement stmPlatos=null;
-        String statement = "select nombre, apto_veganos, apto_celiacos, tipo, descripcion " +
-                            "from platos";
-        ResultSet rsPlatos;
+        PreparedStatement stmBebidas=null;
+        String statement = "select b.nombre, b.tipo, b.porcentaje_alcohol, mp.cantidad, mp.precio " +
+                            "from bebidas as b, materias_primas as mp " +
+                            "where b.nombre = mp.nombre ";
+        ResultSet rsBebidas;
 
         con=super.getConexion();
 
         try {
-        stmPlatos =con.prepareStatement(statement);
-        rsPlatos=stmPlatos.executeQuery();
-        while (rsPlatos.next())
+        stmBebidas =con.prepareStatement(statement);
+        rsBebidas=stmBebidas.executeQuery();
+        while (rsBebidas.next())
         {
-            Plato ej = new Plato(rsPlatos.getString("nombre"), rsPlatos.getBoolean("apto_veganos"), 
-                                    rsPlatos.getBoolean("apto_celiacos"), rsPlatos.getString("tipo"),
-                                    rsPlatos.getString("descripcion"));
+            Bebida ej = new Bebida(rsBebidas.getString("nombre"), rsBebidas.getInt("cantidad"), 
+                                    rsBebidas.getFloat("precio"), rsBebidas.getInt("porcentaje_alcohol"),
+                                    rsBebidas.getString("tipo"));
             resultado.add(ej);
         }
 
@@ -51,7 +52,7 @@ public class DAOBebidas extends AbstractDAO {
           //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         }finally{
           try {
-              stmPlatos.close();
+              stmBebidas.close();
           } 
           catch (SQLException e){
               e.printStackTrace();
@@ -60,7 +61,7 @@ public class DAOBebidas extends AbstractDAO {
           }
         }
         return resultado;
-    }*/
+    }
     
     public List<Bebida> obtenerBebidasMesa(int mesa){      
         List<Bebida> resultado=new ArrayList<Bebida>();

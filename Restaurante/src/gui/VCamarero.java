@@ -24,6 +24,7 @@ public class VCamarero extends javax.swing.JDialog {
         this.vaut = (VAutenticacion) parent;
         this.fap = fap;
         initComponents();
+        this.txtError.setVisible(false);
         ModeloTablaPlatos mtp = new ModeloTablaPlatos();
         this.actualizarMesas();
     }
@@ -48,9 +49,10 @@ public class VCamarero extends javax.swing.JDialog {
         listMesas = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
         listBebidas = new javax.swing.JList<>();
+        txtError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAlwaysOnTop(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnMenu.setText("VER MENU");
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +60,7 @@ public class VCamarero extends javax.swing.JDialog {
                 btnMenuActionPerformed(evt);
             }
         });
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 147, -1, 88));
 
         btnCobrar.setText("Cobrar");
         btnCobrar.addActionListener(new java.awt.event.ActionListener() {
@@ -65,16 +68,22 @@ public class VCamarero extends javax.swing.JDialog {
                 btnCobrarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 303, 100, 47));
 
         jLabel1.setText("Mesas");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 17, -1, -1));
 
         jLabel2.setText("Platos");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 17, -1, -1));
 
         jLabel3.setText("Bebidas");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 17, -1, -1));
 
         listPlatos.setModel(new ModeloListaStrings());
         listPlatos.setToolTipText("");
         jScrollPane1.setViewportView(listPlatos);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 48, 256, 338));
 
         listMesas.setModel(new ModeloListaStrings());
         listMesas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -84,72 +93,42 @@ public class VCamarero extends javax.swing.JDialog {
         });
         jScrollPane3.setViewportView(listMesas);
 
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 130, 338));
+
         listBebidas.setModel(new ModeloListaStrings());
         jScrollPane4.setViewportView(listBebidas);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel1)
-                        .addGap(151, 151, 151)
-                        .addComponent(jLabel2)
-                        .addGap(211, 211, 211)
-                        .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnMenu)
-                    .addComponent(btnCobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(btnCobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42))))
-        );
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 48, 250, 338));
+
+        txtError.setForeground(new java.awt.Color(255, 0, 0));
+        txtError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtError.setText("<html>Selecciona una mesa primero</html>");
+        txtError.setAutoscrolls(true);
+        txtError.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(txtError, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 120, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-       
-        fap.vistaMenu(this, Integer.parseInt(this.listMesas.getSelectedValue()));
+        if(this.listMesas.isSelectionEmpty()){
+            this.txtError.setVisible(true);
+            return;
+        }
+        Mesa mesa = fap.obtenerMesa(Integer.parseInt(this.listMesas.getSelectedValue()));
+        fap.vistaMenu(this, mesa);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
+        if(this.listMesas.isSelectionEmpty()){
+            this.txtError.setVisible(true);
+            return;
+        }
         fap.obtenerPlatos();
     }//GEN-LAST:event_btnCobrarActionPerformed
 
     private void listMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasMouseClicked
+        this.txtError.setVisible(false);
         this.actualizarPlatos();
         this.actualizarBebidas();
     }//GEN-LAST:event_listMesasMouseClicked
@@ -202,5 +181,6 @@ public class VCamarero extends javax.swing.JDialog {
     private javax.swing.JList<String> listBebidas;
     private javax.swing.JList<String> listMesas;
     private javax.swing.JList<String> listPlatos;
+    private javax.swing.JLabel txtError;
     // End of variables declaration//GEN-END:variables
 }

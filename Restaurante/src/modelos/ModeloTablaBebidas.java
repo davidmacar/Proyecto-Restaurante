@@ -123,13 +123,13 @@ public class ModeloTablaBebidas extends AbstractTableModel{
 
     public void setFilas(java.util.List<Bebida> bebidas){
         for(Bebida beb : bebidas){
-            if(beb.getTipo().equalsIgnoreCase("entrante"))
+            if(beb.getTipo().equalsIgnoreCase("refresco"))
                 this.refrescos.add(beb);
-            else if(beb.getTipo().equalsIgnoreCase("primero"))
+            else if(beb.getTipo().equalsIgnoreCase("vino"))
                 this.vinos.add(beb);
-            else if(beb.getTipo().equalsIgnoreCase("segundo"))
+            else if(beb.getTipo().equalsIgnoreCase("cerveza"))
                 this.cervezas.add(beb);
-            else if(beb.getTipo().equalsIgnoreCase("postre"))
+            else if(beb.getTipo().equalsIgnoreCase("coctel"))
                 this.cocteles.add(beb);
         }
         fireTableDataChanged();

@@ -82,4 +82,10 @@ public class FachadaBaseDatos {
     public java.util.List<Bebida> obtenerBebidasMesa(int mesa){
         return daoBebidas.obtenerBebidasMesa(mesa);
     }
+    public Mesa obtenerMesa(int mesa){
+        return daoMesas.obtenerMesa(mesa, this.obtenerPlatosMesa(mesa), this.obtenerBebidasMesa(mesa));
+    }
+    public java.util.List<Bebida> obtenerBebidas(){
+        return daoBebidas.obtenerBebidas();
+    }
 }

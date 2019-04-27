@@ -17,11 +17,17 @@ public class FachadaAplicacion {
     FachadaGui fgui;
     FachadaBaseDatos fbd;
     GestionPlatos gp;
+    GestionBebidas gb;
+    GestionMesas gm;
+    GestionEmpleados ge;
     
     public FachadaAplicacion(){
         this.fbd = new FachadaBaseDatos(this);
         this.fgui = new FachadaGui(this);
-        gp = new GestionPlatos(this.fgui, this.fbd);
+        this.gp = new GestionPlatos(this.fgui, this.fbd);
+        this.gb = new GestionBebidas(this.fgui, this.fbd);
+        this.gm = new GestionMesas(this.fgui, this.fbd);
+        this.ge = new GestionEmpleados(this.fgui, this.fbd);
     }
     public static void main(String[] args) {
         FachadaAplicacion fa;
@@ -37,26 +43,33 @@ public class FachadaAplicacion {
         return ret;
     }
     public void vistaCamarero(){
-        this.fgui.vistaCamarero();
+        this.ge.vistaCamarero();
         
     }
-    public void vistaMenu(VCamarero vcam, int mesa){
-        this.fgui.vistaMenu(vcam, mesa);
+    public void vistaMenu(VCamarero vcam, Mesa mesa){
+        this.ge.vistaMenu(vcam, mesa);
     }
     
     public boolean autenticar(String usuario, String password){
-        return this.fbd.autenticar(usuario, password);
+        return this.ge.autenticar(usuario, password);
     }
     public Empleado obtenerCamarero(String dni){
-        return fbd.obtenerCamarero(dni);
+        return ge.obtenerCamarero(dni);
     }
     public java.util.List<Mesa> obtenerMesas(){
-        return fbd.obtenerMesas();
+        return gm.obtenerMesas();
     }
     public java.util.List<Plato> obtenerPlatosMesa(int mesa){
-        return fbd.obtenerPlatosMesa(mesa);
+        return gp.obtenerPlatosMesa(mesa);
     }
     public java.util.List<Bebida> obtenerBebidasMesa(int mesa){
-        return fbd.obtenerBebidasMesa(mesa);
+        return gb.obtenerBebidasMesa(mesa);
     }
+    public Mesa obtenerMesa(int mesa){
+        return gm.obtenerMesa(mesa);
+    }
+    public java.util.List<Bebida> obtenerBebidas(){
+        return gb.obtenerBebidas();
+    }
+    
 }

@@ -64,8 +64,8 @@ public class DAOEmpleados extends AbstractDAO {
         Empleado empleado=null;
         PreparedStatement stmEmpleado=null;
         String statement = "select dni, salario, numero_tlf, fecha_entrada, fecha_salida, nombre, apellido_1, apellido_2, e_mail " +
-"from personal " +
-"where dni = ? and dni in (select dni from camarero) ";
+                            "from personal " +
+                            "where dni = ? and dni in (select dni from camarero) ";
         ResultSet rsEmpleado;
 
         con=super.getConexion();

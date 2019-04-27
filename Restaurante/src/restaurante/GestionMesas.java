@@ -5,10 +5,26 @@
  */
 package restaurante;
 
+import baseDatos.FachadaBaseDatos;
+import gui.FachadaGui;
+
 /**
  *
  * @author davidmacar
  */
 public class GestionMesas {
+    private FachadaBaseDatos fbd;
+    private FachadaGui fgui;
     
+    public GestionMesas(FachadaGui fgui, FachadaBaseDatos fbd){
+        this.fbd = fbd;
+        this.fgui = fgui;
+    }
+    
+    public java.util.List<Mesa> obtenerMesas(){
+        return this.fbd.obtenerMesas();
+    }
+    public Mesa obtenerMesa(int mesa){
+        return this.fbd.obtenerMesa(mesa);
+    }
 }

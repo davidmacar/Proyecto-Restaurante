@@ -23,8 +23,11 @@ public class GestionPlatos {
     }
     
     public List<Plato> obtenerPlatos(){
-        List<Plato> platos = fbd.obtenerPlatos();
-        return platos;
+        return this.fbd.obtenerPlatos();
+    }
+    
+    public java.util.List<Plato> obtenerPlatosMesa(int mesa){
+        return this.fbd.obtenerPlatosMesa(mesa);
     }
             
 }

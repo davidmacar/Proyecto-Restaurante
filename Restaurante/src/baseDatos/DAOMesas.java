@@ -7,7 +7,10 @@
 package baseDatos;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import restaurante.Bebida;
 import restaurante.FachadaAplicacion;
 import restaurante.Mesa;
 import restaurante.Plato;
@@ -58,41 +61,8 @@ public class DAOMesas extends AbstractDAO {
         }
         return resultado;
     }
-    
-    public java.util.List<Mesa> obtenerMesa(int numMesa){
-        Mesa mesa;
-        Connection con;
-        PreparedStatement stmMesas=null;
-        String statement = "select *" +
-                            "from mesas";
-        ResultSet rsMesas;
-
-        con=super.getConexion();
-
-        try {
-        stmMesas =con.prepareStatement(statement);
-        rsMesas=stmMesas.executeQuery();
-        while (rsMesas.next())
-        {
-            Mesa ej = new Mesa(rsMesas.getInt("num_mesa"));
-            resultado.add(ej);
-        }
-
-
-        } catch (SQLException e){
-            e.printStackTrace();;
-            System.out.println(e.getMessage());
-          //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
-        }finally{
-          try {
-              stmMesas.close();
-          } 
-          catch (SQLException e){
-              e.printStackTrace();
-              System.out.println("Imposible cerrar cursores");
-              System.out.println("");
-          }
-        }
-        return resultado;
+    public Mesa obtenerMesa(int numMesa, List<Plato> platos, List<Bebida> bebidas){
+        Mesa mesa = new Mesa(numMesa, (ArrayList) platos, (ArrayList) bebidas);
+        return mesa;
     }
 }
