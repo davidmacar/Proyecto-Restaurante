@@ -6,8 +6,10 @@
 package gui;
 
 import modelos.*;
+import restaurante.Bebida;
 import restaurante.FachadaAplicacion;
 import restaurante.Mesa;
+import restaurante.Plato;
 
 /**
  *
@@ -41,7 +43,7 @@ public class VMenu extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        panelAlimentos = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPlatos = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -58,12 +60,12 @@ public class VMenu extends javax.swing.JDialog {
         tablaPlatos.setModel(new ModeloTablaPlatos());
         jScrollPane1.setViewportView(tablaPlatos);
 
-        jTabbedPane1.addTab("Platos", jScrollPane1);
+        panelAlimentos.addTab("Platos", jScrollPane1);
 
         tablaBebidas.setModel(new ModeloTablaBebidas());
         jScrollPane2.setViewportView(tablaBebidas);
 
-        jTabbedPane1.addTab("Bebidas", jScrollPane2);
+        panelAlimentos.addTab("Bebidas", jScrollPane2);
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +98,7 @@ public class VMenu extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAlimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -123,7 +125,7 @@ public class VMenu extends javax.swing.JDialog {
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAlimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAtras)
@@ -141,7 +143,19 @@ public class VMenu extends javax.swing.JDialog {
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
-        // TODO add your handling code here:
+        switch(this.panelAlimentos.getSelectedIndex()){
+            case 0://Platos
+                Plato plato = ((ModeloTablaPlatos)this.tablaPlatos.getModel()).obtenerPlato(
+                                this.tablaPlatos.getSelectedColumn(), this.tablaPlatos.getSelectedRow());
+                this.fap.vistaProducto(this, plato);
+                break;
+            case 1://Bebidas
+                Bebida bebida = ((ModeloTablaBebidas)this.tablaBebidas.getModel()).obtenerBebida(
+                                this.tablaBebidas.getSelectedColumn(), this.tablaBebidas.getSelectedRow());
+                this.fap.vistaProducto(this, bebida);
+                break;
+        }
+        
     }//GEN-LAST:event_btnInfoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -157,7 +171,7 @@ public class VMenu extends javax.swing.JDialog {
     private javax.swing.JButton btnInfo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane panelAlimentos;
     private javax.swing.JTable tablaBebidas;
     private javax.swing.JTable tablaPlatos;
     private javax.swing.JTextField txtBuscar;

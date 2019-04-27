@@ -32,5 +32,9 @@ public class FachadaGui {
         VMenu vmen = new VMenu(vcam, true, this.fap, mesa);
         vmen.setVisible(true);
     }
+    public void vistaProducto(javax.swing.JDialog ventana, Object obj){
+        VProducto vprod = new VProducto(ventana, true, fap, obj);
+        vprod.setVisible(true);
+    }
     
 }

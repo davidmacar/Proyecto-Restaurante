@@ -150,8 +150,24 @@ public class ModeloTablaPlatos extends AbstractTableModel{
         return platos;
     }
 
-    public Plato obtenerPlato(int i){
-        //return this.platos.get(i);
-        return new Plato();
+    public Plato obtenerPlato(int col, int row){
+        ArrayList<Plato> aux = null;
+        Plato ret;
+        switch(col){
+            case 0:
+                aux = (ArrayList) this.entrantes;
+                break;
+            case 1:
+                aux = (ArrayList) this.primeros;
+                break;
+            case 2: 
+                aux = (ArrayList) this.segundos;
+                break;
+            case 3: 
+                aux = (ArrayList) this.postres;
+                break;
+        }
+       ret = aux.get(row);
+       return ret;
     }
 }

@@ -150,8 +150,24 @@ public class ModeloTablaBebidas extends AbstractTableModel{
         return bebidas;
     }
 
-    public Bebida obtenerBebida(int i){
-        //return this.bebidas.get(i);
-        return new Bebida();
+    public Bebida obtenerBebida(int col, int row){
+        ArrayList<Bebida> aux = null;
+        Bebida ret;
+        switch(col){
+            case 0:
+                aux = (ArrayList) this.refrescos;
+                break;
+            case 1:
+                aux = (ArrayList) this.vinos;
+                break;
+            case 2: 
+                aux = (ArrayList) this.cervezas;
+                break;
+            case 3: 
+                aux = (ArrayList) this.cocteles;
+                break;
+        }
+       ret = aux.get(row);
+       return ret;
     }
 }

@@ -38,20 +38,23 @@ public class FachadaAplicacion {
     public void iniciaInterfaz(){
         this.fgui.iniciaInterfaz();
     }
-    public List<Plato> obtenerPlatos(){
-        List<Plato> ret = gp.obtenerPlatos();
-        return ret;
-    }
     public void vistaCamarero(){
-        this.ge.vistaCamarero();
+        this.fgui.vistaCamarero();
         
     }
     public void vistaMenu(VCamarero vcam, Mesa mesa){
-        this.ge.vistaMenu(vcam, mesa);
+        this.fgui.vistaMenu(vcam, mesa);
     }
-    
+    public void vistaProducto(javax.swing.JDialog ventana, Object obj){
+        this.fgui.vistaProducto(ventana, obj);
+    }
+
     public boolean autenticar(String usuario, String password){
         return this.ge.autenticar(usuario, password);
+    }
+    public List<Plato> obtenerPlatos(){
+        List<Plato> ret = gp.obtenerPlatos();
+        return ret;
     }
     public Empleado obtenerCamarero(String dni){
         return ge.obtenerCamarero(dni);

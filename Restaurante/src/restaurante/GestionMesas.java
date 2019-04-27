@@ -7,6 +7,7 @@ package restaurante;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGui;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,6 +26,6 @@ public class GestionMesas {
         return this.fbd.obtenerMesas();
     }
     public Mesa obtenerMesa(int mesa){
-        return this.fbd.obtenerMesa(mesa);
+        return new Mesa(mesa, (ArrayList) this.fbd.obtenerPlatosMesa(mesa), (ArrayList) this.fbd.obtenerBebidasMesa(mesa));
     }
 }
