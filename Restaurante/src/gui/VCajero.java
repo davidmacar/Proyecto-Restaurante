@@ -20,19 +20,14 @@ public class VCajero extends javax.swing.JDialog {
     VCamarero vcam;
     Mesa mesa;
     
-//    public VCajero(java.awt.Frame parent, boolean modal, FachadaAplicacion fap) {
-//        super(parent, modal);
-//        //this.vcam = (VCamarero) parent;
-//        this.fap = fap;
-//        initComponents();
-//        vcam.actualizarMesas();
-//    }
-
-    VCajero(VCamarero vcam, boolean b, FachadaAplicacion fap, Mesa mesa) {
+    public VCajero(java.awt.Frame parent, boolean modal, FachadaAplicacion fap) {
+        super(parent, modal);
+        //this.vcam = (VCamarero) parent;
         this.fap = fap;
         initComponents();
         vcam.actualizarMesas();
     }
+
 
     
     /**
