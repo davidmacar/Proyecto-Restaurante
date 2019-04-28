@@ -8,6 +8,7 @@ package restaurante;
 import gui.*;
 import baseDatos.*;
 import java.util.*;
+import javax.swing.UIManager;
 
 /**
  *
@@ -31,6 +32,11 @@ public class FachadaAplicacion {
     }
     public static void main(String[] args) {
         FachadaAplicacion fa;
+        
+        try{
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch(Exception e){ System.err.println("Error cambiando el tema.");}
+     
         fa = new FachadaAplicacion();
         fa.iniciaInterfaz();
     }

@@ -157,6 +157,8 @@ public class VMenu extends javax.swing.JDialog {
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
+
+        
         switch(this.panelAlimentos.getSelectedIndex()){
             case 0://Platos
                 Plato plato = ((ModeloTablaPlatos)this.tablaPlatos.getModel()).obtenerPlato(
