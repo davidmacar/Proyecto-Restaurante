@@ -36,5 +36,13 @@ public class FachadaGui {
         VProducto vprod = new VProducto(ventana, true, fap, obj);
         vprod.setVisible(true);
     }
+
+    public void vistaCajero(VCamarero vcam, Mesa mesa) {
+        VCajero vcaj = new VCajero(vcam, true, this.fap, mesa);
+        vcaj.setVisible(true);
+    }
+
+
+    
     
 }

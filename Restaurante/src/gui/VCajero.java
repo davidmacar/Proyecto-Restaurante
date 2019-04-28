@@ -18,15 +18,23 @@ public class VCajero extends javax.swing.JDialog {
 
     FachadaAplicacion fap;
     VCamarero vcam;
+    Mesa mesa;
     
-    public VCajero(java.awt.Frame parent, boolean modal, FachadaAplicacion fap) {
-        super(parent, modal);
-        //this.vcam = (VCamarero) parent;
+//    public VCajero(java.awt.Frame parent, boolean modal, FachadaAplicacion fap) {
+//        super(parent, modal);
+//        //this.vcam = (VCamarero) parent;
+//        this.fap = fap;
+//        initComponents();
+//        vcam.actualizarMesas();
+//    }
+
+    VCajero(VCamarero vcam, boolean b, FachadaAplicacion fap, Mesa mesa) {
         this.fap = fap;
         initComponents();
         vcam.actualizarMesas();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,7 +98,7 @@ public class VCajero extends javax.swing.JDialog {
         if(this.listMesas.isSelectionEmpty()){
             return;
         }
-        fap.obtenerPlatos();
+        //fap.obtenerPlatos();
         
         vcam.actualizarMesas();
         
