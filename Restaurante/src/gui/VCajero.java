@@ -64,12 +64,12 @@ public class VCajero extends javax.swing.JDialog {
                 btnCobrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 100, 47));
+        getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 100, 47));
 
-        jLabel1.setText("Mesas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 17, -1, -1));
+        jLabel1.setText("Productos");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
-        listMesas.setModel(new ModeloListaStrings());
+        listMesas.setModel(new ModeloTablaPlatos());
         listMesas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listMesasMouseClicked(evt);
@@ -77,19 +77,19 @@ public class VCajero extends javax.swing.JDialog {
         });
         jScrollPane3.setViewportView(listMesas);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 130, 240));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 130, 240));
 
         labCantidad.setText("Cantidad");
         getContentPane().add(labCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
-        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 70, -1));
-        getContentPane().add(txtEntregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 70, -1));
+        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 100, -1));
+        getContentPane().add(txtEntregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 100, -1));
 
         labEntregado.setText("Entregado");
         getContentPane().add(labEntregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
 
         labCambio.setText("Cambio");
         getContentPane().add(labCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
-        getContentPane().add(txtCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 70, -1));
+        getContentPane().add(txtCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
