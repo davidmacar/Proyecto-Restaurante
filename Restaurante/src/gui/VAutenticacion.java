@@ -6,6 +6,7 @@
 package gui;
 
 import baseDatos.FachadaBaseDatos;
+import javax.swing.ImageIcon;
 import restaurante.*;
 
 /**
@@ -20,6 +21,7 @@ public class VAutenticacion extends javax.swing.JFrame {
     public VAutenticacion(FachadaAplicacion fap) {
         this.fap = fap;
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono.png")).getImage());
         this.txtError.setVisible(false);
     }
 
