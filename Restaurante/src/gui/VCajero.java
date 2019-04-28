@@ -92,6 +92,8 @@ public class VCajero extends javax.swing.JDialog {
         }
         fap.obtenerPlatos();
         
+        vcam.actualizarMesas();
+        
         this.setVisible(false);
         vcam.setVisible(true);
     }//GEN-LAST:event_btnCobrarActionPerformed

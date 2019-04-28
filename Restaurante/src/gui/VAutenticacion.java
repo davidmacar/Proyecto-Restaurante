@@ -138,6 +138,7 @@ public class VAutenticacion extends javax.swing.JFrame {
                     //fap.obtenerCamarero(this.txtUsuario.getText());
                     fap.vistaCamarero();
                     //this.setVisible(false);
+                    
                 }
                 else 
                     this.txtError.setVisible(true);
