@@ -83,7 +83,7 @@ public class VCamarero extends javax.swing.JDialog {
         listPlatos.setToolTipText("");
         jScrollPane1.setViewportView(listPlatos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 48, 256, 338));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 48, 256, 310));
 
         listMesas.setModel(new ModeloListaStrings());
         listMesas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,12 +93,12 @@ public class VCamarero extends javax.swing.JDialog {
         });
         jScrollPane3.setViewportView(listMesas);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 130, 338));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 130, 310));
 
         listBebidas.setModel(new ModeloListaStrings());
         jScrollPane4.setViewportView(listBebidas);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 48, 250, 338));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 48, 250, 310));
 
         txtError.setForeground(new java.awt.Color(255, 0, 0));
         txtError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -125,6 +125,7 @@ public class VCamarero extends javax.swing.JDialog {
             return;
         }
         fap.obtenerPlatos();
+        
     }//GEN-LAST:event_btnCobrarActionPerformed
 
     private void listMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasMouseClicked

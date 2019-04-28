@@ -97,6 +97,11 @@ public class VMenu extends javax.swing.JDialog {
         });
 
         btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
 
         btnAnadir.setText("Añadir");
 
@@ -178,6 +183,12 @@ public class VMenu extends javax.swing.JDialog {
             tablaPlatos.setRowSelectionInterval(0,0);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        vcam.setVisible(true);
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

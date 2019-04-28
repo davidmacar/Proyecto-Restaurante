@@ -69,7 +69,7 @@ public class VCajero extends javax.swing.JDialog {
         });
         jScrollPane3.setViewportView(listMesas);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 130, 338));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 130, 240));
 
         labCantidad.setText("Cantidad");
         getContentPane().add(labCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
@@ -91,6 +91,9 @@ public class VCajero extends javax.swing.JDialog {
             return;
         }
         fap.obtenerPlatos();
+        
+        this.setVisible(false);
+        vcam.setVisible(true);
     }//GEN-LAST:event_btnCobrarActionPerformed
 
     private void listMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasMouseClicked
