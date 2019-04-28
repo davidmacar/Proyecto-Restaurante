@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.util.ArrayList;
 import modelos.*;
 import restaurante.Bebida;
 import restaurante.FachadaAplicacion;
@@ -30,10 +31,7 @@ public class VMenu extends javax.swing.JDialog {
         this.fap = fap;
         this.mesa = mesa;
         initComponents();
-        ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
-       // mtp.setFilas(fap.obtenerPlatos());
-        ModeloTablaBebidas mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
-       // mtb.setFilas(this.fap.obtenerBebidas());
+        this.actualizarModelo();
     }
     private void actualizarModelo() {
 
@@ -177,17 +175,15 @@ public class VMenu extends javax.swing.JDialog {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         ModeloTablaBebidas mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
         ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
-        actualizarModelo();
-        if (mtb.getRowCount() > 0){
-            tablaBebidas.setRowSelectionInterval(0,0);
-        }
-        if (mtp.getRowCount() > 0){
-            tablaPlatos.setRowSelectionInterval(0,0);
-        }
+        ArrayList<Bebida> bebidas;
+        ArrayList<Plato> platos;
+        platos = this.fap.buscarPlatos(this.txtBuscar.getText());
+        bebidas = this.fap.buscarBebidas(this.txtBuscar.getText());
+        mtb.setFilas(bebidas);
+        mtp.setFilas(platos);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
         vcam.setVisible(true);
     }//GEN-LAST:event_btnAtrasActionPerformed

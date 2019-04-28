@@ -7,6 +7,7 @@ package restaurante;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGui;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,5 +26,8 @@ public class GestionBebidas {
     }
     public java.util.List<Bebida> obtenerBebidas(){
         return this.fbd.obtenerBebidas();
+    }
+    public ArrayList<Bebida> buscarBebidas(String bebida){
+        return fbd.buscarBebidas(bebida);
     }
 }

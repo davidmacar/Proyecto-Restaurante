@@ -122,6 +122,10 @@ public class ModeloTablaBebidas extends AbstractTableModel{
     }
 
     public void setFilas(java.util.List<Bebida> bebidas){
+        this.refrescos.clear();
+        this.cervezas.clear();
+        this.vinos.clear();
+        this.cocteles.clear();
         for(Bebida beb : bebidas){
             if(beb.getTipo().equalsIgnoreCase("refresco"))
                 this.refrescos.add(beb);

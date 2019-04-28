@@ -8,6 +8,7 @@ package baseDatos;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Properties;
 import restaurante.*;
 
@@ -87,5 +88,11 @@ public class FachadaBaseDatos {
     }
     public java.util.List<Bebida> obtenerBebidas(){
         return daoBebidas.obtenerBebidas();
+    }
+    public ArrayList<Plato> buscarPlatos(String plato){
+        return daoPlatos.buscarPlatos(plato);
+    }
+    public ArrayList<Bebida> buscarBebidas(String bebida){
+        return daoBebidas.buscarBebidas(bebida);
     }
 }

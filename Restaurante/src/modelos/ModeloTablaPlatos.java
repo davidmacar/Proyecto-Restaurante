@@ -122,6 +122,10 @@ public class ModeloTablaPlatos extends AbstractTableModel{
     }
 
     public void setFilas(java.util.List<Plato> platos){
+        this.entrantes.clear();
+        this.postres.clear();
+        this.primeros.clear();
+        this.segundos.clear();
         for(Plato plat : platos){
             if(plat.getTipo().equalsIgnoreCase("entrante"))
                 this.entrantes.add(plat);

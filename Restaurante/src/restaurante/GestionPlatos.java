@@ -29,9 +29,9 @@ public class GestionPlatos {
     public java.util.List<Plato> obtenerPlatosMesa(int mesa){
         return this.fbd.obtenerPlatosMesa(mesa);
     }
-
-    void obtenerPlatosMesa() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Plato> buscarPlatos(String plato){
+        return fbd.buscarPlatos(plato);
     }
+    
             
 }
