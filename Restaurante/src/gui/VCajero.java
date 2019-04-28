@@ -69,7 +69,7 @@ public class VCajero extends javax.swing.JDialog {
         jLabel1.setText("Productos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
-        listMesas.setModel(new ModeloTablaPlatos());
+        listMesas.setModel(new ModeloListaStrings());
         listMesas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listMesasMouseClicked(evt);

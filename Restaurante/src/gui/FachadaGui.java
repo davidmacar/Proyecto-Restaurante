@@ -11,6 +11,7 @@ import restaurante.*;
 /**
  *
  * @author davidmacar
+ *   
  */
 public class FachadaGui {
     FachadaAplicacion fap;
@@ -27,6 +28,7 @@ public class FachadaGui {
     public void vistaCamarero(){
         VCamarero vcam = new VCamarero(this.vac, true, this.fap);
         vcam.setVisible(true);
+        this.vac.setVisible(false);
     }
     public void vistaMenu(VCamarero vcam, Mesa mesa){
         VMenu vmen = new VMenu(vcam, true, this.fap, mesa);
