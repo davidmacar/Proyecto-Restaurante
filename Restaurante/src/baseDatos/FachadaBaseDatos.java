@@ -105,9 +105,14 @@ public class FachadaBaseDatos {
         daoPlatos.eliminarPlatoMesa(p, m);
     }
 
-    public void anadirPlato(Plato p) {
-        //daoPlatos.anadirPlato(p);
+    public void anadirPlatoMesa(Plato p, Mesa m) {
+        daoPlatos.anadirPlatoMesa(p, m);
     }
+
+    public void anadirBebidaMesa(Bebida b, Mesa m) {
+        daoBebidas.anadirBebidaMesa(b, m);
+    }
+    
     public void eliminarBebidaMesa(Bebida b, Mesa m){
         daoBebidas.eliminarBebidaMesa(b, m);
     }

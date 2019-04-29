@@ -169,17 +169,16 @@ public class DAOPlatos extends AbstractDAO{
         p.setServicio(-1);
     }
 
-   /* void anadirPlato(Plato p) {
+    void anadirPlatoMesa(Plato p, Mesa m) {
        Connection con;
         PreparedStatement stmPlatos = null;
 
         con = super.getConexion();
 
         try {
-            stmPlatos = con.prepareStatement("insert into tenerplato (mesa, plato, servicio_plato) values ('?', '?', '?');");
-            stmPlatos.setInteger(1, p.getMesa());
+            stmPlatos = con.prepareStatement("insert into tenerplato (mesa, plato) values ('?', '?');");
+            stmPlatos.setInt(1, m.getNum_mesa());
             stmPlatos.setString(2, p.getId_plato());
-            stmPlatos.setInteger(3, p.);
             stmPlatos.executeUpdate();
 
         } catch (SQLException e) {
@@ -192,6 +191,6 @@ public class DAOPlatos extends AbstractDAO{
                 System.out.println("Imposible cerrar cursores");
             }
         }
-    }*/
+    }
     
 }

@@ -37,8 +37,8 @@ public class GestionPlatos {
         fbd.eliminarPlatoMesa(p, m);
     }
 
-    void anadirPlato(Plato p) {
-        fbd.anadirPlato(p);
+    void anadirPlatoMesa(Plato p, Mesa m) {
+        fbd.anadirPlatoMesa(p, m);
     }
     
     

@@ -33,4 +33,7 @@ public class GestionBebidas {
     public void eliminarBebidaMesa(Bebida b, Mesa m){
         fbd.eliminarBebidaMesa(b, m);
     }
+    public void anadirBebidaMesa(Bebida b, Mesa m) {
+        fbd.anadirBebidaMesa(b, m);
+    }
 }

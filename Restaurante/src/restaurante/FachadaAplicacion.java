@@ -100,11 +100,14 @@ public class FachadaAplicacion {
         gp.eliminarPlatoMesa(p, m);
     }
 
-    public void anadirPlato(Plato p) {
-        gp.anadirPlato(p);
+    public void anadirPlatoMesa(Plato p, Mesa m) {
+        gp.anadirPlatoMesa(p, m);
     }
-    
-    public void eliminarBebidaMesa(Bebida b, Mesa m){
+
+    public void anadirBebidaMesa(Bebida b, Mesa m) {
+        gb.anadirBebidaMesa(b, m);
+    }
+    public void eliminarBebidaMesa(Bebida b, Mesa m) {
         gb.eliminarBebidaMesa(b, m);
     }
     
