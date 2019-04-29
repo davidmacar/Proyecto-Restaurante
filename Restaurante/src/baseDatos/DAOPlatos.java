@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import restaurante.*;
 
 /**
@@ -99,6 +100,93 @@ public class DAOPlatos extends AbstractDAO{
           }
         }
         return resultado;
+    }
+    
+    public ArrayList<Plato> buscarPlatos(String plato){      
+        ArrayList<Plato> resultado=new java.util.ArrayList<Plato>();
+        Connection con;
+        PreparedStatement stmPlatos=null;
+        String statement = "select nombre, apto_veganos, apto_celiacos, tipo, descripcion " +
+                            "from platos " + 
+                            "where lower(nombre) like lower(?)";
+        ResultSet rsPlatos;
+
+        con=super.getConexion();
+
+        try {
+        stmPlatos =con.prepareStatement(statement);
+        stmPlatos.setString(1, new String("%" + plato + "%"));
+        rsPlatos=stmPlatos.executeQuery();
+        while (rsPlatos.next())
+        {
+            Plato ej = new Plato(rsPlatos.getString("nombre"), rsPlatos.getBoolean("apto_veganos"), 
+                                    rsPlatos.getBoolean("apto_celiacos"), rsPlatos.getString("tipo"),
+                                    rsPlatos.getString("descripcion"));
+            resultado.add(ej);
+        }
+
+
+        } catch (SQLException e){
+            e.printStackTrace();;
+            System.out.println(e.getMessage());
+          //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        }finally{
+          try {
+              stmPlatos.close();
+          } 
+          catch (SQLException e){
+              e.printStackTrace();
+              System.out.println("Imposible cerrar cursores");
+              System.out.println("");
+          }
+        }
+        return resultado;
+    }
+
+    void eliminarPlato(Plato p) {
+        Connection con;
+        PreparedStatement stmPlatos = null;
+
+        con = super.getConexion();
+
+        try {
+            stmPlatos = con.prepareStatement("delete from plato where nombre = ?");
+            stmPlatos.setString(1, p.getNombre());
+            stmPlatos.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+           // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPlatos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
+
+    void anadirPlato(Plato p) {
+       Connection con;
+        PreparedStatement stmPlatos = null;
+
+        con = super.getConexion();
+
+        try {
+            stmPlatos = con.prepareStatement("");
+            stmPlatos.setString(1, p.getNombre());
+            stmPlatos.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+           // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPlatos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
     }
     
 }
