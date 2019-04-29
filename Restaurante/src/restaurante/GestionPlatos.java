@@ -40,7 +40,12 @@ public class GestionPlatos {
     void anadirPlatoMesa(Plato p, Mesa m) {
         fbd.anadirPlatoMesa(p, m);
     }
-    
+    public int obtenerServicioPlato(Plato plato){   
+        return fbd.obtenerServicioPlato(plato);
+    }
+    public int obtenerServicioBebida(Bebida bebida){   
+        return fbd.obtenerServicioBebida(bebida);
+    }
     
             
 }

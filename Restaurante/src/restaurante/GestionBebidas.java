@@ -36,4 +36,7 @@ public class GestionBebidas {
     public void anadirBebidaMesa(Bebida b, Mesa m) {
         fbd.anadirBebidaMesa(b, m);
     }
+    public int obtenerServicioBebida(Bebida bebida){   
+        return fbd.obtenerServicioBebida(bebida);
+    }
 }

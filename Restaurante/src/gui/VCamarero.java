@@ -116,6 +116,12 @@ public class VCamarero extends javax.swing.JDialog {
             return;
         }
         Mesa mesa = fap.obtenerMesa(Integer.parseInt(this.listMesas.getSelectedValue()));
+        for(Plato p : mesa.getPlatos()){
+            p.setServicio(this.fap.obtenerServicioPlato(p));
+        }
+        for(Bebida b : mesa.getBebidas()){
+            b.setServicio(this.fap.obtenerServicioBebida(b));
+        }
         fap.vistaMenu(this, mesa);
     }//GEN-LAST:event_btnMenuActionPerformed
 

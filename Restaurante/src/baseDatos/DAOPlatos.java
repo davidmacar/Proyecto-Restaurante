@@ -176,9 +176,9 @@ public class DAOPlatos extends AbstractDAO{
         con = super.getConexion();
 
         try {
-            stmPlatos = con.prepareStatement("insert into tenerplato (mesa, plato) values ('?', '?');");
+            stmPlatos = con.prepareStatement("insert into tenerplato (mesa, plato) values (?, ?);");
             stmPlatos.setInt(1, m.getNum_mesa());
-            stmPlatos.setString(2, p.getId_plato());
+            stmPlatos.setString(2, p.getNombre());
             stmPlatos.executeUpdate();
 
         } catch (SQLException e) {
@@ -191,6 +191,43 @@ public class DAOPlatos extends AbstractDAO{
                 System.out.println("Imposible cerrar cursores");
             }
         }
+    }
+    
+    public int obtenerServicioPlato(Plato plato){      
+        int resultado = -1;
+        Connection con;
+        PreparedStatement stmPlatos=null;
+        String statement = "select servicio_plato  " +
+                            "from tenerplato " + 
+                            "where plato = ?";
+        ResultSet rsPlatos;
+
+        con=super.getConexion();
+
+        try {
+        stmPlatos =con.prepareStatement(statement);
+        stmPlatos.setString(1, plato.getNombre());
+        rsPlatos=stmPlatos.executeQuery();
+        if (rsPlatos.next())
+        {
+            resultado = rsPlatos.getInt("servicio_plato");
+        }
+
+        } catch (SQLException e){
+            e.printStackTrace();;
+            System.out.println(e.getMessage());
+          //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        }finally{
+          try {
+              stmPlatos.close();
+          } 
+          catch (SQLException e){
+              e.printStackTrace();
+              System.out.println("Imposible cerrar cursores");
+              System.out.println("");
+          }
+        }
+        return resultado;
     }
     
 }

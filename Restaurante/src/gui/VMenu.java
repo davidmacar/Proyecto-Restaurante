@@ -34,11 +34,19 @@ public class VMenu extends javax.swing.JDialog {
         this.actualizarModelo();
     }
     private void actualizarModelo() {
-
-        ModeloTablaBebidas mtb = (ModeloTablaBebidas) tablaBebidas.getModel();
+        ModeloTablaBebidas mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
         ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
+        ModeloListaStrings mls = (ModeloListaStrings) this.listPedido.getModel();
         mtb.setFilas(fap.obtenerBebidas());
         mtp.setFilas(fap.obtenerPlatos());
+        ArrayList<String> pedido = new ArrayList();
+        for(Plato p : fap.obtenerPlatosMesa(this.mesa.getNum_mesa())){
+            pedido.add(p.getNombre());
+        }
+        for(Bebida b : fap.obtenerBebidasMesa(this.mesa.getNum_mesa())){
+            pedido.add(b.getNombre());
+        }
+        mls.setElementos(pedido);
     }
 
     /**
@@ -61,6 +69,9 @@ public class VMenu extends javax.swing.JDialog {
         btnAnadir = new javax.swing.JButton();
         btnConfirmar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listPedido = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -110,46 +121,70 @@ public class VMenu extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setText("Pedido mesa");
+
+        listPedido.setModel(new ModeloListaStrings());
+        jScrollPane4.setViewportView(listPedido);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelAlimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBuscar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btnInfo)
+                        .addGap(235, 235, 235)
+                        .addComponent(btnAnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(226, 226, 226))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(panelAlimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(296, 296, 296)
+                            .addComponent(btnBuscar)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtBuscar))))
                 .addGap(18, 18, 18)
-                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnInfo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(73, 73, 73)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnConfirmar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 14, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelAlimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBuscar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6)
+                        .addComponent(panelAlimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAnadir)
-                    .addComponent(btnConfirmar)
-                    .addComponent(btnInfo)
-                    .addComponent(btnEliminar))
-                .addGap(21, 21, 21))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnInfo)
+                        .addComponent(btnAnadir))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnConfirmar)
+                        .addComponent(btnEliminar))))
         );
 
         pack();
@@ -189,37 +224,52 @@ public class VMenu extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if(this.tablaPlatos.isShowing() && this.tablaPlatos.getSelectedRow()>=0){
-            ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
-            Plato p = mtp.obtenerPlato(this.tablaPlatos.getSelectedColumn(), this.tablaPlatos.getSelectedRow());
-            fap.eliminarPlatoMesa(p, this.mesa);
+        String aux = this.listPedido.getSelectedValue();
+        boolean plat = false;
+        for(Plato p : mesa.getPlatos()){
+            if(p.getNombre().toLowerCase().equals(aux.toLowerCase()))
+                plat = true;
         }
-        else if(this.tablaBebidas.isShowing() && this.tablaBebidas.getSelectedRow() >= 0){
-            ModeloTablaBebidas mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
-            Bebida b = mtb.obtenerBebida(this.tablaBebidas.getSelectedColumn(), this.tablaBebidas.getSelectedRow());
-            fap.eliminarBebidaMesa(b, this.mesa);
+        if(plat){
+            Plato plato = null;
+            for(Plato p : mesa.getPlatos()){
+                if(p.getNombre().toLowerCase().equals(aux.toLowerCase()))
+                    plato = p;
+            }
+            fap.eliminarPlatoMesa(plato, this.mesa);
         }
+        else{
+            Bebida bebida = null;
+            for(Bebida b : mesa.getBebidas()){
+                if(b.getNombre().toLowerCase().equals(aux.toLowerCase()))
+                    bebida = b;
+            }
+            fap.eliminarBebidaMesa(bebida, this.mesa);
+        }
+        this.actualizarModelo();
         
     }//GEN-LAST:event_btnEliminarActionPerformed
     
     
     private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirActionPerformed
-        // TODO add your handling code here:
          ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
          ModeloTablaBebidas mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
-        if(tablaPlatos.getSelectedRow()>=0){
-            mtp = (ModeloTablaPlatos) tablaPlatos.getModel();
-           Plato p = mtp.obtenerPlato( tablaPlatos.getSelectedColumn(),tablaPlatos.getSelectedRow()); 
+        if(this.tablaPlatos.isShowing() && this.tablaPlatos.getSelectedRow()>=0){
+           mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
+           Plato p = mtp.obtenerPlato(this.tablaPlatos.getSelectedColumn(),this.tablaPlatos.getSelectedRow()); 
            Mesa m = this.mesa;
            fap.anadirPlatoMesa(p, m);
-    }
-        if(tablaBebidas.getSelectedRow()>=0){
-            mtb = (ModeloTablaBebidas) tablaBebidas.getModel();
-            Bebida b =mtb.obtenerBebida(tablaBebidas.getSelectedColumn(),tablaBebidas.getSelectedRow()); 
+           p.setServicio(this.fap.obtenerServicioPlato(p));
+        }
+        
+        if(this.tablaBebidas.isShowing() && this.tablaBebidas.getSelectedRow()>=0){
+            mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
+            Bebida b =mtb.obtenerBebida(this.tablaBebidas.getSelectedColumn(), this.tablaBebidas.getSelectedRow()); 
             Mesa m = this.mesa;
             fap.anadirBebidaMesa(b, m);
-            
+            b.setServicio(this.fap.obtenerServicioBebida(b));
         }
+        this.actualizarModelo();
     }//GEN-LAST:event_btnAnadirActionPerformed
 
 
@@ -229,8 +279,11 @@ public class VMenu extends javax.swing.JDialog {
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInfo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JList<String> listPedido;
     private javax.swing.JTabbedPane panelAlimentos;
     private javax.swing.JTable tablaBebidas;
     private javax.swing.JTable tablaPlatos;

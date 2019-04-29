@@ -110,7 +110,12 @@ public class FachadaAplicacion {
     public void eliminarBebidaMesa(Bebida b, Mesa m) {
         gb.eliminarBebidaMesa(b, m);
     }
-    
+    public int obtenerServicioPlato(Plato plato){   
+        return gp.obtenerServicioPlato(plato);
+    }
+    public int obtenerServicioBebida(Bebida bebida){   
+        return gb.obtenerServicioBebida(bebida);
+    }
     
     
 }

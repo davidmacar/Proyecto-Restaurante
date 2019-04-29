@@ -40,11 +40,11 @@ public class Plato {
         this.servicio = 0;
     }
 
-    public String getId_plato() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setId_plato(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -94,14 +94,6 @@ public class Plato {
 
     public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
         this.ingredientes = ingredientes;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getServicio() {

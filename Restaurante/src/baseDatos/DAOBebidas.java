@@ -164,7 +164,64 @@ public class DAOBebidas extends AbstractDAO {
         }
     }
     
-    public void eliminarBebidaMesa(Bebida b, Mesa m){
-        
+    void eliminarBebidaMesa(Bebida b, Mesa m) {
+        Connection con;
+        PreparedStatement stmBebidas = null;
+
+        con = super.getConexion();
+
+        try {
+            stmBebidas = con.prepareStatement("delete from tenerbebida " +
+                                            "where mesa=? and servicio_bebida=?");
+            
+            stmBebidas.setInt(1, m.getNum_mesa());
+            stmBebidas.setInt(2, b.getServicio());
+            stmBebidas.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmBebidas.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
+    
+    public int obtenerServicioBebida(Bebida bebida) {
+        int resultado = -1;
+        Connection con;
+        PreparedStatement stmBebidas = null;
+        String statement = "select servicio_bebida " 
+                            + "from tenerbebida "
+                            + "where bebida = ? ";
+        ResultSet rsBebidas;
+
+        con = super.getConexion();
+
+        try {
+            stmBebidas = con.prepareStatement(statement);
+            stmBebidas.setString(1, bebida.getNombre());
+            rsBebidas = stmBebidas.executeQuery();
+            if (rsBebidas.next()) {
+                resultado = rsBebidas.getInt("servicio_bebida");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmBebidas.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Imposible cerrar cursores");
+                System.out.println("");
+            }
+        }
+        return resultado;
     }
 }

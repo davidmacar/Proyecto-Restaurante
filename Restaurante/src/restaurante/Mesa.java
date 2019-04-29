@@ -42,7 +42,7 @@ public class Mesa {
         this.num_mesa = num_mesa;
     }
 
-    public ArrayList getPlatos() {
+    public ArrayList<Plato> getPlatos() {
         return platos;
     }
 
@@ -50,7 +50,7 @@ public class Mesa {
         this.platos = platos;
     }
 
-    public ArrayList getBebidas() {
+    public ArrayList<Bebida> getBebidas() {
         return bebidas;
     }
 
