@@ -93,6 +93,7 @@ public class FachadaBaseDatos {
     
     public float precioMesa(Mesa mesa){
         return daoMesas.precioMesa(mesa);
+    }
     public ArrayList<Plato> buscarPlatos(String plato){
         return daoPlatos.buscarPlatos(plato);
     }

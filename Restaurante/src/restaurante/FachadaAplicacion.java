@@ -86,7 +86,6 @@ public class FachadaAplicacion {
     public ArrayList<Bebida> buscarBebidas(String bebida){
         return gb.buscarBebidas(bebida);
     }
-    //public fap.precioMesa(mesa)
 
     
     public float precioMesa(Mesa mesa){
@@ -94,7 +93,7 @@ public class FachadaAplicacion {
     }
     
     public void vistaCajero(VCamarero vcam, Mesa mesa) {
-        //this.fgui.vistaCajero(vcam, mesa);
+        this.fgui.vistaCajero(vcam, mesa);
     }
 
     public void eliminarPlato(Plato p) {

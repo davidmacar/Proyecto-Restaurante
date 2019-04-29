@@ -210,7 +210,7 @@ public class VMenu extends javax.swing.JDialog {
         if(tablaPlatos.getSelectedRow()>=0){
             mtp = (ModeloTablaPlatos) tablaPlatos.getModel();
            //Plato p = mtp.obtenerPlato(tablaPlatos.getSelectedRow());
-           fap.eliminarPlato(p);
+           //fap.eliminarPlato(p);
     }//GEN-LAST:event_btnEliminarActionPerformed
     }
     
@@ -220,7 +220,7 @@ public class VMenu extends javax.swing.JDialog {
         if(tablaPlatos.getSelectedRow()>=0){
             mtp = (ModeloTablaPlatos) tablaPlatos.getModel();
            //Plato p = mtp.obtenerPlato(tablaPlatos.getSelectedRow());
-           fap.anadirPlato(p);
+           //fap.anadirPlato(p);
     }    
     }//GEN-LAST:event_btnAnadirActionPerformed
 
