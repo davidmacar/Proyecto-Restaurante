@@ -101,11 +101,15 @@ public class FachadaBaseDatos {
         return daoBebidas.buscarBebidas(bebida);
     }
 
-    public void eliminarPlato(Plato p) {
-        daoPlatos.eliminarPlato(p);
+    public void eliminarPlatoMesa(Plato p, Mesa m) {
+        daoPlatos.eliminarPlatoMesa(p, m);
     }
 
-    public void anadirPlato(Plato p) {
-        daoPlatos.anadirPlato(p);
+    public void anadirPlatoMesa(Plato p, Mesa m) {
+        daoPlatos.anadirPlatoMesa(p, m);
+    }
+
+    public void anadirBebidaMesa(Bebida b, Mesa m) {
+        daoBebidas.anadirBebidaMesa(b, m);
     }
 }

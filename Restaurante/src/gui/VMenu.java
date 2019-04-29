@@ -210,18 +210,27 @@ public class VMenu extends javax.swing.JDialog {
         if(tablaPlatos.getSelectedRow()>=0){
             mtp = (ModeloTablaPlatos) tablaPlatos.getModel();
            //Plato p = mtp.obtenerPlato(tablaPlatos.getSelectedRow());
-           //fap.eliminarPlato(p);
+           //fap.eliminarPlatoMesa(p, m);
     }//GEN-LAST:event_btnEliminarActionPerformed
     }
     
     private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirActionPerformed
         // TODO add your handling code here:
          ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
+         ModeloTablaBebidas mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
         if(tablaPlatos.getSelectedRow()>=0){
             mtp = (ModeloTablaPlatos) tablaPlatos.getModel();
-           //Plato p = mtp.obtenerPlato(tablaPlatos.getSelectedRow());
-           //fap.anadirPlato(p);
-    }    
+           Plato p = mtp.obtenerPlato( tablaPlatos.getSelectedColumn(),tablaPlatos.getSelectedRow()); 
+           Mesa m = this.mesa;
+           fap.anadirPlatoMesa(p, m);
+    }
+        if(tablaBebidas.getSelectedRow()>=0){
+            mtb = (ModeloTablaBebidas) tablaBebidas.getModel();
+            Bebida b =mtb.obtenerBebida(tablaBebidas.getSelectedColumn(),tablaBebidas.getSelectedRow()); 
+            Mesa m = this.mesa;
+            fap.anadirBebidaMesa(b, m);
+            
+        }
     }//GEN-LAST:event_btnAnadirActionPerformed
 
 

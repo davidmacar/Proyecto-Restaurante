@@ -30,4 +30,8 @@ public class GestionBebidas {
     public ArrayList<Bebida> buscarBebidas(String bebida){
         return fbd.buscarBebidas(bebida);
     }
+
+    void anadirBebidaMesa(Bebida b, Mesa m) {
+        fbd.anadirBebidaMesa(b, m);
+    }
 }

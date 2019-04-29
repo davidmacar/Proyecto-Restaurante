@@ -174,4 +174,6 @@ public class ModeloTablaPlatos extends AbstractTableModel{
        ret = aux.get(row);
        return ret;
     }
+
+  
 }
