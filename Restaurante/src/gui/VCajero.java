@@ -20,12 +20,20 @@ public class VCajero extends javax.swing.JDialog {
     VCamarero vcam;
     Mesa mesa;
     
-    public VCajero(java.awt.Frame parent, boolean modal, FachadaAplicacion fap) {
+    public VCajero(java.awt.Dialog parent, boolean modal, FachadaAplicacion fap, Mesa mesa) {
         super(parent, modal);
-        //this.vcam = (VCamarero) parent;
+        this.vcam = (VCamarero) parent;
         this.fap = fap;
         initComponents();
         vcam.actualizarMesas();
+        txtCantidad.setEditable(false);
+        txtCambio.setEditable(false);
+        txtMesa.setEditable(false);
+        aviso.setVisible(false);
+        btnCobrar.setEnabled(false);
+        
+        txtMesa.setText(String.valueOf(mesa.getNum_mesa()));
+        txtCantidad.setText(String.valueOf(fap.precioMesa(mesa)));
     }
 
 
@@ -40,15 +48,19 @@ public class VCajero extends javax.swing.JDialog {
     private void initComponents() {
 
         btnCobrar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        listMesas = new javax.swing.JList<String>();
         labCantidad = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
         txtEntregado = new javax.swing.JTextField();
         labEntregado = new javax.swing.JLabel();
         labCambio = new javax.swing.JLabel();
         txtCambio = new javax.swing.JTextField();
+        txtMesa = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        btnOk = new javax.swing.JButton();
+        aviso = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,41 +71,57 @@ public class VCajero extends javax.swing.JDialog {
                 btnCobrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 100, 47));
-
-        jLabel1.setText("Productos");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
-
-        listMesas.setModel(new ModeloListaStrings());
-        listMesas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listMesasMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(listMesas);
-
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 130, 240));
+        getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 100, 70));
 
         labCantidad.setText("Cantidad");
-        getContentPane().add(labCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
-        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 100, -1));
-        getContentPane().add(txtEntregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 100, -1));
+        getContentPane().add(labCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
+
+        txtCantidad.setBackground(new java.awt.Color(224, 224, 224));
+        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 50, -1));
+        getContentPane().add(txtEntregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 50, -1));
 
         labEntregado.setText("Entregado");
-        getContentPane().add(labEntregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
+        getContentPane().add(labEntregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         labCambio.setText("Cambio");
-        getContentPane().add(labCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
-        getContentPane().add(txtCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 100, -1));
+        getContentPane().add(labCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        txtCambio.setBackground(new java.awt.Color(224, 224, 224));
+        getContentPane().add(txtCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 50, -1));
+
+        txtMesa.setBackground(new java.awt.Color(224, 224, 224));
+        getContentPane().add(txtMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 30, -1));
+
+        jLabel2.setText("Mesa nº");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        btnOk.setText("OK");
+        btnOk.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, 20));
+
+        aviso.setBackground(new java.awt.Color(255, 255, 255));
+        aviso.setForeground(new java.awt.Color(255, 0, 0));
+        aviso.setText("Cantidad Insuficiente");
+        getContentPane().add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 170, -1));
+
+        jLabel1.setText("€");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 20, -1));
+
+        jLabel3.setText("€");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 20, -1));
+
+        jLabel4.setText("€");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 20, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
-        if(this.listMesas.isSelectionEmpty()){
-            return;
-        }
-        //fap.obtenerPlatos();
         
         vcam.actualizarMesas();
         
@@ -101,21 +129,34 @@ public class VCajero extends javax.swing.JDialog {
         vcam.setVisible(true);
     }//GEN-LAST:event_btnCobrarActionPerformed
 
-    private void listMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasMouseClicked
-        Mesa mesa = fap.obtenerMesa(Integer.parseInt(this.listMesas.getSelectedValue()));
-        //txtCantidad.setText(fap.precioMesa(mesa).toString);
-    }//GEN-LAST:event_listMesasMouseClicked
+    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+        // TODO add your handling code here:
+        float cambio = Float.parseFloat(txtEntregado.getText()) - Float.parseFloat(txtCantidad.getText());
+        if(cambio>=0){
+            aviso.setVisible(false);
+            txtCambio.setText(Float.toString(cambio));
+            btnCobrar.setEnabled(true);
+        }
+        else{
+            aviso.setVisible(true);
+            btnCobrar.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnOkActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel aviso;
     private javax.swing.JButton btnCobrar;
+    private javax.swing.JButton btnOk;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel labCambio;
     private javax.swing.JLabel labCantidad;
     private javax.swing.JLabel labEntregado;
-    private javax.swing.JList<String> listMesas;
     private javax.swing.JTextField txtCambio;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtEntregado;
+    private javax.swing.JTextField txtMesa;
     // End of variables declaration//GEN-END:variables
 }

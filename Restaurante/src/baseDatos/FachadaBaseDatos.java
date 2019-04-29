@@ -88,4 +88,9 @@ public class FachadaBaseDatos {
     public java.util.List<Bebida> obtenerBebidas(){
         return daoBebidas.obtenerBebidas();
     }
+    
+    
+    public float precioMesa(Mesa mesa){
+        return daoMesas.precioMesa(mesa);
+    }
 }

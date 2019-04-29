@@ -28,4 +28,8 @@ public class GestionMesas {
     public Mesa obtenerMesa(int mesa){
         return new Mesa(mesa, (ArrayList) this.fbd.obtenerPlatosMesa(mesa), (ArrayList) this.fbd.obtenerBebidasMesa(mesa));
     }
+    
+    public float precioMesa(Mesa mesa){
+        return fbd.precioMesa(mesa);
+    }
 }

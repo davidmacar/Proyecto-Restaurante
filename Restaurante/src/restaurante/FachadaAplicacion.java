@@ -81,12 +81,14 @@ public class FachadaAplicacion {
         return gb.obtenerBebidas();
     }
     
-    //public fap.precioMesa(mesa)
-
+    public float precioMesa(Mesa mesa){
+        return gm.precioMesa(mesa);
+    }
+    
     public void vistaCajero(VCamarero vcam, Mesa mesa) {
         this.fgui.vistaCajero(vcam, mesa);
     }
-
+    
     
     
 }

@@ -65,4 +65,50 @@ public class DAOMesas extends AbstractDAO {
         Mesa mesa = new Mesa(numMesa, (ArrayList) platos, (ArrayList) bebidas);
         return mesa;
     }
+    
+    public float precioMesa(Mesa mesa){
+        float resultado=0;
+        Connection con;
+        PreparedStatement stmPrecio=null;
+
+        ResultSet rsPrecio;
+
+        con=super.getConexion();
+
+        try {
+        stmPrecio=con.prepareStatement( "SELECT sum(precio) " +
+                                        "FROM( " +
+                                        "SELECT m.num_mesa, mp.nombre, mp.precio " +
+                                        "FROM mesas m, tenerbebida tb, materias_primas mp " +
+                                        "WHERE m.num_mesa=tb.mesa AND tb.bebida = mp.nombre " +
+                                        "UNION " +
+                                        "SELECT m.num_mesa, mp.nombre, mp.precio " +
+                                        "FROM mesas m, tenerplato tp, ingrediente_forma_plato ifp, materias_primas mp " +
+                                        "WHERE m.num_mesa=tp.mesa AND tp.plato = ifp.plato AND ifp.ingrediente= mp.nombre) as t " +
+                                        "WHERE t.num_mesa = ?");
+        stmPrecio.setInt(1, mesa.getNum_mesa());
+        rsPrecio=stmPrecio.executeQuery();
+        if (rsPrecio.next())
+        {
+            resultado = rsPrecio.getFloat("sum");
+            
+        }
+
+
+        } catch (SQLException e){
+            e.printStackTrace();;
+            System.out.println(e.getMessage());
+          //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        }finally{
+          try {
+              stmPrecio.close();
+          } 
+          catch (SQLException e){
+              e.printStackTrace();
+              System.out.println("Imposible cerrar cursores");
+              System.out.println("");
+          }
+        }
+        return resultado;
+    }
 }
