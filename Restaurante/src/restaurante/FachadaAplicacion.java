@@ -80,13 +80,29 @@ public class FachadaAplicacion {
     public java.util.List<Bebida> obtenerBebidas(){
         return gb.obtenerBebidas();
     }
+    public ArrayList<Plato> buscarPlatos(String plato){
+        return gp.buscarPlatos(plato);
+    }
+    public ArrayList<Bebida> buscarBebidas(String bebida){
+        return gb.buscarBebidas(bebida);
+    }
+    //public fap.precioMesa(mesa)
+
     
     public float precioMesa(Mesa mesa){
         return gm.precioMesa(mesa);
     }
     
     public void vistaCajero(VCamarero vcam, Mesa mesa) {
-        this.fgui.vistaCajero(vcam, mesa);
+        //this.fgui.vistaCajero(vcam, mesa);
+    }
+
+    public void eliminarPlato(Plato p) {
+        gp.eliminarPlato(p);
+    }
+
+    public void anadirPlato(Plato p) {
+        gp.anadirPlato(p);
     }
     
     
