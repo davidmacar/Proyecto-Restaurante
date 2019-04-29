@@ -32,6 +32,14 @@ public class GestionPlatos {
     public ArrayList<Plato> buscarPlatos(String plato){
         return fbd.buscarPlatos(plato);
     }
+
+    void eliminarPlato(Plato p) {
+        fbd.eliminarPlato(p);
+    }
+
+    void anadirPlato(Plato p) {
+        fbd.anadirPlato(p);
+    }
     
             
 }

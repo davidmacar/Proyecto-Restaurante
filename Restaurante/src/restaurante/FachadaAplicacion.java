@@ -92,6 +92,14 @@ public class FachadaAplicacion {
         //this.fgui.vistaCajero(vcam, mesa);
     }
 
+    public void eliminarPlato(Plato p) {
+        gp.eliminarPlato(p);
+    }
+
+    public void anadirPlato(Plato p) {
+        gp.anadirPlato(p);
+    }
+
     
     
 }

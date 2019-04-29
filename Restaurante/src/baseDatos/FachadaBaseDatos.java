@@ -95,4 +95,12 @@ public class FachadaBaseDatos {
     public ArrayList<Bebida> buscarBebidas(String bebida){
         return daoBebidas.buscarBebidas(bebida);
     }
+
+    public void eliminarPlato(Plato p) {
+        daoPlatos.eliminarPlato(p);
+    }
+
+    public void anadirPlato(Plato p) {
+        daoPlatos.anadirPlato(p);
+    }
 }

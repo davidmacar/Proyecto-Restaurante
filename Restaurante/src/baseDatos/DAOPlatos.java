@@ -142,5 +142,51 @@ public class DAOPlatos extends AbstractDAO{
         }
         return resultado;
     }
+
+    void eliminarPlato(Plato p) {
+        Connection con;
+        PreparedStatement stmPlatos = null;
+
+        con = super.getConexion();
+
+        try {
+            stmPlatos = con.prepareStatement("delete from plato where nombre = ?");
+            stmPlatos.setString(1, p.getNombre());
+            stmPlatos.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+           // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPlatos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
+
+    void anadirPlato(Plato p) {
+       Connection con;
+        PreparedStatement stmPlatos = null;
+
+        con = super.getConexion();
+
+        try {
+            stmPlatos = con.prepareStatement("");
+            stmPlatos.setString(1, p.getNombre());
+            stmPlatos.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+           // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPlatos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
     
 }
