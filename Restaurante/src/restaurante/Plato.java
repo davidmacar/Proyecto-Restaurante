@@ -37,11 +37,11 @@ public class Plato {
         this.nombre = "";
     }
 
-    public String getId_palto() {
+    public String getId_plato() {
         return nombre;
     }
 
-    public void setId_palto(String nombre) {
+    public void setId_plato(String nombre) {
         this.nombre = nombre;
     }
 
