@@ -33,13 +33,14 @@ public class GestionPlatos {
         return fbd.buscarPlatos(plato);
     }
 
-    void eliminarPlato(Plato p) {
-        fbd.eliminarPlato(p);
+    void eliminarPlatoMesa(Plato p, Mesa m) {
+        fbd.eliminarPlatoMesa(p, m);
     }
 
     void anadirPlato(Plato p) {
         fbd.anadirPlato(p);
     }
+    
     
             
 }

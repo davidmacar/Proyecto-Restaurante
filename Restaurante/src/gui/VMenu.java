@@ -58,7 +58,6 @@ public class VMenu extends javax.swing.JDialog {
         btnBuscar = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
-        btnAtras = new javax.swing.JButton();
         btnAnadir = new javax.swing.JButton();
         btnConfirmar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
@@ -95,13 +94,6 @@ public class VMenu extends javax.swing.JDialog {
             }
         });
 
-        btnAtras.setText("Atras");
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
-            }
-        });
-
         btnAnadir.setText("Añadir");
         btnAnadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,8 +126,6 @@ public class VMenu extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnInfo)
-                .addGap(93, 93, 93)
-                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -155,7 +145,6 @@ public class VMenu extends javax.swing.JDialog {
                 .addComponent(panelAlimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAtras)
                     .addComponent(btnAnadir)
                     .addComponent(btnConfirmar)
                     .addComponent(btnInfo)
@@ -199,26 +188,24 @@ public class VMenu extends javax.swing.JDialog {
         mtp.setFilas(platos);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        this.setVisible(false);
-        vcam.setVisible(true);
-    }//GEN-LAST:event_btnAtrasActionPerformed
-
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
-        if(tablaPlatos.getSelectedRow()>=0){
-            mtp = (ModeloTablaPlatos) tablaPlatos.getModel();
-           //Plato p = mtp.obtenerPlato(tablaPlatos.getSelectedRow());
-           //fap.eliminarPlato(p);
+        if(this.tablaPlatos.isShowing() && this.tablaPlatos.getSelectedRow()>=0){
+            ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
+            Plato p = mtp.obtenerPlato(this.tablaPlatos.getSelectedColumn(), this.tablaPlatos.getSelectedRow());
+            fap.eliminarPlatoMesa(p, this.mesa);
+        }
+        else if(this.tablaBebidas.isShowing() && this.tablaBebidas.getSelectedRow() >= 0){
+            ModeloTablaBebidas mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
+            Bebida b = mtb.obtenerBebida(this.tablaBebidas.getSelectedColumn(), this.tablaBebidas.getSelectedRow());
+            fap.eliminarBebidaMesa(b, this.mesa);
+        }
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
-    }
+    
     
     private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirActionPerformed
-        // TODO add your handling code here:
-         ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
+        ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
         if(tablaPlatos.getSelectedRow()>=0){
-            mtp = (ModeloTablaPlatos) tablaPlatos.getModel();
            //Plato p = mtp.obtenerPlato(tablaPlatos.getSelectedRow());
            //fap.anadirPlato(p);
     }    
@@ -227,7 +214,6 @@ public class VMenu extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnadir;
-    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnEliminar;

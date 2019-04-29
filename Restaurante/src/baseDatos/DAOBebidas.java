@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.List;
 import restaurante.Bebida;
 import restaurante.FachadaAplicacion;
+import restaurante.Mesa;
 import restaurante.Plato;
 /**
  *
@@ -145,5 +146,30 @@ public class DAOBebidas extends AbstractDAO {
           }
         }
         return resultado;
+    }
+    void eliminarBebidaMesa(Bebida b, Mesa m) {
+        Connection con;
+        PreparedStatement stmBebidas = null;
+
+        con = super.getConexion();
+
+        try {
+            stmBebidas = con.prepareStatement("delete from tenerbebida " +
+                                            "where mesa=? and servicio_bebida=?");
+            stmBebidas.setInt(1, m.getNum_mesa());
+            stmBebidas.setInt(2, b.getServicio());
+            stmBebidas.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+           // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmBebidas.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        b.setServicio(-1);
     }
 }

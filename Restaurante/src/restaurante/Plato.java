@@ -18,6 +18,7 @@ public class Plato {
     private String descripcion;
     private Mesa mesa;
     private ArrayList<Ingrediente> ingredientes;
+    private int servicio;
     
     public Plato(String nombre, boolean apto_veganos, boolean apto_celiacos, String tipo, String descripcion) {
         this.nombre = nombre;
@@ -26,6 +27,7 @@ public class Plato {
         this.tipo = tipo;
         this.mesa = null;
         this.descripcion = descripcion;
+        this.servicio = 0;
     }
     public Plato(){
         this.nombre = "";
@@ -35,6 +37,7 @@ public class Plato {
         this.descripcion ="";
         this.mesa = null;
         this.nombre = "";
+        this.servicio = 0;
     }
 
     public String getId_plato() {
@@ -100,6 +103,15 @@ public class Plato {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public int getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(int servicio) {
+        this.servicio = servicio;
+    }
+    
     
     
     

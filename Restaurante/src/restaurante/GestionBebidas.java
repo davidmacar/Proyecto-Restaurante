@@ -30,4 +30,7 @@ public class GestionBebidas {
     public ArrayList<Bebida> buscarBebidas(String bebida){
         return fbd.buscarBebidas(bebida);
     }
+    public void eliminarBebidaMesa(Bebida b, Mesa m){
+        fbd.eliminarBebidaMesa(b, m);
+    }
 }

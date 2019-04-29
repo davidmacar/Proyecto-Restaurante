@@ -96,12 +96,16 @@ public class FachadaAplicacion {
         this.fgui.vistaCajero(vcam, mesa);
     }
 
-    public void eliminarPlato(Plato p) {
-        gp.eliminarPlato(p);
+    public void eliminarPlatoMesa(Plato p, Mesa m) {
+        gp.eliminarPlatoMesa(p, m);
     }
 
     public void anadirPlato(Plato p) {
         gp.anadirPlato(p);
+    }
+    
+    public void eliminarBebidaMesa(Bebida b, Mesa m){
+        gb.eliminarBebidaMesa(b, m);
     }
     
     
