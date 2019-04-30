@@ -227,8 +227,15 @@ public class VMenu extends javax.swing.JDialog {
         if(plat){
             Plato plato = null;
             for(Plato p : mesa.getPlatos()){
-                if(p.getNombre().toLowerCase().equals(aux.toLowerCase()))
-                    plato = p;
+                
+            }
+            for(Plato p : mesa.getPlatos()){
+                if(p.getNombre().toLowerCase().equals(aux.toLowerCase())){
+                     plato = p;
+                     
+                    
+                }
+                  
             }
             fap.eliminarPlatoMesa(plato, this.mesa);
         }
@@ -254,7 +261,7 @@ public class VMenu extends javax.swing.JDialog {
                 Plato p = mtp.obtenerPlato(this.tablaPlatos.getSelectedColumn(),this.tablaPlatos.getSelectedRow()); 
                 Mesa m = this.mesa;
                 fap.anadirPlatoMesa(p, m);
-                p.setServicio(this.fap.obtenerServicioPlato(p));
+                p.setServicio(this.fap.obtenerServicioPlato(p, m));
             }
             else 
                 this.txtError.setVisible(true);
@@ -266,7 +273,7 @@ public class VMenu extends javax.swing.JDialog {
                 Bebida b =mtb.obtenerBebida(this.tablaBebidas.getSelectedColumn(), this.tablaBebidas.getSelectedRow()); 
                 Mesa m = this.mesa;
                 fap.anadirBebidaMesa(b, m);
-                b.setServicio(this.fap.obtenerServicioBebida(b));
+                b.setServicio(this.fap.obtenerServicioBebida(b, m));
             }
             else 
                this.txtError.setVisible(true); 

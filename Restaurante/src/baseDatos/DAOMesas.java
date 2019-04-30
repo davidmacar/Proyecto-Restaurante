@@ -145,4 +145,48 @@ public class DAOMesas extends AbstractDAO {
           }
         }
     }
+    
+    void eliminarMesaCobrada( Mesa m) {
+        Connection con;
+        PreparedStatement stmMesa = null;
+
+        con = super.getConexion();
+
+        try {
+            stmMesa = con.prepareStatement("delete from tenerplato " +
+                                            "where mesa=?");
+            
+            stmMesa.setInt(1, m.getNum_mesa());
+            
+            stmMesa.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmMesa.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        try {
+            stmMesa = con.prepareStatement("delete from tenerbebida " +
+                                            "where mesa=?");
+            
+            stmMesa.setInt(1, m.getNum_mesa());
+            
+            stmMesa.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmMesa.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
 }

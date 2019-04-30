@@ -65,7 +65,7 @@ public class DAOBebidas extends AbstractDAO {
         List<Bebida> resultado = new ArrayList<Bebida>();
         Connection con;
         PreparedStatement stmBebidas = null;
-        String statement = "select  b.nombre, cantidad, precio, porcentaje_alcohol, tipo "
+        String statement = "select  * "
                 + "from tenerbebida as t, bebidas as b, materias_primas as m "
                 + "where t.bebida = b.nombre and t.bebida = m.nombre "
                 + "and t.mesa = ?";
@@ -190,13 +190,13 @@ public class DAOBebidas extends AbstractDAO {
         }
     }
     
-    public int obtenerServicioBebida(Bebida bebida) {
+    public int obtenerServicioBebida(Bebida bebida, Mesa m) {
         int resultado = -1;
         Connection con;
         PreparedStatement stmBebidas = null;
         String statement = "select servicio_bebida " 
                             + "from tenerbebida "
-                            + "where bebida = ? ";
+                            + "where bebida = ?  and mesa=?";
         ResultSet rsBebidas;
 
         con = super.getConexion();
@@ -204,6 +204,7 @@ public class DAOBebidas extends AbstractDAO {
         try {
             stmBebidas = con.prepareStatement(statement);
             stmBebidas.setString(1, bebida.getNombre());
+            stmBebidas.setInt(2, m.getNum_mesa());
             rsBebidas = stmBebidas.executeQuery();
             if (rsBebidas.next()) {
                 resultado = rsBebidas.getInt("servicio_bebida");

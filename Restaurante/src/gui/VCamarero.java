@@ -123,10 +123,11 @@ public class VCamarero extends javax.swing.JDialog {
         }
         Mesa mesa = fap.obtenerMesa(Integer.parseInt(this.listMesas.getSelectedValue()));
         for(Plato p : mesa.getPlatos()){
-            p.setServicio(this.fap.obtenerServicioPlato(p));
+            
+            p.setServicio(this.fap.obtenerServicioPlato(p, mesa));
         }
         for(Bebida b : mesa.getBebidas()){
-            b.setServicio(this.fap.obtenerServicioBebida(b));
+            b.setServicio(this.fap.obtenerServicioBebida(b, mesa));
         }
         fap.vistaMenu(this, mesa);
     }//GEN-LAST:event_btnMenuActionPerformed
@@ -138,6 +139,14 @@ public class VCamarero extends javax.swing.JDialog {
         }
         Mesa mesa = fap.obtenerMesa(Integer.parseInt(this.listMesas.getSelectedValue()));
         fap.vistaCajero(this, mesa);
+       
+        listMesas.setSelectedIndex(0);
+        actualizarPlatos();
+        actualizarBebidas();
+        
+        
+        
+        
         
     }//GEN-LAST:event_btnCobrarActionPerformed
 

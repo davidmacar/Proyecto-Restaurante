@@ -116,10 +116,14 @@ public class FachadaBaseDatos {
     public void eliminarBebidaMesa(Bebida b, Mesa m){
         daoBebidas.eliminarBebidaMesa(b, m);
     }
-    public int obtenerServicioPlato(Plato plato){   
-        return daoPlatos.obtenerServicioPlato(plato);
+    public int obtenerServicioPlato(Plato plato, Mesa m){   
+        return daoPlatos.obtenerServicioPlato(plato, m);
     }
-    public int obtenerServicioBebida(Bebida bebida){   
-        return daoBebidas.obtenerServicioBebida(bebida);
+    public int obtenerServicioBebida(Bebida bebida, Mesa m){   
+        return daoBebidas.obtenerServicioBebida(bebida, m);
+    }
+
+    public void eliminarMesaCobrada(Mesa mesa) {
+        daoMesas.eliminarMesaCobrada(mesa);
     }
 }

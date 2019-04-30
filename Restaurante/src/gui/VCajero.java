@@ -32,6 +32,7 @@ public class VCajero extends javax.swing.JDialog {
         txtMesa.setEditable(false);
         aviso.setVisible(false);
         btnCobrar.setEnabled(false);
+        this.mesa=mesa;
         
         txtMesa.setText(String.valueOf(mesa.getNum_mesa()));
         txtCantidad.setText(String.format(Locale.ROOT,"%.2f",(fap.precioMesa(mesa)))); //Locale.ROOT sirve para que convierta el float con punto decimal y no coma
@@ -124,7 +125,7 @@ public class VCajero extends javax.swing.JDialog {
 
     private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
         
-        
+        fap.eliminaMesaCobrada(mesa);
         vcam.actualizarMesas();
         this.setVisible(false);
         vcam.setVisible(true);
