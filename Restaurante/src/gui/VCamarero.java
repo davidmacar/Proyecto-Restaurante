@@ -5,6 +5,7 @@
  */
 package gui;
 
+import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.List;
 import modelos.*;
@@ -44,14 +45,19 @@ public class VCamarero extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listPlatos = new javax.swing.JList<String>();
+        listPlatos = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        listMesas = new javax.swing.JList<String>();
+        listMesas = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        listBebidas = new javax.swing.JList<String>();
+        listBebidas = new javax.swing.JList<>();
         txtError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnMenu.setText("VER MENU");
@@ -140,6 +146,11 @@ public class VCamarero extends javax.swing.JDialog {
         this.actualizarPlatos();
         this.actualizarBebidas();
     }//GEN-LAST:event_listMesasMouseClicked
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        exit(0);
+        //this.getParent().setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
     
     public void actualizarMesas(){
         List<Mesa> mesas;

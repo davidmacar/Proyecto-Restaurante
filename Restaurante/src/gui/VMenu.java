@@ -31,6 +31,7 @@ public class VMenu extends javax.swing.JDialog {
         this.fap = fap;
         this.mesa = mesa;
         initComponents();
+        this.txtError.setVisible(false);
         this.actualizarModelo();
     }
     private void actualizarModelo() {
@@ -72,18 +73,34 @@ public class VMenu extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         listPedido = new javax.swing.JList<>();
+        txtError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tablaPlatos.setModel(new ModeloTablaPlatos());
+        tablaPlatos.setCellSelectionEnabled(true);
+        tablaPlatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaPlatosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaPlatos);
 
         panelAlimentos.addTab("Platos", jScrollPane1);
 
         tablaBebidas.setModel(new ModeloTablaBebidas());
+        tablaBebidas.setCellSelectionEnabled(true);
+        tablaBebidas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaBebidasMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaBebidas);
 
         panelAlimentos.addTab("Bebidas", jScrollPane2);
+
+        getContentPane().add(panelAlimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 679, 267));
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +108,7 @@ public class VMenu extends javax.swing.JDialog {
                 btnBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 0, -1, -1));
 
         btnInfo.setText("Informacion");
         btnInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -98,12 +116,14 @@ public class VMenu extends javax.swing.JDialog {
                 btnInfoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 322, -1, -1));
 
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 4, 287, -1));
 
         btnAnadir.setText("Añadir");
         btnAnadir.addActionListener(new java.awt.event.ActionListener() {
@@ -111,8 +131,15 @@ public class VMenu extends javax.swing.JDialog {
                 btnAnadirActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 322, 99, -1));
 
         btnConfirmar.setText("Confirmar");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(837, 322, -1, -1));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -120,72 +147,27 @@ public class VMenu extends javax.swing.JDialog {
                 btnEliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 322, -1, -1));
 
         jLabel1.setText("Pedido mesa");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(772, 31, -1, -1));
 
         listPedido.setModel(new ModeloListaStrings());
+        listPedido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listPedidoMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(listPedido);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btnInfo)
-                        .addGap(235, 235, 235)
-                        .addComponent(btnAnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(226, 226, 226))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(panelAlimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(296, 296, 296)
-                            .addComponent(btnBuscar)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtBuscar))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(73, 73, 73)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnConfirmar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscar)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(6, 6, 6)
-                        .addComponent(panelAlimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnInfo)
-                        .addComponent(btnAnadir))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnConfirmar)
-                        .addComponent(btnEliminar))))
-        );
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 64, 239, 240));
+
+        txtError.setForeground(new java.awt.Color(255, 0, 0));
+        txtError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtError.setText("<html>Selecciona un alimento</html>");
+        txtError.setAutoscrolls(true);
+        txtError.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(txtError, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 220, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -199,11 +181,19 @@ public class VMenu extends javax.swing.JDialog {
         
         switch(this.panelAlimentos.getSelectedIndex()){
             case 0://Platos
+                if(this.tablaPlatos.getSelectedColumn() == -1){
+                    this.txtError.setVisible(true);
+                    return;
+                }
                 Plato plato = ((ModeloTablaPlatos)this.tablaPlatos.getModel()).obtenerPlato(
                                 this.tablaPlatos.getSelectedColumn(), this.tablaPlatos.getSelectedRow());
                 this.fap.vistaProducto(this, plato);
                 break;
             case 1://Bebidas
+                if(this.tablaBebidas.getSelectedColumn() == -1){
+                    this.txtError.setVisible(true);
+                    return;
+                }
                 Bebida bebida = ((ModeloTablaBebidas)this.tablaBebidas.getModel()).obtenerBebida(
                                 this.tablaBebidas.getSelectedColumn(), this.tablaBebidas.getSelectedRow());
                 this.fap.vistaProducto(this, bebida);
@@ -224,6 +214,10 @@ public class VMenu extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if(this.listPedido.getSelectedIndex() == -1){
+            this.txtError.setVisible(true);
+            return;
+        }
         String aux = this.listPedido.getSelectedValue();
         boolean plat = false;
         for(Plato p : mesa.getPlatos()){
@@ -254,23 +248,51 @@ public class VMenu extends javax.swing.JDialog {
     private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirActionPerformed
          ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
          ModeloTablaBebidas mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
-        if(this.tablaPlatos.isShowing() && this.tablaPlatos.getSelectedRow()>=0){
-           mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
-           Plato p = mtp.obtenerPlato(this.tablaPlatos.getSelectedColumn(),this.tablaPlatos.getSelectedRow()); 
-           Mesa m = this.mesa;
-           fap.anadirPlatoMesa(p, m);
-           p.setServicio(this.fap.obtenerServicioPlato(p));
+        if(this.tablaPlatos.isShowing()){
+            if(this.tablaPlatos.getSelectedRow()>=0){
+                mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
+                Plato p = mtp.obtenerPlato(this.tablaPlatos.getSelectedColumn(),this.tablaPlatos.getSelectedRow()); 
+                Mesa m = this.mesa;
+                fap.anadirPlatoMesa(p, m);
+                p.setServicio(this.fap.obtenerServicioPlato(p));
+            }
+            else 
+                this.txtError.setVisible(true);
         }
         
-        if(this.tablaBebidas.isShowing() && this.tablaBebidas.getSelectedRow()>=0){
-            mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
-            Bebida b =mtb.obtenerBebida(this.tablaBebidas.getSelectedColumn(), this.tablaBebidas.getSelectedRow()); 
-            Mesa m = this.mesa;
-            fap.anadirBebidaMesa(b, m);
-            b.setServicio(this.fap.obtenerServicioBebida(b));
+        if(this.tablaBebidas.isShowing()){
+            if(this.tablaBebidas.getSelectedRow()>=0){
+                mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
+                Bebida b =mtb.obtenerBebida(this.tablaBebidas.getSelectedColumn(), this.tablaBebidas.getSelectedRow()); 
+                Mesa m = this.mesa;
+                fap.anadirBebidaMesa(b, m);
+                b.setServicio(this.fap.obtenerServicioBebida(b));
+            }
+            else 
+               this.txtError.setVisible(true); 
         }
+        
         this.actualizarModelo();
     }//GEN-LAST:event_btnAnadirActionPerformed
+
+    private void tablaPlatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPlatosMouseClicked
+        this.txtError.setVisible(false);
+    }//GEN-LAST:event_tablaPlatosMouseClicked
+
+    private void tablaBebidasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaBebidasMouseClicked
+        this.txtError.setVisible(false);
+    }//GEN-LAST:event_tablaBebidasMouseClicked
+
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        ((VCamarero)this.getParent()).actualizarMesas();
+        ((VCamarero)this.getParent()).actualizarPlatos();
+        ((VCamarero)this.getParent()).actualizarBebidas();
+        this.dispose();
+    }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void listPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listPedidoMouseClicked
+        this.txtError.setVisible(false);
+    }//GEN-LAST:event_listPedidoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -288,5 +310,6 @@ public class VMenu extends javax.swing.JDialog {
     private javax.swing.JTable tablaBebidas;
     private javax.swing.JTable tablaPlatos;
     private javax.swing.JTextField txtBuscar;
+    private javax.swing.JLabel txtError;
     // End of variables declaration//GEN-END:variables
 }

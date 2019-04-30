@@ -147,7 +147,7 @@ public class DAOBebidas extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmBebidas = con.prepareStatement("insert into tenerbebida (mesa, bebida) values ('?', '?');");
+            stmBebidas = con.prepareStatement("insert into tenerbebida (mesa, bebida) values (?, ?)");
             stmBebidas.setInt(1, m.getNum_mesa());
             stmBebidas.setString(2, b.getNombre());
             stmBebidas.executeUpdate();
