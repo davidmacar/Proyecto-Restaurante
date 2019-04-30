@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import modelos.*;
 import restaurante.*;
+import java.util.Locale;
 
 /**
  *
@@ -33,7 +34,7 @@ public class VCajero extends javax.swing.JDialog {
         btnCobrar.setEnabled(false);
         
         txtMesa.setText(String.valueOf(mesa.getNum_mesa()));
-        txtCantidad.setText(String.valueOf(fap.precioMesa(mesa)));
+        txtCantidad.setText(String.format(Locale.ROOT,"%.2f",(fap.precioMesa(mesa)))); //Locale.ROOT sirve para que convierta el float con punto decimal y no coma
     }
 
 
@@ -123,8 +124,8 @@ public class VCajero extends javax.swing.JDialog {
 
     private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
         
-        vcam.actualizarMesas();
         
+        vcam.actualizarMesas();
         this.setVisible(false);
         vcam.setVisible(true);
     }//GEN-LAST:event_btnCobrarActionPerformed
@@ -134,7 +135,7 @@ public class VCajero extends javax.swing.JDialog {
         float cambio = Float.parseFloat(txtEntregado.getText()) - Float.parseFloat(txtCantidad.getText());
         if(cambio>=0){
             aviso.setVisible(false);
-            txtCambio.setText(Float.toString(cambio));
+            txtCambio.setText(String.format(Locale.ROOT,"%.2f", cambio)); 
             btnCobrar.setEnabled(true);
         }
         else{
