@@ -74,9 +74,9 @@ public class VMenu extends javax.swing.JDialog {
         btnConfirmar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        listPedido = new javax.swing.JList<>();
         txtError = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listPedido = new javax.swing.JList<String>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,7 +111,7 @@ public class VMenu extends javax.swing.JDialog {
                 btnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 0, -1, -1));
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 15, -1, 30));
 
         btnInfo.setText("Informacion");
         btnInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +126,7 @@ public class VMenu extends javax.swing.JDialog {
                 txtBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 4, 287, -1));
+        getContentPane().add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 287, 20));
 
         btnAnadir.setText("Añadir");
         btnAnadir.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +134,7 @@ public class VMenu extends javax.swing.JDialog {
                 btnAnadirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 322, 99, -1));
+        getContentPane().add(btnAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 99, -1));
 
         btnConfirmar.setText("Confirmar");
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +142,7 @@ public class VMenu extends javax.swing.JDialog {
                 btnConfirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(837, 322, -1, -1));
+        getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, 130, -1));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -150,10 +150,17 @@ public class VMenu extends javax.swing.JDialog {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 322, -1, -1));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, -1, -1));
 
         jLabel1.setText("Pedido mesa");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(772, 31, -1, -1));
+
+        txtError.setForeground(new java.awt.Color(255, 0, 0));
+        txtError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtError.setText("<html>Selecciona un alimento</html>");
+        txtError.setAutoscrolls(true);
+        txtError.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(txtError, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 190, 30));
 
         listPedido.setModel(new ModeloListaStrings());
         listPedido.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -164,13 +171,6 @@ public class VMenu extends javax.swing.JDialog {
         jScrollPane4.setViewportView(listPedido);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 64, 239, 240));
-
-        txtError.setForeground(new java.awt.Color(255, 0, 0));
-        txtError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtError.setText("<html>Selecciona un alimento</html>");
-        txtError.setAutoscrolls(true);
-        txtError.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(txtError, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 220, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
