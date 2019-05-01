@@ -117,6 +117,9 @@ public class FachadaAplicacion {
         return gb.obtenerServicioBebida(bebida, m);
     }
 
+    public void cobrarMesa(Mesa mesa, String camarero, Float precio) {
+        gm.cobrarMesa(mesa, camarero , precio);
+    }
 
     public void eliminaMesaCobrada(Mesa mesa) {
         gm.eliminarMesaCobrada(mesa);
