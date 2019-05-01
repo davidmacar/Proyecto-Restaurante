@@ -46,7 +46,7 @@ public class Mesa {
         return platos;
     }
 
-    public void setPlatos(ArrayList platos) {
+    public void setPlatos(ArrayList<Plato> platos) {
         this.platos = platos;
     }
 
@@ -54,7 +54,7 @@ public class Mesa {
         return bebidas;
     }
 
-    public void setBebidas(ArrayList bebidas) {
+    public void setBebidas(ArrayList<Bebida> bebidas) {
         this.bebidas = bebidas;
     }
     

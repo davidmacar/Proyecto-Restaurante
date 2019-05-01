@@ -65,7 +65,7 @@ public class DAOPlatos extends AbstractDAO{
         java.util.List<Plato> resultado=new java.util.ArrayList<Plato>();
         Connection con;
         PreparedStatement stmPlatos=null;
-        String statement = "select p.nombre, p.apto_veganos, p.apto_celiacos, p.tipo, p.descripcion " +
+        String statement = "select p.nombre, p.apto_veganos, p.apto_celiacos, p.tipo, p.descripcion, t.servicio_plato " +
                             "from tenerplato as t, platos as p " +
                             "where t.plato = p.nombre and t.mesa = ?";
         ResultSet rsPlatos;
@@ -81,6 +81,7 @@ public class DAOPlatos extends AbstractDAO{
             Plato ej = new Plato(rsPlatos.getString("nombre"), rsPlatos.getBoolean("apto_veganos"), 
                                     rsPlatos.getBoolean("apto_celiacos"), rsPlatos.getString("tipo"),
                                     rsPlatos.getString("descripcion"));
+            ej.setServicio(rsPlatos.getInt("servicio_plato"));
             resultado.add(ej);
         }
 

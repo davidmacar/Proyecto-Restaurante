@@ -35,6 +35,9 @@ public class VMenu extends javax.swing.JDialog {
         this.actualizarModelo();
     }
     private void actualizarModelo() {
+        this.mesa.setBebidas((ArrayList<Bebida>)this.fap.obtenerBebidasMesa(this.mesa.getNum_mesa()));
+        this.mesa.setPlatos((ArrayList<Plato>)this.fap.obtenerPlatosMesa(this.mesa.getNum_mesa()));
+        
         ModeloTablaBebidas mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
         ModeloTablaPlatos mtp = (ModeloTablaPlatos) this.tablaPlatos.getModel();
         ModeloListaStrings mls = (ModeloListaStrings) this.listPedido.getModel();
@@ -227,15 +230,9 @@ public class VMenu extends javax.swing.JDialog {
         if(plat){
             Plato plato = null;
             for(Plato p : mesa.getPlatos()){
-                
-            }
-            for(Plato p : mesa.getPlatos()){
                 if(p.getNombre().toLowerCase().equals(aux.toLowerCase())){
                      plato = p;
-                     
-                    
                 }
-                  
             }
             fap.eliminarPlatoMesa(plato, this.mesa);
         }
