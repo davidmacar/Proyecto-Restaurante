@@ -21,7 +21,7 @@ public class VAutenticacion extends javax.swing.JFrame {
     public VAutenticacion(FachadaAplicacion fap) {
         this.fap = fap;
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("../Imagenes/aplicacion.png")).getImage());
         this.txtError.setVisible(false);
     }
 
