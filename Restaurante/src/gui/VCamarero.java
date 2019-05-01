@@ -5,9 +5,15 @@
  */
 package gui;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.IOException;
 import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import modelos.*;
 import restaurante.*;
 
@@ -20,7 +26,7 @@ public class VCamarero extends javax.swing.JDialog {
     FachadaAplicacion fap;
     VAutenticacion vaut;
     
-    public VCamarero(java.awt.Frame parent, boolean modal, FachadaAplicacion fap) {
+    public VCamarero(java.awt.Frame parent, boolean modal, FachadaAplicacion fap) throws IOException {
         super(parent, modal);
         this.vaut = (VAutenticacion) parent;
         this.fap = fap;
@@ -29,6 +35,18 @@ public class VCamarero extends javax.swing.JDialog {
         btnCobrar.setEnabled(false);
         ModeloTablaPlatos mtp = new ModeloTablaPlatos();
         this.actualizarMesas();
+        
+        ImageIcon image = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/menu.png")));
+        Image img = image.getImage();
+        Image img2 = img.getScaledInstance(this.btnMenu.getWidth() - 15, this.btnMenu.getHeight() - 20, Image.SCALE_SMOOTH);
+        ImageIcon i = new ImageIcon(img2);
+        this.btnMenu.setIcon(i);
+        
+        ImageIcon image2 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/cobrar.png")));
+        Image img3 = image2.getImage();
+        Image img4 = img3.getScaledInstance(this.btnCobrar.getWidth() - 15, this.btnCobrar.getHeight() - 20, Image.SCALE_SMOOTH);
+        ImageIcon i2 = new ImageIcon(img4);
+        this.btnCobrar.setIcon(i2);
     }
 
     /**
@@ -61,36 +79,34 @@ public class VCamarero extends javax.swing.JDialog {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnMenu.setText("VER MENU");
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 147, -1, 88));
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 109, 102, 99));
 
-        btnCobrar.setText("Cobrar");
         btnCobrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCobrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 303, 100, 47));
+        getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 286, 88, 85));
 
         jLabel1.setText("Mesas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 17, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 23, -1, -1));
 
         jLabel2.setText("Platos");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 17, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 23, -1, -1));
 
         jLabel3.setText("Bebidas");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 17, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 23, -1, -1));
 
         listPlatos.setModel(new ModeloListaStrings());
         listPlatos.setToolTipText("");
         jScrollPane1.setViewportView(listPlatos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 48, 256, 310));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 50, 275, 321));
 
         listMesas.setModel(new ModeloListaStrings());
         listMesas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,19 +116,19 @@ public class VCamarero extends javax.swing.JDialog {
         });
         jScrollPane3.setViewportView(listMesas);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 130, 310));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 50, 81, 321));
 
         listBebidas.setModel(new ModeloListaStrings());
         jScrollPane4.setViewportView(listBebidas);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 48, 250, 310));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 50, 275, 321));
 
         txtError.setForeground(new java.awt.Color(255, 0, 0));
         txtError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtError.setText("<html>Selecciona una mesa primero</html>");
         txtError.setAutoscrolls(true);
         txtError.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(txtError, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 120, 80));
+        getContentPane().add(txtError, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 23, 120, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
