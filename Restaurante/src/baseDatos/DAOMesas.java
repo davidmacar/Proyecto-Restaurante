@@ -123,7 +123,7 @@ public class DAOMesas extends AbstractDAO {
 
         try {
         stmCobrar=con.prepareStatement( "INSERT INTO atender(mesa, camarero, id_venta, fecha_venta, precio) " +
-                                        "VALUES (?, ?, nextval('controla_secuencia_idVenta'), NOW(), ?);");
+                                        "VALUES (?, ?, nextval('controla_secuencia_idVenta'), NOW(), ?)");
         stmCobrar.setInt(1, mesa.getNum_mesa());
         stmCobrar.setString(2, camarero);
         stmCobrar.setFloat(3, precio);

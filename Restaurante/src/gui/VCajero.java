@@ -17,9 +17,10 @@ import java.util.Locale;
  */
 public class VCajero extends javax.swing.JDialog {
 
-    FachadaAplicacion fap;
-    VCamarero vcam;
-    Mesa mesa;
+    private FachadaAplicacion fap;
+    private VCamarero vcam;
+    private float precio;
+    private Mesa mesa;
     
     public VCajero(java.awt.Dialog parent, boolean modal, FachadaAplicacion fap, Mesa mesa) {
         super(parent, modal);
@@ -27,14 +28,13 @@ public class VCajero extends javax.swing.JDialog {
         this.fap = fap;
         initComponents();
         vcam.actualizarMesas();
-        txtCantidad.setEditable(false);
-        txtCambio.setEditable(false);
-        txtMesa.setEditable(false);
+        this.mesa = mesa;
         aviso.setVisible(false);
         btnCobrar.setEnabled(false);
         
+        this.precio = fap.precioMesa(mesa);
         txtMesa.setText(String.valueOf(mesa.getNum_mesa()));
-        txtCantidad.setText(String.format(Locale.ROOT,"%.2f",(fap.precioMesa(mesa)))); //Locale.ROOT sirve para que convierta el float con punto decimal y no coma
+        txtCantidad.setText(String.format("%.2f€",this.precio));
     }
 
 
@@ -50,18 +50,15 @@ public class VCajero extends javax.swing.JDialog {
 
         btnCobrar = new javax.swing.JButton();
         labCantidad = new javax.swing.JLabel();
-        txtCantidad = new javax.swing.JTextField();
         txtEntregado = new javax.swing.JTextField();
         labEntregado = new javax.swing.JLabel();
         labCambio = new javax.swing.JLabel();
-        txtCambio = new javax.swing.JTextField();
-        txtMesa = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnOk = new javax.swing.JButton();
         aviso = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        txtCantidad = new javax.swing.JLabel();
+        txtCambio = new javax.swing.JLabel();
+        txtMesa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,26 +71,17 @@ public class VCajero extends javax.swing.JDialog {
         });
         getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 100, 70));
 
-        labCantidad.setText("Cantidad");
+        labCantidad.setText("Cantidad:");
         getContentPane().add(labCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
-
-        txtCantidad.setBackground(new java.awt.Color(224, 224, 224));
-        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 50, -1));
         getContentPane().add(txtEntregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 50, -1));
 
         labEntregado.setText("Entregado");
         getContentPane().add(labEntregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        labCambio.setText("Cambio");
+        labCambio.setText("Cambio:");
         getContentPane().add(labCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        txtCambio.setBackground(new java.awt.Color(224, 224, 224));
-        getContentPane().add(txtCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 50, -1));
-
-        txtMesa.setBackground(new java.awt.Color(224, 224, 224));
-        getContentPane().add(txtMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 30, -1));
-
-        jLabel2.setText("Mesa nº");
+        jLabel2.setText("Mesa nº:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         btnOk.setText("OK");
@@ -109,22 +97,15 @@ public class VCajero extends javax.swing.JDialog {
         aviso.setForeground(new java.awt.Color(255, 0, 0));
         aviso.setText("Cantidad Insuficiente");
         getContentPane().add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 170, -1));
-
-        jLabel1.setText("€");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 20, -1));
-
-        jLabel3.setText("€");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 20, -1));
-
-        jLabel4.setText("€");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 20, -1));
+        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 50, 10));
+        getContentPane().add(txtCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 60, 10));
+        getContentPane().add(txtMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 20, 10));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
-        
-        
+        //fap.cobrarMesa(mesa, camarero, precio);        
         vcam.actualizarMesas();
         this.setVisible(false);
         vcam.setVisible(true);
@@ -132,10 +113,10 @@ public class VCajero extends javax.swing.JDialog {
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         // TODO add your handling code here:
-        float cambio = Float.parseFloat(txtEntregado.getText()) - Float.parseFloat(txtCantidad.getText());
+        float cambio = Float.parseFloat(txtEntregado.getText()) - this.precio;
         if(cambio>=0){
             aviso.setVisible(false);
-            txtCambio.setText(String.format(Locale.ROOT,"%.2f", cambio)); 
+            txtCambio.setText(String.format("%.2f€", cambio)); 
             btnCobrar.setEnabled(true);
         }
         else{
@@ -148,16 +129,13 @@ public class VCajero extends javax.swing.JDialog {
     private javax.swing.JLabel aviso;
     private javax.swing.JButton btnCobrar;
     private javax.swing.JButton btnOk;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel labCambio;
     private javax.swing.JLabel labCantidad;
     private javax.swing.JLabel labEntregado;
-    private javax.swing.JTextField txtCambio;
-    private javax.swing.JTextField txtCantidad;
+    private javax.swing.JLabel txtCambio;
+    private javax.swing.JLabel txtCantidad;
     private javax.swing.JTextField txtEntregado;
-    private javax.swing.JTextField txtMesa;
+    private javax.swing.JLabel txtMesa;
     // End of variables declaration//GEN-END:variables
 }
