@@ -31,6 +31,7 @@ public class VCajero extends javax.swing.JDialog {
         this.mesa = mesa;
         aviso.setVisible(false);
         btnCobrar.setEnabled(false);
+        this.mesa=mesa;
         
         this.precio = fap.precioMesa(mesa);
         txtMesa.setText(String.valueOf(mesa.getNum_mesa()));
@@ -105,6 +106,8 @@ public class VCajero extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
+        
+        fap.eliminaMesaCobrada(mesa);
         //fap.cobrarMesa(mesa, camarero, precio);        
         vcam.actualizarMesas();
         this.setVisible(false);

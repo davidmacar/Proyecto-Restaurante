@@ -65,7 +65,7 @@ public class DAOPlatos extends AbstractDAO{
         java.util.List<Plato> resultado=new java.util.ArrayList<Plato>();
         Connection con;
         PreparedStatement stmPlatos=null;
-        String statement = "select p.nombre, p.apto_veganos, p.apto_celiacos, p.tipo, p.descripcion " +
+        String statement = "select p.nombre, p.apto_veganos, p.apto_celiacos, p.tipo, p.descripcion, t.servicio_plato " +
                             "from tenerplato as t, platos as p " +
                             "where t.plato = p.nombre and t.mesa = ?";
         ResultSet rsPlatos;
@@ -81,6 +81,7 @@ public class DAOPlatos extends AbstractDAO{
             Plato ej = new Plato(rsPlatos.getString("nombre"), rsPlatos.getBoolean("apto_veganos"), 
                                     rsPlatos.getBoolean("apto_celiacos"), rsPlatos.getString("tipo"),
                                     rsPlatos.getString("descripcion"));
+            ej.setServicio(rsPlatos.getInt("servicio_plato"));
             resultado.add(ej);
         }
 
@@ -193,13 +194,13 @@ public class DAOPlatos extends AbstractDAO{
         }
     }
     
-    public int obtenerServicioPlato(Plato plato){      
+    public int obtenerServicioPlato(Plato plato, Mesa m){      
         int resultado = -1;
         Connection con;
         PreparedStatement stmPlatos=null;
         String statement = "select servicio_plato  " +
                             "from tenerplato " + 
-                            "where plato = ?";
+                            "where plato = ? and mesa = ?";
         ResultSet rsPlatos;
 
         con=super.getConexion();
@@ -207,6 +208,7 @@ public class DAOPlatos extends AbstractDAO{
         try {
         stmPlatos =con.prepareStatement(statement);
         stmPlatos.setString(1, plato.getNombre());
+        stmPlatos.setInt(2, m.getNum_mesa());
         rsPlatos=stmPlatos.executeQuery();
         if (rsPlatos.next())
         {

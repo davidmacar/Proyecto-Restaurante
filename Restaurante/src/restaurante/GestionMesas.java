@@ -32,4 +32,8 @@ public class GestionMesas {
     public float precioMesa(Mesa mesa){
         return fbd.precioMesa(mesa);
     }
+
+    void eliminarMesaCobrada(Mesa mesa) {
+        fbd.eliminarMesaCobrada(mesa);
+    }
 }
