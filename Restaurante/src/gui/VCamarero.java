@@ -70,6 +70,8 @@ public class VCamarero extends javax.swing.JDialog {
         jScrollPane4 = new javax.swing.JScrollPane();
         listBebidas = new javax.swing.JList<>();
         txtError = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -84,14 +86,14 @@ public class VCamarero extends javax.swing.JDialog {
                 btnMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 109, 102, 99));
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 102, 99));
 
         btnCobrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCobrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 286, 88, 85));
+        getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 270, 88, 85));
 
         jLabel1.setText("Mesas");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 23, -1, -1));
@@ -129,6 +131,12 @@ public class VCamarero extends javax.swing.JDialog {
         txtError.setAutoscrolls(true);
         txtError.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(txtError, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 23, 120, 80));
+
+        jLabel4.setText("Menu");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, -1, -1));
+
+        jLabel5.setText("Cobrar");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -227,6 +235,8 @@ public class VCamarero extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
