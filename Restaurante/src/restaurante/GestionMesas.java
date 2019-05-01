@@ -32,6 +32,10 @@ public class GestionMesas {
     public float precioMesa(Mesa mesa){
         return fbd.precioMesa(mesa);
     }
+    
+    public void cobrarMesa(Mesa mesa, String camarero, Float precio) {
+        fbd.cobrarMesa(mesa, camarero , precio);
+    }
 
     void eliminarMesaCobrada(Mesa mesa) {
         fbd.eliminarMesaCobrada(mesa);

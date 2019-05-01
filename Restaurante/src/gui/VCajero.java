@@ -107,8 +107,8 @@ public class VCajero extends javax.swing.JDialog {
 
     private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
         
-        fap.eliminaMesaCobrada(mesa);
-        //fap.cobrarMesa(mesa, camarero, precio);        
+        //fap.eliminaMesaCobrada(mesa);
+        fap.cobrarMesa(mesa, "11111111A", precio);        
         vcam.actualizarMesas();
         this.setVisible(false);
         vcam.setVisible(true);

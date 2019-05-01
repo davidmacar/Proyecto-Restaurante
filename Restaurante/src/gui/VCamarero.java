@@ -26,6 +26,7 @@ public class VCamarero extends javax.swing.JDialog {
         this.fap = fap;
         initComponents();
         this.txtError.setVisible(false);
+        btnCobrar.setEnabled(false);
         ModeloTablaPlatos mtp = new ModeloTablaPlatos();
         this.actualizarMesas();
     }
@@ -154,6 +155,13 @@ public class VCamarero extends javax.swing.JDialog {
         this.txtError.setVisible(false);
         this.actualizarPlatos();
         this.actualizarBebidas();
+        
+        if ((listPlatos.getModel().getSize() == 0) && (listBebidas.getModel().getSize() == 0)){
+            btnCobrar.setEnabled(false);
+        }
+        else{
+            btnCobrar.setEnabled(true);
+        }
     }//GEN-LAST:event_listMesasMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

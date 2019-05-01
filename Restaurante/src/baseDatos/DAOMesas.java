@@ -113,36 +113,70 @@ public class DAOMesas extends AbstractDAO {
     }
     
     public void cobrarMesa(Mesa mesa, String camarero, Float precio){
-        float resultado=0;
         Connection con;
-        PreparedStatement stmCobrar=null;
-
-        ResultSet rsCobrar;
+        PreparedStatement stmInsertar=null;
+        PreparedStatement stmBorrarBebida=null;
+        PreparedStatement stmBorrarPlato=null;
 
         con=super.getConexion();
 
         try {
-        stmCobrar=con.prepareStatement( "INSERT INTO atender(mesa, camarero, id_venta, fecha_venta, precio) " +
+        stmInsertar=con.prepareStatement( "INSERT INTO atender(mesa, camarero, id_venta, fecha_venta, precio) " +
                                         "VALUES (?, ?, nextval('controla_secuencia_idVenta'), NOW(), ?)");
-        stmCobrar.setInt(1, mesa.getNum_mesa());
-        stmCobrar.setString(2, camarero);
-        stmCobrar.setFloat(3, precio);
-        rsCobrar=stmCobrar.executeQuery();
-
-
+        stmInsertar.setInt(1, mesa.getNum_mesa());
+        stmInsertar.setString(2, camarero);
+        stmInsertar.setFloat(3, precio);
+        stmInsertar.executeUpdate();
+        
         } catch (SQLException e){
             e.printStackTrace();;
             System.out.println(e.getMessage());
           //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         }finally{
           try {
-              stmCobrar.close();
+              stmInsertar.close();
           } 
           catch (SQLException e){
               e.printStackTrace();
               System.out.println("Imposible cerrar cursores");
               System.out.println("");
           }
+        }
+        
+        
+        try {
+            stmBorrarPlato = con.prepareStatement("delete from tenerplato " +
+                                            "where mesa=?");
+            stmBorrarPlato.setInt(1, mesa.getNum_mesa());
+            stmBorrarPlato.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmBorrarPlato.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        
+        
+        try {
+            stmBorrarBebida = con.prepareStatement("delete from tenerbebida " +
+                                            "where mesa=?");
+            stmBorrarBebida.setInt(1, mesa.getNum_mesa());
+            stmBorrarBebida.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmBorrarBebida.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
         }
     }
     
