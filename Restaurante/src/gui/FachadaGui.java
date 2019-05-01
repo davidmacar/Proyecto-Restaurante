@@ -5,7 +5,10 @@
  */
 package gui;
 
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import restaurante.*;
 
 /**
@@ -13,7 +16,7 @@ import restaurante.*;
  * @author davidmacar
  *   
  */
-public class FachadaGui {
+public class FachadaGui extends IOException{
     FachadaAplicacion fap;
     VAutenticacion vac;
     
@@ -26,9 +29,13 @@ public class FachadaGui {
         this.vac.setVisible(true);
     }
     public void vistaCamarero(){
-        VCamarero vcam = new VCamarero(this.vac, true, this.fap);
-        vcam.setVisible(true);
-        this.vac.setVisible(false);
+        try {
+            VCamarero vcam = new VCamarero(this.vac, true, this.fap);
+            vcam.setVisible(true);
+            this.vac.setVisible(false);
+        } catch (IOException ex) {
+            Logger.getLogger(FachadaGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public void vistaMenu(VCamarero vcam, Mesa mesa){
         VMenu vmen = new VMenu(vcam, true, this.fap, mesa);
