@@ -29,13 +29,9 @@ public class FachadaGui extends IOException{
         this.vac.setVisible(true);
     }
     public void vistaCamarero(){
-        try {
-            VCamarero vcam = new VCamarero(this.vac, true, this.fap);
-            vcam.setVisible(true);
-            this.vac.setVisible(false);
-        } catch (IOException ex) {
-            Logger.getLogger(FachadaGui.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        VCamarero vcam = new VCamarero(this.vac, true, this.fap);
+        vcam.setVisible(true);
+        this.vac.setVisible(false);
     }
     public void vistaMenu(VCamarero vcam, Mesa mesa){
         VMenu vmen = new VMenu(vcam, true, this.fap, mesa);
