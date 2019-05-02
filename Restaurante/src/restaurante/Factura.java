@@ -17,6 +17,7 @@ public class Factura {
     private String cliente;
     private String fecha;
     private Float precio;
+    private int mesa;
     
 
     public Factura(int venta, String cliente, String fecha, Float precio) {
@@ -25,14 +26,19 @@ public class Factura {
         this.cliente = cliente;
         this.fecha = fecha;
         this.precio = precio;
+        this.mesa = mesa;
     }
 
     public int getId() {
         return id;
     }
+    
+    public int getMesa() {
+        return mesa;
+    }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMesa(int mesa) {
+        this.mesa = mesa;
     }
 
     public int getVenta() {

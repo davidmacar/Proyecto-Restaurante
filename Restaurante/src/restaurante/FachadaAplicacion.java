@@ -139,6 +139,12 @@ public class FachadaAplicacion {
         return gf.obtenerFacturas();
     }
     
+    public java.util.List<Factura> obtenerFacturas(int id, String cliente){
+        return gf.obtenerFacturas(id, cliente);
+    }
+     
+    public java.util.List<Factura> obtenerFacturas(){
+        return gf.obtenerFacturas();
     public void vistaFactura(VCajero ventana, int mesa, int servicio){
         this.fgui.vistaFactura(ventana, mesa, servicio);
     }
@@ -153,5 +159,6 @@ public class FachadaAplicacion {
     }
     public void anadirCliente(Cliente cli){
         this.gc.anadirCliente(cli);
+    }
     }
 }

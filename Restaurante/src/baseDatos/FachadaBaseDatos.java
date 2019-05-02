@@ -137,9 +137,13 @@ public class FachadaBaseDatos {
         daoMesas.eliminarMesaCobrada(mesa);
     }
 
+
+    public List<Factura> obtenerFacturas(int id, String cliente) {
+        return daoFacturas.obtenerFacturas(id, cliente);
+    }
+
     public List<Factura> obtenerFacturas() {
-        return null;
-    //    daoFacturas.obtenerFactura();
+        return daoFacturas.obtenerFacturas();
     }
     public String obtenerFechaActual(){
         return this.daoFacturas.obtenerFechaActual();
