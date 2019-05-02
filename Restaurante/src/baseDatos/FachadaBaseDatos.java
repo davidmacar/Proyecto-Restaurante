@@ -9,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.Properties;
 import restaurante.*;
 
@@ -24,6 +26,8 @@ public class FachadaBaseDatos {
     private DAOEmpleados daoEmpleados;
     private DAOIngredientes daoIngredientes;
     private DAOMesas daoMesas;
+    private DAOClientes daoClientes;
+    private DAOFacturas daoFacturas;
     
     public FachadaBaseDatos(FachadaAplicacion fap){
         this.fap=fap;
@@ -63,6 +67,8 @@ public class FachadaBaseDatos {
         this.daoEmpleados = new DAOEmpleados(this.conexion, this.fap);
         this.daoMesas = new DAOMesas(this.conexion, this.fap);
         this.daoBebidas = new DAOBebidas(this.conexion, this.fap);
+        this.daoFacturas = new DAOFacturas(this.conexion, this.fap);
+        this.daoClientes = new DAOClientes(this.conexion, this.fap);
     }
     
     public java.util.List<Plato> obtenerPlatos(){
@@ -123,11 +129,33 @@ public class FachadaBaseDatos {
         return daoBebidas.obtenerServicioBebida(bebida, m);
     }
     
-    public void cobrarMesa(Mesa mesa, String camarero, Float precio) {
-        daoMesas.cobrarMesa(mesa, camarero , precio);
+    public int cobrarMesa(Mesa mesa, String camarero, Float precio) {
+        return daoMesas.cobrarMesa(mesa, camarero , precio);
     }
 
     public void eliminarMesaCobrada(Mesa mesa) {
         daoMesas.eliminarMesaCobrada(mesa);
     }
+
+
+    public List<Factura> obtenerFacturas(int id, String cliente) {
+        return daoFacturas.obtenerFacturas(id, cliente);
+    }
+
+    public List<Factura> obtenerFacturas() {
+        return daoFacturas.obtenerFacturas();
+    }
+    public String obtenerFechaActual(){
+        return this.daoFacturas.obtenerFechaActual();
+    }
+    public String obtenerIdFactura(){
+        return this.daoFacturas.obtenerIdFactura();
+    }
+    public void anadirFactura(Factura fact){
+        //this.daoFacturas.anadirFactura(fact);
+    }
+    public void anadirCliente(Cliente cli){
+        //this.daoClientes.anadirCliente(cli);
+    }
+
 }

@@ -21,6 +21,8 @@ public class FachadaAplicacion {
     GestionBebidas gb;
     GestionMesas gm;
     GestionEmpleados ge;
+    GestionClientes gc;
+    GestionFacturas gf;
     
     public FachadaAplicacion(){
         this.fbd = new FachadaBaseDatos(this);
@@ -29,6 +31,8 @@ public class FachadaAplicacion {
         this.gb = new GestionBebidas(this.fgui, this.fbd);
         this.gm = new GestionMesas(this.fgui, this.fbd);
         this.ge = new GestionEmpleados(this.fgui, this.fbd);
+        this.gf = new GestionFacturas(this.fgui, this.fbd);
+        this.gc = new GestionClientes(this.fgui, this.fbd);
     }
     public static void main(String[] args) {
         FachadaAplicacion fa;
@@ -51,6 +55,7 @@ public class FachadaAplicacion {
     public void vistaMenu(VCamarero vcam, Mesa mesa){
         this.fgui.vistaMenu(vcam, mesa);
     }
+    
     public void vistaProducto(javax.swing.JDialog ventana, Object obj){
         this.fgui.vistaProducto(ventana, obj);
     }
@@ -65,6 +70,7 @@ public class FachadaAplicacion {
     public Empleado obtenerCamarero(String dni){
         return ge.obtenerCamarero(dni);
     }
+    
     public java.util.List<Mesa> obtenerMesas(){
         return gm.obtenerMesas();
     }
@@ -117,13 +123,38 @@ public class FachadaAplicacion {
         return gb.obtenerServicioBebida(bebida, m);
     }
 
-    public void cobrarMesa(Mesa mesa, String camarero, Float precio) {
-        gm.cobrarMesa(mesa, camarero , precio);
+    public int cobrarMesa(Mesa mesa, String camarero, Float precio) {
+        return gm.cobrarMesa(mesa, camarero , precio);
     }
 
     public void eliminaMesaCobrada(Mesa mesa) {
         gm.eliminarMesaCobrada(mesa);
     }
+
+    public void vistaFactura(VCamarero vcam) {
+        this.fgui.vistaFactura(vcam);
+    }
     
-    
+    /*public java.util.List<Factura> obtenerFacturas(int id, String cliente){
+        return gf.obtenerFacturas(id, cliente);
+    }*/
+     
+    public java.util.List<Factura> obtenerFacturas(){
+        return gf.obtenerFacturas();
+    }
+    public void vistaFactura(VCajero ventana, int mesa, int servicio){
+        this.fgui.vistaFactura(ventana, mesa, servicio);
+    }
+    public String obtenerFechaActual(){
+        return this.gf.obtenerFechaActual();
+    }
+    public String obtenerIdFactura(){
+        return this.gf.obtenerIdFactura();
+    }
+    public void anadirFactura(Factura fact){
+        this.gf.anadirFactura(fact);
+    }
+    public void anadirCliente(Cliente cli){
+        this.gc.anadirCliente(cli);
+    }
 }

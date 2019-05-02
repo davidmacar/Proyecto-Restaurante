@@ -29,7 +29,7 @@ public class DAOMesas extends AbstractDAO {
         java.util.List<Mesa> resultado=new java.util.ArrayList<Mesa>();
         Connection con;
         PreparedStatement stmMesas=null;
-        String statement = "select *" +
+        String statement = "select * " +
                             "from mesas";
         ResultSet rsMesas;
 
@@ -112,24 +112,25 @@ public class DAOMesas extends AbstractDAO {
         return resultado;
     }
     
-    public void cobrarMesa(Mesa mesa, String camarero, Float precio){
+    public int cobrarMesa(Mesa mesa, String camarero, Float precio){
         Connection con;
         PreparedStatement stmInsertar=null;
         PreparedStatement stmBorrarBebida=null;
         PreparedStatement stmBorrarPlato=null;
-
+        PreparedStatement stmServicio=null;
+        int ret = -1;
         con=super.getConexion();
 
         try {
         stmInsertar=con.prepareStatement( "INSERT INTO atender(mesa, camarero, id_venta, fecha_venta, precio) " +
-                                        "VALUES (?, ?, nextval('controla_secuencia_idVenta'), NOW(), ?)");
+                                        "VALUES (?, ?, nextval('controla_secuencia_idVenta'), NOW()::timestamp, ?)");
         stmInsertar.setInt(1, mesa.getNum_mesa());
         stmInsertar.setString(2, camarero);
         stmInsertar.setFloat(3, precio);
         stmInsertar.executeUpdate();
         
         } catch (SQLException e){
-            e.printStackTrace();;
+            e.printStackTrace();
             System.out.println(e.getMessage());
           //this.getFachadaAplicacion()v .muestraExcepcion(e.getMessage());
         }finally{
@@ -178,9 +179,29 @@ public class DAOMesas extends AbstractDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
+        
+        try {
+            ResultSet rsServicio = null;
+            stmServicio = con.prepareStatement("SELECT last_value as number FROM 'controla_secuencia_idfactura'");
+            rsServicio = stmServicio.executeQuery();
+            if(rsServicio.next()){
+                ret = rsServicio.getInt("number");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmBorrarPlato.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return ret;
     }
     
-    void eliminarMesaCobrada( Mesa m) {
+    void eliminarMesaCobrada(Mesa m) {
         Connection con;
         PreparedStatement stmMesa = null;
 

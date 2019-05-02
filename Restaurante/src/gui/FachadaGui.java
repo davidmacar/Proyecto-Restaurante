@@ -5,7 +5,10 @@
  */
 package gui;
 
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import restaurante.*;
 
 /**
@@ -13,7 +16,7 @@ import restaurante.*;
  * @author davidmacar
  *   
  */
-public class FachadaGui {
+public class FachadaGui extends IOException{
     FachadaAplicacion fap;
     VAutenticacion vac;
     
@@ -35,8 +38,12 @@ public class FachadaGui {
         vmen.setVisible(true);
     }
     public void vistaProducto(javax.swing.JDialog ventana, Object obj){
-        VProducto vprod = new VProducto(ventana, true, fap, obj);
+        VProducto vprod = new VProducto(ventana, true, this.fap, obj);
         vprod.setVisible(true);
+    }
+    public void vistaFactura(VCajero ventana, int mesa, int servicio){
+        VNuevaFactura vfac = new VNuevaFactura(ventana, true, this.fap, mesa, servicio);
+        vfac.setVisible(true);
     }
     
     
@@ -44,6 +51,11 @@ public class FachadaGui {
     public void vistaCajero(VCamarero vcam, Mesa mesa) {
         VCajero vcaj = new VCajero(vcam, true, this.fap, mesa);
         vcaj.setVisible(true);
+    }
+
+    public void vistaFactura(VCamarero vcam) {
+        VHistorialFacturas vhistfact = new VHistorialFacturas(vcam, true, this.fap);
+        vhistfact.setVisible(true);
     }
 
 }
