@@ -19,7 +19,7 @@ public class ModeloTablaFacturas extends AbstractTableModel{
    
     
     public ModeloTablaFacturas(){
-        this.facturas=new java.util.ArrayList<Factura>();
+        this.facturas=new java.util.ArrayList<>();
         
     }
 
@@ -75,7 +75,10 @@ public class ModeloTablaFacturas extends AbstractTableModel{
         return clase;
     }
 
-
+    public void setFilas(List<Factura> facturas) {
+    this.facturas = facturas;
+    fireTableDataChanged();
+    }
 
     
 

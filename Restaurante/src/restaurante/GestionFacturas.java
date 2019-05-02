@@ -30,4 +30,8 @@ public class GestionFacturas {
     return this.fbd.obtenerFacturas(id, cliente);
     }
 
+    List<Factura> obtenerFacturas() {
+        return this.fbd.obtenerFacturas();
+    }
+
 }

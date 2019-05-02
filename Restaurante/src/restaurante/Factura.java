@@ -16,13 +16,12 @@ public class Factura {
     private int id;
     private int venta;
     private String cliente;
-    private Calendar fecha;
+    private String fecha;
     private Float precio;
     private int mesa;
     
 
-    public Factura(int id, int venta, String cliente, Calendar fecha, Float precio, int mesa) {
-        this.id = id;
+    public Factura(int venta, String cliente, String fecha, Float precio, int mesa) {
         this.venta = venta;
         this.cliente = cliente;
         this.fecha = fecha;
@@ -32,10 +31,6 @@ public class Factura {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
     
     public int getMesa() {
@@ -62,11 +57,11 @@ public class Factura {
         this.cliente = cliente;
     }
 
-    public Calendar getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Calendar fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

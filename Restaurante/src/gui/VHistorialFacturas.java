@@ -27,13 +27,19 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         //this.vcam = (VCamarero) parent;
         this.fap = fap;
         initComponents();
-        this.actualizarModelo();
+        this.mtf = new ModeloTablaFacturas();
+        //this.actualizarModelo();
     }
 
     private void actualizarModelo() {
 
         mtf = (ModeloTablaFacturas) tablaFacturas.getModel();
-        //mtf.setFilas(fap.obtenerFacturas(txtBuscarId.getText(), txtBuscarCliente.getText()));
+        
+        if(!txtBuscarId.getText().isEmpty()){
+            mtf.setFilas(fap.obtenerFacturas(Integer.parseInt(txtBuscarId.getText()), txtBuscarCliente.getText()));
+        } else{
+            mtf.setFilas(fap.obtenerFacturas());
+        }
     }
     
     /**
