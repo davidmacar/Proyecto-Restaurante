@@ -22,6 +22,7 @@ public class FachadaAplicacion {
     GestionMesas gm;
     GestionEmpleados ge;
     GestionClientes gc;
+    GestionFacturas gf;
     
     public FachadaAplicacion(){
         this.fbd = new FachadaBaseDatos(this);
@@ -136,5 +137,7 @@ public class FachadaAplicacion {
         this.fgui.vistaFacturaNueva(vhistfact);
     }
     
-    
+     public java.util.List<Factura> obtenerFacturas(){
+        return gf.obtenerFacturas();
+    }
 }

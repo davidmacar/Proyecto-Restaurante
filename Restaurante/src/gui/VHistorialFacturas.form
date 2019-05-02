@@ -38,7 +38,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="txtBuscarNombre" min="-2" pref="146" max="-2" attributes="0"/>
+                                  <Component id="txtBuscarCliente" min="-2" pref="146" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                                   <Component id="btnBuscarFactura" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -69,7 +69,7 @@
                   <Component id="jLabel1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtBuscarId" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBuscarNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBuscarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnBuscarFactura" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -97,7 +97,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre:"/>
+        <Property name="text" type="java.lang.String" value="Cliente"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBuscarId">
@@ -105,7 +105,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBuscarIdActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtBuscarNombre">
+    <Component class="javax.swing.JTextField" name="txtBuscarCliente">
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscarFactura">
       <Properties>
@@ -161,6 +161,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirFacturaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

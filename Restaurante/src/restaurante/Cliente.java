@@ -16,13 +16,23 @@ public class Cliente {
     private String apellido1;
     private String apellido2;
     private String eMail;
+    private String direccion;
 
-    public Cliente(String dni, String nombre, String apellido1, String apellido2, String eMail) {
+    public Cliente(String dni, String nombre, String apellido1, String apellido2, String eMail, String direccion) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.eMail = eMail;
+        this.direccion = direccion;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getDni() {

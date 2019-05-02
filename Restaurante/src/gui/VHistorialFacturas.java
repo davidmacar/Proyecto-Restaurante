@@ -33,7 +33,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
     private void actualizarModelo() {
 
         mtf = (ModeloTablaFacturas) tablaFacturas.getModel();
-       // mtc.setFilas(fap.obtenerClientes(txtBuscarId.getText(), txtBuscarNombre.getText()));
+        mtf.setFilas(fap.obtenerFacturas(txtBuscarId.getText(), txtBuscarCliente.getText()));
     }
     
     /**
@@ -48,7 +48,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtBuscarId = new javax.swing.JTextField();
-        txtBuscarNombre = new javax.swing.JTextField();
+        txtBuscarCliente = new javax.swing.JTextField();
         btnBuscarFactura = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaFacturas = new javax.swing.JTable();
@@ -62,7 +62,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
 
         jLabel1.setText("ID:");
 
-        jLabel2.setText("Nombre:");
+        jLabel2.setText("Cliente");
 
         txtBuscarId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +99,11 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         btnModificarFactura.setText("Modificar");
 
         btnSalirFactura.setText("Salir");
+        btnSalirFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirFacturaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,7 +124,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtBuscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(107, 107, 107)
                                     .addComponent(btnBuscarFactura)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -141,7 +146,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(txtBuscarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarFactura))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,6 +187,10 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         fap.vistaFacturaNueva(this);
     }//GEN-LAST:event_btnNuevaFacturaActionPerformed
 
+    private void btnSalirFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirFacturaActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSalirFacturaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarFactura;
@@ -194,7 +203,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tablaFacturas;
+    private javax.swing.JTextField txtBuscarCliente;
     private javax.swing.JTextField txtBuscarId;
-    private javax.swing.JTextField txtBuscarNombre;
     // End of variables declaration//GEN-END:variables
 }

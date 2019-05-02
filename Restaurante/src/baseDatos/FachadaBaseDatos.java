@@ -133,4 +133,8 @@ public class FachadaBaseDatos {
         daoMesas.eliminarMesaCobrada(mesa);
     }
 
+    public List<Factura> obtenerFacturas() {
+        daoFacturas.obtenerFactura();
+    }
+
 }
