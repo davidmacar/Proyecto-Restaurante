@@ -38,12 +38,12 @@ public class DAOFacturas extends AbstractDAO {
         try {
             stmFactura = con.prepareStatement(statement);
             stmFactura.setInt(1, id_factura);
-            stmFactura.setString(2, cliente);
+            //stmFactura.setString(2, cliente);
             rsFactura = stmFactura.executeQuery();
             if (rsFactura.next()) {
-                factura = new Factura(rsFactura.getInt("id_factura"),
-                        rsFactura.getInt("venta"), rsFactura.getString("cliente"),
-                        rsFactura.getString("fecha"), rsFactura.getFloat("precio");
+           //     factura = new Factura(rsFactura.getInt("id_factura"),
+           //             rsFactura.getInt("venta"), rsFactura.getString("cliente"),
+           //             rsFactura.getString("fecha"), rsFactura.getFloat("precio");
             }
 
         } catch (SQLException e) {
