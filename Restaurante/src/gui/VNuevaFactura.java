@@ -281,7 +281,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
 
     private void btnGuardarNewFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarNewFacturaActionPerformed
         Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
-                                    this.fap.precioMesa(this.fap.obtenerMesa(mesa)));
+                                    this.fap.precioMesa(this.fap.obtenerMesa(mesa)), this.mesa);
         Cliente cli = new Cliente(this.txtDni.getText(), this.txtNombreCliente.getText(), 
                                     (this.txtApellidosCliente.getText().split(" "))[0], 
                                     (this.txtApellidosCliente.getText().split(" "))[1], 

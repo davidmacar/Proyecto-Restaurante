@@ -140,7 +140,7 @@ public class VCajero extends javax.swing.JDialog {
 
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
         //HAY QUE COBRAR PRIMERO PARA FACTURAR PORQUE SE NECESITA EL ID DE LA VENTA
-        this.fap.vistaFactura(this, this.mesa.getNum_mesa(), );
+        //this.fap.vistaFactura(this, this.mesa.getNum_mesa(), );
     }//GEN-LAST:event_btnFacturarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

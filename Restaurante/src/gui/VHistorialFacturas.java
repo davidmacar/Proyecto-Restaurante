@@ -36,7 +36,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         mtf = (ModeloTablaFacturas) tablaFacturas.getModel();
         
         if(!txtBuscarId.getText().isEmpty()){
-            mtf.setFilas(fap.obtenerFacturas(Integer.parseInt(txtBuscarId.getText()), txtBuscarCliente.getText()));
+            //mtf.setFilas(fap.obtenerFacturas(Integer.parseInt(txtBuscarId.getText()), txtBuscarCliente.getText()));
         } else{
             mtf.setFilas(fap.obtenerFacturas());
         }

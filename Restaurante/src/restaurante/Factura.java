@@ -20,7 +20,7 @@ public class Factura {
     private int mesa;
     
 
-    public Factura(int venta, String cliente, String fecha, Float precio) {
+    public Factura(int venta, String cliente, String fecha, Float precio, int mesa) {
         this.id = 0;
         this.venta = venta;
         this.cliente = cliente;

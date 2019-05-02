@@ -29,8 +29,8 @@ public class DAOFacturas extends AbstractDAO {
         PreparedStatement stmFactura = null;
 
         String statement = "select id_factura, venta, cliente, fecha, precio  "
-                + "from facturas as f, clientes as c"
-                + "where f.cliente = c.dni"
+                + "from facturas as f, clientes as c "
+                + "where f.cliente = c.dni "
                 + "where f.id_factura = ? and f.cliente = ? ";
         ResultSet rsFactura;
 
@@ -137,7 +137,7 @@ public class DAOFacturas extends AbstractDAO {
         Factura factura = null;
         PreparedStatement stmFactura = null;
 
-        String statement = "select (precio/(1.21)) as sin_iva"
+        String statement = "select (precio/(1.21)) as sin_iva "
                 + "from  atender";
         ResultSet rsFactura;
 
@@ -158,9 +158,9 @@ public class DAOFacturas extends AbstractDAO {
         List<Factura> resultado = new ArrayList<Factura>();
         Connection con;
         PreparedStatement stmFacturas = null;
-        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, m.mesa"
-                + "from facturas as f, cliente as c, atender as a, mesas as m"
-                + "where f.cliente = c.dni and f.venta = a.id_venta and a.mesa = m-num_mesa"
+        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, m.mesa "
+                + "from facturas as f, cliente as c, atender as a, mesas as m "
+                + "where f.cliente = c.dni and f.venta = a.id_venta and a.mesa = m-num_mesa "
                 + "and f.id_factura = ? and f.cliente = ?";
         ResultSet rsFacturas;
 
@@ -195,7 +195,7 @@ public class DAOFacturas extends AbstractDAO {
        List<Factura> resultado = new ArrayList<Factura>();
         Connection con;
         PreparedStatement stmFacturas = null;
-        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, m.mesa"
+        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, m.mesa "
                 + "from facturas as f, cliente as c, atender as a, mesas as m";
         ResultSet rsFacturas;
 
