@@ -17,7 +17,6 @@ public class VHistorialFacturas extends javax.swing.JDialog {
     
     FachadaAplicacion fap;
     VCamarero vcam;
-    ModeloTablaClientes mtc;
     ModeloTablaFacturas mtf;
 
     /**
@@ -91,6 +90,11 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         });
 
         btnNuevaFactura.setText("Nueva");
+        btnNuevaFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevaFacturaActionPerformed(evt);
+            }
+        });
 
         btnModificarFactura.setText("Modificar");
 
@@ -173,6 +177,10 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_btnBuscarFacturaActionPerformed
+
+    private void btnNuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaFacturaActionPerformed
+        fap.vistaFacturaNueva(this);
+    }//GEN-LAST:event_btnNuevaFacturaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
