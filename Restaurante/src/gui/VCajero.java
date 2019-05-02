@@ -138,7 +138,7 @@ public class VCajero extends javax.swing.JDialog {
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
-        this.fap.vistFactura(this, this.mesa);
+        //this.fap.vistFactura(this, this.mesa);
     }//GEN-LAST:event_btnFacturarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
