@@ -134,7 +134,8 @@ public class FachadaBaseDatos {
     }
 
     public List<Factura> obtenerFacturas() {
-        daoFacturas.obtenerFactura();
+        return null;
+    //    daoFacturas.obtenerFactura();
     }
 
 }
