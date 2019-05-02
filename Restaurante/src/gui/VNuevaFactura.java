@@ -262,7 +262,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
     }//GEN-LAST:event_txtFechaActionPerformed
 
     private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtTotalActionPerformed
 
     /**
