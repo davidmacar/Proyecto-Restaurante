@@ -24,8 +24,10 @@ public class GestionFacturas {
         this.fgui = fgui;
     }
 
-    List<Factura> obtenerFacturas() {
-        return this.fbd.obtenerFacturas();
+  
+
+    List<Factura> obtenerFacturas(int id, String cliente) {
+    return this.fbd.obtenerFacturas(id, cliente);
     }
 
 }

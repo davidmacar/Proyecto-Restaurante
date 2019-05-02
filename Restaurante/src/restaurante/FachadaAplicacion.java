@@ -137,7 +137,7 @@ public class FachadaAplicacion {
         this.fgui.vistaFacturaNueva(vhistfact);
     }
     
-     public java.util.List<Factura> obtenerFacturas(){
-        return gf.obtenerFacturas();
+     public java.util.List<Factura> obtenerFacturas(int id, String cliente){
+        return gf.obtenerFacturas(id, cliente);
     }
 }

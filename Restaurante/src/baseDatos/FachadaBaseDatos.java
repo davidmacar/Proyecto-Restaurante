@@ -26,6 +26,7 @@ public class FachadaBaseDatos {
     private DAOIngredientes daoIngredientes;
     private DAOMesas daoMesas;
     private DAOClientes daoClientes;
+    private DAOFacturas daoFacturas;
     
     public FachadaBaseDatos(FachadaAplicacion fap){
         this.fap=fap;
@@ -133,9 +134,9 @@ public class FachadaBaseDatos {
         daoMesas.eliminarMesaCobrada(mesa);
     }
 
-    public List<Factura> obtenerFacturas() {
-        return null;
-    //    daoFacturas.obtenerFactura();
+
+    public List<Factura> obtenerFacturas(int id, String cliente) {
+        return daoFacturas.obtenerFacturas(id, cliente);
     }
 
 }
