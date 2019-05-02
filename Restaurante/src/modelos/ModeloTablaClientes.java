@@ -30,11 +30,11 @@ public class ModeloTablaClientes extends AbstractTableModel{
         String nombre="";
 
         switch (col){
-            case 0: nombre= "dni"; break;
+            case 0: nombre= "DNI"; break;
             case 1: nombre= "Nombre"; break;
-            case 2: nombre="Apellido1"; break;
-            case 3: nombre="Apellidos2"; break;
-            case 4: nombre= "e-mail"; break;
+            case 2: nombre="Primer Apellido"; break;
+            case 3: nombre="Segundo Apellido"; break;
+            case 4: nombre= "eMail"; break;
             case 5: nombre= "Numero Telefono"; break;
 
         }

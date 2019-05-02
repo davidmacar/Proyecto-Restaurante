@@ -6,6 +6,7 @@
 package gui;
 
 import modelos.ModeloTablaClientes;
+import modelos.ModeloTablaFacturas;
 import restaurante.FachadaAplicacion;
 
 /**
@@ -17,6 +18,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
     FachadaAplicacion fap;
     VCamarero vcam;
     ModeloTablaClientes mtc;
+    ModeloTablaFacturas mtf;
 
     /**
      * Creates new form VFactura
@@ -31,7 +33,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
 
     private void actualizarModelo() {
 
-        mtc = (ModeloTablaClientes) tablaClientes.getModel();
+        mtf = (ModeloTablaFacturas) tablaFacturas.getModel();
        // mtc.setFilas(fap.obtenerClientes(txtBuscarId.getText(), txtBuscarNombre.getText()));
     }
     
@@ -50,7 +52,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         txtBuscarNombre = new javax.swing.JTextField();
         btnBuscarFactura = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaClientes = new javax.swing.JTable();
+        tablaFacturas = new javax.swing.JTable();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         btnNuevaFactura = new javax.swing.JButton();
@@ -76,8 +78,8 @@ public class VHistorialFacturas extends javax.swing.JDialog {
             }
         });
 
-        tablaClientes.setModel(new ModeloTablaClientes());
-        jScrollPane1.setViewportView(tablaClientes);
+        tablaFacturas.setModel(new ModeloTablaFacturas());
+        jScrollPane1.setViewportView(tablaFacturas);
 
         jTextField2.setText("Ahí dentro aparecerían todas las facturas si se le da a buscar, o si se escribe el id o nombre pues las de ese cliente.");
 
@@ -165,8 +167,8 @@ public class VHistorialFacturas extends javax.swing.JDialog {
     private void btnBuscarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFacturaActionPerformed
         // TODO add your handling code here:
         actualizarModelo();
-        if (mtc.getRowCount() > 0) {
-            tablaClientes.setRowSelectionInterval(0, 0);
+        if (mtf.getRowCount() > 0) {
+            tablaFacturas.setRowSelectionInterval(0, 0);
 
         }
 
@@ -183,7 +185,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTable tablaClientes;
+    private javax.swing.JTable tablaFacturas;
     private javax.swing.JTextField txtBuscarId;
     private javax.swing.JTextField txtBuscarNombre;
     // End of variables declaration//GEN-END:variables
