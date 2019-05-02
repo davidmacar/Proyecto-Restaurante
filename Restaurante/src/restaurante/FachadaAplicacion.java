@@ -157,4 +157,8 @@ public class FachadaAplicacion {
     public void anadirCliente(Cliente cli){
         this.gc.anadirCliente(cli);
     }
+    
+    public Cliente obtenerCliente(String dni){
+        return this.gc.obtenerCliente(dni);
+    }
 }

@@ -87,6 +87,11 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tablaFacturas);
 
         jTextField2.setText("Ahí dentro aparecerían todas las facturas si se le da a buscar, o si se escribe el id o nombre pues las de ese cliente.");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jTextField3.setText("id_factura           fecha       Cliente        precio");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +201,10 @@ public class VHistorialFacturas extends javax.swing.JDialog {
     private void btnSalirFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirFacturaActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnSalirFacturaActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

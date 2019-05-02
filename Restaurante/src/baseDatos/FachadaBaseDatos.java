@@ -157,5 +157,9 @@ public class FachadaBaseDatos {
     public void anadirCliente(Cliente cli){
         //this.daoClientes.anadirCliente(cli);
     }
+    
+    public Cliente obtenerCliente(String dni){
+        return this.daoClientes.obtenerCliente(dni);
+    }
 
 }

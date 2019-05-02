@@ -224,5 +224,28 @@ public class DAOFacturas extends AbstractDAO {
         return resultado;
     } 
     
+    public void anadirFactura(Factura fact){
+        Connection con;
+        PreparedStatement stmInsert=null;
+        con=super.getConexion();
+
+        try {
+        stmInsert=con.prepareStatement("insert into facturas "+
+                                      "values (?,?,?,?,?,?)");
+        stmInsert.setInt(1, fact.getId());
+        stmInsert.setInt(2, fact.getVenta());
+        stmInsert.setString(3, fact.getCliente());
+        stmInsert.setString(4, fact.getFecha());
+        stmInsert.setFloat(5, fact.getPrecio());
+        stmInsert.setInt(6, fact.getMesa());
+        stmInsert.executeUpdate();
+
+        } catch (SQLException e){
+          System.out.println(e.getMessage());
+          //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        }finally{
+          try {stmInsert.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+        }
+    }
 
 }
