@@ -129,8 +129,8 @@ public class FachadaBaseDatos {
         return daoBebidas.obtenerServicioBebida(bebida, m);
     }
     
-    public void cobrarMesa(Mesa mesa, String camarero, Float precio) {
-        daoMesas.cobrarMesa(mesa, camarero , precio);
+    public int cobrarMesa(Mesa mesa, String camarero, Float precio) {
+        return daoMesas.cobrarMesa(mesa, camarero , precio);
     }
 
     public void eliminarMesaCobrada(Mesa mesa) {

@@ -112,12 +112,13 @@ public class DAOMesas extends AbstractDAO {
         return resultado;
     }
     
-    public void cobrarMesa(Mesa mesa, String camarero, Float precio){
+    public int cobrarMesa(Mesa mesa, String camarero, Float precio){
         Connection con;
         PreparedStatement stmInsertar=null;
         PreparedStatement stmBorrarBebida=null;
         PreparedStatement stmBorrarPlato=null;
-
+        PreparedStatement stmServicio=null;
+        int ret = -1;
         con=super.getConexion();
 
         try {
@@ -178,9 +179,29 @@ public class DAOMesas extends AbstractDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
+        
+        try {
+            ResultSet rsServicio = null;
+            stmServicio = con.prepareStatement("SELECT last_value as number FROM 'controla_secuencia_idfactura'");
+            rsServicio = stmServicio.executeQuery();
+            if(rsServicio.next()){
+                ret = rsServicio.getInt("number");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmBorrarPlato.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return ret;
     }
     
-    void eliminarMesaCobrada( Mesa m) {
+    void eliminarMesaCobrada(Mesa m) {
         Connection con;
         PreparedStatement stmMesa = null;
 
