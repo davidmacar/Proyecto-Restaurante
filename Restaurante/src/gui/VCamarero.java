@@ -26,7 +26,7 @@ public class VCamarero extends javax.swing.JDialog {
     FachadaAplicacion fap;
     VAutenticacion vaut;
     
-    public VCamarero(java.awt.Frame parent, boolean modal, FachadaAplicacion fap) throws IOException {
+    public VCamarero(java.awt.Frame parent, boolean modal, FachadaAplicacion fap){
         super(parent, modal);
         this.vaut = (VAutenticacion) parent;
         this.fap = fap;
