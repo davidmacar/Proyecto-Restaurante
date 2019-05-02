@@ -5,7 +5,6 @@
  */
 package restaurante;
 
-import java.util.Calendar;
 
 /**
  *
@@ -15,13 +14,13 @@ public class Factura {
     
     private int id;
     private int venta;
-    private int cliente;
-    private Calendar fecha;
+    private String cliente;
+    private String fecha;
     private Float precio;
     
 
-    public Factura(int id, int venta, int cliente, Calendar fecha, Float precio) {
-        this.id = id;
+    public Factura(int venta, String cliente, String fecha, Float precio) {
+        this.id = 0;
         this.venta = venta;
         this.cliente = cliente;
         this.fecha = fecha;
@@ -44,19 +43,19 @@ public class Factura {
         this.venta = venta;
     }
 
-    public int getCliente() {
+    public String getCliente() {
         return cliente;
     }
 
-    public void setCliente(int cliente) {
+    public void setCliente(String cliente) {
         this.cliente = cliente;
     }
 
-    public Calendar getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Calendar fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

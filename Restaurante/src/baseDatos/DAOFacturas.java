@@ -64,6 +64,72 @@ public class DAOFacturas extends AbstractDAO {
         System.out.println(factura.toString());
         return factura;
     }
+    
+    public String obtenerFechaActual() {
+        Connection con;
+        String fecha = null;
+        PreparedStatement stmFactura = null;
+        String statement = "select NOW()::timestamp ";
+        ResultSet rsFactura;
+
+        con = super.getConexion();
+
+        try {
+            stmFactura = con.prepareStatement(statement);
+            rsFactura = stmFactura.executeQuery();
+            if (rsFactura.next()) {
+                fecha = rsFactura.getDate("now").toString();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                if (stmFactura != null) {
+                    stmFactura.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return fecha;
+    }
+    
+    public String obtenerIdFactura() {
+        Connection con;
+        String id = null;
+        PreparedStatement stmFactura = null;
+        String statement = "select max(id_factura) from facturas ";
+        ResultSet rsFactura;
+
+        con = super.getConexion();
+
+        try {
+            stmFactura = con.prepareStatement(statement);
+            rsFactura = stmFactura.executeQuery();
+            if (rsFactura.next()) {
+                id = String.valueOf(rsFactura.getInt("id_factura") + 1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                if (stmFactura != null) {
+                    stmFactura.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return id;
+    }
 
   
 }

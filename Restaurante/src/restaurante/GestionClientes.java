@@ -21,5 +21,9 @@ public class GestionClientes {
         this.fbd = fbd;
         this.fgui = fgui;
     }
+    
+    public void anadirCliente(Cliente cli){
+        this.fbd.anadirCliente(cli);
+    }
 
 }

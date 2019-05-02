@@ -38,8 +38,12 @@ public class FachadaGui extends IOException{
         vmen.setVisible(true);
     }
     public void vistaProducto(javax.swing.JDialog ventana, Object obj){
-        VProducto vprod = new VProducto(ventana, true, fap, obj);
+        VProducto vprod = new VProducto(ventana, true, this.fap, obj);
         vprod.setVisible(true);
+    }
+    public void vistaFactura(VCajero ventana, int mesa, int servicio){
+        VNuevaFactura vfac = new VNuevaFactura(ventana, true, this.fap, mesa, servicio);
+        vfac.setVisible(true);
     }
     
     
@@ -54,8 +58,4 @@ public class FachadaGui extends IOException{
         vhistfact.setVisible(true);
     }
 
-    public void vistaFacturaNueva(VHistorialFacturas vhistfact) {
-    VNuevaFactura vfactnueva = new VNuevaFactura(vhistfact, true, this.fap);
-        vfactnueva.setVisible(true);
-    }
 }

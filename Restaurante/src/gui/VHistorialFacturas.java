@@ -184,7 +184,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarFacturaActionPerformed
 
     private void btnNuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaFacturaActionPerformed
-        fap.vistaFacturaNueva(this);
+        //fap.vistaFacturaNueva(this);
     }//GEN-LAST:event_btnNuevaFacturaActionPerformed
 
     private void btnSalirFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirFacturaActionPerformed

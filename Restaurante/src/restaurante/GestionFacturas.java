@@ -9,6 +9,7 @@ import baseDatos.FachadaBaseDatos;
 import gui.FachadaGui;
 import gui.VCamarero;
 import gui.VHistorialFacturas;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -24,8 +25,18 @@ public class GestionFacturas {
         this.fgui = fgui;
     }
 
-    List<Factura> obtenerFacturas() {
+    public List<Factura> obtenerFacturas() {
         return this.fbd.obtenerFacturas();
     }
+    public String obtenerFechaActual(){
+        return this.fbd.obtenerFechaActual();
+    }
+    public String obtenerIdFactura(){
+        return this.fbd.obtenerIdFactura();
+    }
+    public void anadirFactura(Factura fact){
+        this.fbd.anadirFactura(fact);
+    }
+    
 
 }

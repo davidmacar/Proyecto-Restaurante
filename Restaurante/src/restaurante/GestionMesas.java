@@ -40,4 +40,5 @@ public class GestionMesas {
     void eliminarMesaCobrada(Mesa mesa) {
         fbd.eliminarMesaCobrada(mesa);
     }
+    
 }

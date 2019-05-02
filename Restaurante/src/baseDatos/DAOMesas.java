@@ -29,7 +29,7 @@ public class DAOMesas extends AbstractDAO {
         java.util.List<Mesa> resultado=new java.util.ArrayList<Mesa>();
         Connection con;
         PreparedStatement stmMesas=null;
-        String statement = "select *" +
+        String statement = "select * " +
                             "from mesas";
         ResultSet rsMesas;
 
@@ -122,7 +122,7 @@ public class DAOMesas extends AbstractDAO {
 
         try {
         stmInsertar=con.prepareStatement( "INSERT INTO atender(mesa, camarero, id_venta, fecha_venta, precio) " +
-                                        "VALUES (?, ?, nextval('controla_secuencia_idVenta'), NOW(), ?)");
+                                        "VALUES (?, ?, nextval('controla_secuencia_idVenta'), NOW()::timestamp, ?)");
         stmInsertar.setInt(1, mesa.getNum_mesa());
         stmInsertar.setString(2, camarero);
         stmInsertar.setFloat(3, precio);

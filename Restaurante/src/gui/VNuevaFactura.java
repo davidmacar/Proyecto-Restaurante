@@ -5,24 +5,35 @@
  */
 package gui;
 
+import restaurante.Cliente;
 import restaurante.FachadaAplicacion;
+import restaurante.Factura;
+import restaurante.Mesa;
 
 /**
  *
  * @author alumnogreibd
  */
 public class VNuevaFactura extends javax.swing.JDialog {
-    FachadaAplicacion fap;
-    VCamarero vcam;
-    
+    private FachadaAplicacion fap;
+    private VCamarero vcam;
+    private int mesa;
+    private int venta;
 
     /**
      * Creates new form VNuevaFactura
      */
-    public VNuevaFactura(java.awt.Dialog parent, boolean modal,FachadaAplicacion fap) {
+    public VNuevaFactura(java.awt.Dialog parent, boolean modal,FachadaAplicacion fap, int mesa, int venta) {
         super(parent,modal);
-        this.fap = fap;
         initComponents();
+        this.fap = fap;
+        this.mesa = mesa;
+        this.venta = venta;
+        //this.txtIdFactura.setText(this.fap.obtenerIdFactura());
+        this.txtFecha.setText(this.fap.obtenerFechaActual());
+        this.txtMesa.setText(String.valueOf(this.mesa));
+        this.txtTotal.setText(String.valueOf(this.fap.precioMesa(fap.obtenerMesa(mesa))));
+        this.txtIva.setText(String.format("%.2f", ((this.fap.precioMesa(fap.obtenerMesa(mesa)) / 1.21) * 0.21)));
     }
 
 
@@ -66,6 +77,11 @@ public class VNuevaFactura extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnGuardarNewFactura.setText("Guardar");
+        btnGuardarNewFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarNewFacturaActionPerformed(evt);
+            }
+        });
 
         btnSalirNewFactura.setText("Salir");
 
@@ -151,9 +167,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
                             .addComponent(jLabel11))
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -264,6 +278,17 @@ public class VNuevaFactura extends javax.swing.JDialog {
     private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
         
     }//GEN-LAST:event_txtTotalActionPerformed
+
+    private void btnGuardarNewFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarNewFacturaActionPerformed
+        Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
+                                    this.fap.precioMesa(this.fap.obtenerMesa(mesa)));
+        Cliente cli = new Cliente(this.txtDni.getText(), this.txtNombreCliente.getText(), 
+                                    (this.txtApellidosCliente.getText().split(" "))[0], 
+                                    (this.txtApellidosCliente.getText().split(" "))[1], 
+                                    this.txtEmail.getText(), this.txtDireccion.getText());
+        this.fap.anadirFactura(fact);
+        this.fap.anadirCliente(cli);
+    }//GEN-LAST:event_btnGuardarNewFacturaActionPerformed
 
     /**
      * @param args the command line arguments

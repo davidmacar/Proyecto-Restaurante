@@ -31,6 +31,8 @@ public class FachadaAplicacion {
         this.gb = new GestionBebidas(this.fgui, this.fbd);
         this.gm = new GestionMesas(this.fgui, this.fbd);
         this.ge = new GestionEmpleados(this.fgui, this.fbd);
+        this.gf = new GestionFacturas(this.fgui, this.fbd);
+        this.gc = new GestionClientes(this.fgui, this.fbd);
     }
     public static void main(String[] args) {
         FachadaAplicacion fa;
@@ -132,12 +134,24 @@ public class FachadaAplicacion {
     public void vistaFactura(VCamarero vcam) {
         this.fgui.vistaFactura(vcam);
     }
-
-    public void vistaFacturaNueva(VHistorialFacturas vhistfact) {
-        this.fgui.vistaFacturaNueva(vhistfact);
+    
+    public java.util.List<Factura> obtenerFacturas(){
+        return gf.obtenerFacturas();
     }
     
-     public java.util.List<Factura> obtenerFacturas(){
-        return gf.obtenerFacturas();
+    public void vistaFactura(VCajero ventana, int mesa, int servicio){
+        this.fgui.vistaFactura(ventana, mesa, servicio);
+    }
+    public String obtenerFechaActual(){
+        return this.gf.obtenerFechaActual();
+    }
+    public String obtenerIdFactura(){
+        return this.gf.obtenerIdFactura();
+    }
+    public void anadirFactura(Factura fact){
+        this.gf.anadirFactura(fact);
+    }
+    public void anadirCliente(Cliente cli){
+        this.gc.anadirCliente(cli);
     }
 }
