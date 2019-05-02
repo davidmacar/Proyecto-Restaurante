@@ -18,14 +18,16 @@ public class Factura {
     private int cliente;
     private Calendar fecha;
     private Float precio;
+    private int mesa;
     
 
-    public Factura(int id, int venta, int cliente, Calendar fecha, Float precio) {
+    public Factura(int id, int venta, int cliente, Calendar fecha, Float precio, int mesa) {
         this.id = id;
         this.venta = venta;
         this.cliente = cliente;
         this.fecha = fecha;
         this.precio = precio;
+        this.mesa = mesa;
     }
 
     public int getId() {
@@ -34,6 +36,14 @@ public class Factura {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public int getMesa() {
+        return mesa;
+    }
+
+    public void setMesa(int mesa) {
+        this.mesa = mesa;
     }
 
     public int getVenta() {

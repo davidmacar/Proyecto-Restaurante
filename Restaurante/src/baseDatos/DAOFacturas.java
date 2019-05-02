@@ -64,6 +64,16 @@ public class DAOFacturas extends AbstractDAO {
         System.out.println(factura.toString());
         return factura;
     }
-
+    
+//    public Factura obtenerIVA(){
+//        Connection con;
+//        Factura factura = null;
+//        PreparedStatement stmFactura = null;
+//        String statement = "select precio/0.21";
+//        ResultSet rsFactura;
+//        con = super.getConexion();
+//    }
+//
+//    
   
 }
