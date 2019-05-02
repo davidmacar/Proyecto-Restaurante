@@ -64,14 +64,15 @@ public class VCamarero extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listPlatos = new javax.swing.JList<>();
+        listPlatos = new javax.swing.JList<String>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        listMesas = new javax.swing.JList<>();
+        listMesas = new javax.swing.JList<String>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        listBebidas = new javax.swing.JList<>();
+        listBebidas = new javax.swing.JList<String>();
         txtError = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        btnFacturas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -138,6 +139,14 @@ public class VCamarero extends javax.swing.JDialog {
         jLabel5.setText("Cobrar");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, -1, -1));
 
+        btnFacturas.setText("Facturas");
+        btnFacturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFacturasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -192,6 +201,11 @@ public class VCamarero extends javax.swing.JDialog {
         exit(0);
         //this.getParent().setVisible(true);
     }//GEN-LAST:event_formWindowClosed
+
+    private void btnFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturasActionPerformed
+        // TODO add your handling code here:
+        fap.vistaFactura(this);
+    }//GEN-LAST:event_btnFacturasActionPerformed
     
     public void actualizarMesas(){
         List<Mesa> mesas;
@@ -231,6 +245,7 @@ public class VCamarero extends javax.swing.JDialog {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCobrar;
+    private javax.swing.JButton btnFacturas;
     private javax.swing.JButton btnMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

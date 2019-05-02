@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import restaurante.*;
 
@@ -24,6 +25,7 @@ public class FachadaBaseDatos {
     private DAOEmpleados daoEmpleados;
     private DAOIngredientes daoIngredientes;
     private DAOMesas daoMesas;
+    private DAOClientes daoClientes;
     
     public FachadaBaseDatos(FachadaAplicacion fap){
         this.fap=fap;
@@ -130,4 +132,5 @@ public class FachadaBaseDatos {
     public void eliminarMesaCobrada(Mesa mesa) {
         daoMesas.eliminarMesaCobrada(mesa);
     }
+
 }

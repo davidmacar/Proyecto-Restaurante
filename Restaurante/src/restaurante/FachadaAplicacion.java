@@ -21,6 +21,7 @@ public class FachadaAplicacion {
     GestionBebidas gb;
     GestionMesas gm;
     GestionEmpleados ge;
+    GestionClientes gc;
     
     public FachadaAplicacion(){
         this.fbd = new FachadaBaseDatos(this);
@@ -51,6 +52,7 @@ public class FachadaAplicacion {
     public void vistaMenu(VCamarero vcam, Mesa mesa){
         this.fgui.vistaMenu(vcam, mesa);
     }
+    
     public void vistaProducto(javax.swing.JDialog ventana, Object obj){
         this.fgui.vistaProducto(ventana, obj);
     }
@@ -65,6 +67,7 @@ public class FachadaAplicacion {
     public Empleado obtenerCamarero(String dni){
         return ge.obtenerCamarero(dni);
     }
+    
     public java.util.List<Mesa> obtenerMesas(){
         return gm.obtenerMesas();
     }
@@ -123,6 +126,10 @@ public class FachadaAplicacion {
 
     public void eliminaMesaCobrada(Mesa mesa) {
         gm.eliminarMesaCobrada(mesa);
+    }
+
+    public void vistaFactura(VCamarero vcam) {
+        this.fgui.vistaFactura(vcam);
     }
     
     
