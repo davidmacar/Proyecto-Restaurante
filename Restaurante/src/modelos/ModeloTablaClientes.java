@@ -18,7 +18,7 @@ public class ModeloTablaClientes extends AbstractTableModel{
     }
 
     public int getColumnCount (){
-        return 9;
+        return 5;
     }
 
     public int getRowCount(){
@@ -35,7 +35,6 @@ public class ModeloTablaClientes extends AbstractTableModel{
             case 2: nombre="Primer Apellido"; break;
             case 3: nombre="Segundo Apellido"; break;
             case 4: nombre= "eMail"; break;
-            case 5: nombre= "Numero Telefono"; break;
 
         }
         return nombre;
@@ -52,7 +51,6 @@ public class ModeloTablaClientes extends AbstractTableModel{
             case 2: clase=java.lang.String.class; break;
             case 3: clase=java.lang.String.class; break;
             case 4: clase= java.lang.String.class; break;
-            case 5: clase= java.lang.String.class; break;
 
         }
         return clase;
@@ -73,7 +71,6 @@ public class ModeloTablaClientes extends AbstractTableModel{
             case 2: resultado=clientes.get(row).getApellido1();break;
             case 3: resultado=clientes.get(row).getApellido2(); break;
             case 4: resultado= clientes.get(row).geteMail(); break;
-            case 5: resultado= clientes.get(row).getNumero_tlf(); break;
 
         }
         return resultado;

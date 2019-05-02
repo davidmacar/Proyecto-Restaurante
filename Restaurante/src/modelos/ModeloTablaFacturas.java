@@ -42,7 +42,7 @@ public class ModeloTablaFacturas extends AbstractTableModel{
             case 1: nombre= "Venta"; break;
             case 2: nombre= "Cliente"; break;
             case 3: nombre= "Fecha"; break;
-            case 4: nombre= "Preio"; break;
+            case 4: nombre= "Precio"; break;
         }
         return nombre;
     }

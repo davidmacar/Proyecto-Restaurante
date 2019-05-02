@@ -16,15 +16,13 @@ public class Cliente {
     private String apellido1;
     private String apellido2;
     private String eMail;
-    private int numero_tlf;
 
-    public Cliente(String dni, String nombre, String apellido1, String apellido2, String eMail, int numero_tlf) {
+    public Cliente(String dni, String nombre, String apellido1, String apellido2, String eMail) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.eMail = eMail;
-        this.numero_tlf = numero_tlf;
     }
 
     public String getDni() {
@@ -33,14 +31,6 @@ public class Cliente {
 
     public void setDni(String dni) {
         this.dni = dni;
-    }
-
-    public int getNumero_tlf() {
-        return numero_tlf;
-    }
-
-    public void setNumero_tlf(int numero_tlf) {
-        this.numero_tlf = numero_tlf;
     }
 
     public String getNombre() {

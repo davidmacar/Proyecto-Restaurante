@@ -131,6 +131,10 @@ public class FachadaAplicacion {
     public void vistaFactura(VCamarero vcam) {
         this.fgui.vistaFactura(vcam);
     }
+
+    public void vistaFacturaNueva(VHistorialFacturas vhistfact) {
+        this.fgui.vistaFacturaNueva(vhistfact);
+    }
     
     
 }

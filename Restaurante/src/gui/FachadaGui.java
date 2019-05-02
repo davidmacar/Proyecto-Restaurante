@@ -57,4 +57,9 @@ public class FachadaGui extends IOException{
         VHistorialFacturas vhistfact = new VHistorialFacturas(vcam, true, this.fap);
         vhistfact.setVisible(true);
     }
+
+    public void vistaFacturaNueva(VHistorialFacturas vhistfact) {
+    VNuevaFactura vfactnueva = new VNuevaFactura(vhistfact, true, this.fap);
+        vfactnueva.setVisible(true);
+    }
 }
