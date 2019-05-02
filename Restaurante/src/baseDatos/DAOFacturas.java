@@ -27,6 +27,7 @@ public class DAOFacturas extends AbstractDAO {
         Connection con;
         Factura factura = null;
         PreparedStatement stmFactura = null;
+
         String statement = "select id_factura, venta, cliente, fecha, precio  "
                 + "from facturas as f, clientes as c"
                 + "where f.cliente = c.dni"
@@ -41,9 +42,9 @@ public class DAOFacturas extends AbstractDAO {
             //stmFactura.setString(2, cliente);
             rsFactura = stmFactura.executeQuery();
             if (rsFactura.next()) {
-           //     factura = new Factura(rsFactura.getInt("id_factura"),
-           //             rsFactura.getInt("venta"), rsFactura.getString("cliente"),
-           //             rsFactura.getString("fecha"), rsFactura.getFloat("precio");
+                //     factura = new Factura(rsFactura.getInt("id_factura"),
+                //             rsFactura.getInt("venta"), rsFactura.getString("cliente"),
+                //             rsFactura.getString("fecha"), rsFactura.getFloat("precio");
             }
 
         } catch (SQLException e) {
@@ -64,16 +65,28 @@ public class DAOFacturas extends AbstractDAO {
         System.out.println(factura.toString());
         return factura;
     }
-    
-//    public Factura obtenerIVA(){
-//        Connection con;
-//        Factura factura = null;
-//        PreparedStatement stmFactura = null;
-//        String statement = "select precio/0.21";
-//        ResultSet rsFactura;
-//        con = super.getConexion();
-//    }
-//
-//    
-  
+
+    public Factura obtenerIVA() {
+        Connection con;
+        Factura factura = null;
+        PreparedStatement stmFactura = null;
+
+        String statement = "select (precio/(1.21)) as sin_iva"
+                + "from  atender";
+        ResultSet rsFactura;
+
+        con = super.getConexion();
+
+        try {
+            stmFactura.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Imposible cerrar cursores");
+            System.out.println("");
+        }
+
+        return factura;
+    }
+
 }
+
