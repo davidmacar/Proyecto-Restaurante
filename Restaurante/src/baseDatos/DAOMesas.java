@@ -130,7 +130,7 @@ public class DAOMesas extends AbstractDAO {
         } catch (SQLException e){
             e.printStackTrace();
             System.out.println(e.getMessage());
-          //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+          //this.getFachadaAplicacion()v .muestraExcepcion(e.getMessage());
         }finally{
           try {
               stmInsertar.close();

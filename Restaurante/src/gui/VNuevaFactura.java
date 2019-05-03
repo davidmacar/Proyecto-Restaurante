@@ -32,6 +32,15 @@ public class VNuevaFactura extends javax.swing.JDialog {
         this.venta = venta;
         this.precio = precio;
         this.txtIdFactura.setText(String.valueOf(this.fap.obtenerIdFactura()));
+        
+        this.txtNombreCliente.setEditable(false);
+        this.txtApellidosCliente.setEditable(false);
+        this.txtDni.setEditable(false);
+        this.txtDireccion.setEditable(false);
+        this.txtEmail.setEditable(false);
+        this.Aviso.setVisible(false);
+        this.Aviso1.setVisible(false);
+        //this.txtIdFactura.setText(this.fap.obtenerIdFactura());
         this.txtFecha.setText(this.fap.obtenerFechaActual());
         this.txtMesa.setText(String.valueOf(this.mesa));
         this.txtTotal.setText(String.valueOf(precio));
@@ -75,6 +84,10 @@ public class VNuevaFactura extends javax.swing.JDialog {
         txtMesa = new javax.swing.JTextField();
         txtTotal = new javax.swing.JTextField();
         txtIva = new javax.swing.JTextField();
+        btnClienteNuevo = new javax.swing.JButton();
+        btnClienteExistente = new javax.swing.JButton();
+        Aviso = new javax.swing.JLabel();
+        Aviso1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -101,30 +114,17 @@ public class VNuevaFactura extends javax.swing.JDialog {
 
         jLabel12.setText("Apellidos:");
 
-        txtApellidosCliente.setText("Diaz Costas");
-
-        txtDni.setText("69548624K");
         txtDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDniActionPerformed(evt);
             }
         });
 
-        txtNombreCliente.setText("Pepe");
         txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreClienteActionPerformed(evt);
             }
         });
-
-        txtEmail.setText("sdfhsdhsdfghsdgh");
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-
-        txtDireccion.setText("asdgasfgsdfgdsg");
 
         jLabel13.setText("Mesa:");
 
@@ -151,6 +151,11 @@ public class VNuevaFactura extends javax.swing.JDialog {
         });
 
         txtMesa.setEditable(false);
+        txtMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMesaActionPerformed(evt);
+            }
+        });
 
         txtTotal.setEditable(false);
         txtTotal.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +166,26 @@ public class VNuevaFactura extends javax.swing.JDialog {
 
         txtIva.setEditable(false);
 
+        btnClienteNuevo.setText("Nuevo");
+        btnClienteNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteNuevoActionPerformed(evt);
+            }
+        });
+
+        btnClienteExistente.setText("Existente");
+        btnClienteExistente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteExistenteActionPerformed(evt);
+            }
+        });
+
+        Aviso.setForeground(new java.awt.Color(255, 0, 0));
+        Aviso.setText("El cliente ya existe");
+
+        Aviso1.setForeground(new java.awt.Color(255, 0, 0));
+        Aviso1.setText("El cliente no existe");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,23 +194,28 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(55, 55, 55)
-                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addGap(43, 43, 43)
-                                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel17))
-                                .addGap(49, 49, 49)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel8))
+                                .addGap(14, 14, 14)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtApellidosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(68, 68, 68)
+                                .addComponent(jLabel14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(jLabel15))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel13)))
+                                .addGap(13, 13, 13)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtIdFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(30, 30, 30)
                                 .addComponent(btnSalirNewFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
@@ -217,27 +247,65 @@ public class VNuevaFactura extends javax.swing.JDialog {
                         .addComponent(jLabel14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel15))
-                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnClienteNuevo)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel13)))
-                        .addGap(13, 13, 13)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Aviso)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnClienteExistente)
+                                        .addGap(138, 138, 138)
+                                        .addComponent(jLabel7)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIdFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addComponent(btnGuardarNewFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(55, 55, 55)
+                                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(83, 83, 83)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel16)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel19)
+                                            .addComponent(jLabel17))
+                                        .addGap(49, 49, 49)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(30, 30, 30)
+                                        .addComponent(btnSalirNewFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11))
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(Aviso1)))))
+                        .addContainerGap(16, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
                 .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(btnClienteNuevo)
+                        .addComponent(btnClienteExistente))
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Aviso)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -288,7 +356,9 @@ public class VNuevaFactura extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Aviso1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -307,6 +377,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
     }//GEN-LAST:event_txtTotalActionPerformed
 
     private void btnGuardarNewFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarNewFacturaActionPerformed
+        if(this.txtNombreCliente.isEditable() == true){
         Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
                                     this.precio, this.mesa);
         String[] apellidos;
@@ -314,9 +385,65 @@ public class VNuevaFactura extends javax.swing.JDialog {
         Cliente cli = new Cliente(this.txtDni.getText(), this.txtNombreCliente.getText(), 
                                     apellidos[0], apellidos[1], 
                                     this.txtEmail.getText(), this.txtDireccion.getText());
-        this.fap.anadirCliente(cli);
-        this.fap.anadirFactura(fact);
+            
+        if(fap.obtenerCliente(this.txtDni.getText())!= null){
+                this.Aviso.setVisible(true);
+            }
+            else{
+                this.fap.anadirFactura(fact);
+                this.fap.anadirCliente(cli);
+            }
+        }
+        else{
+            Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
+                                    this.fap.precioMesa(this.fap.obtenerMesa(mesa)), this.mesa);
+            
+            if(fap.obtenerCliente(this.txtDni.getText())== null){
+                this.Aviso1.setVisible(true);
+            }
+            else{
+                this.fap.anadirFactura(fact);
+            }
+        }
     }//GEN-LAST:event_btnGuardarNewFacturaActionPerformed
+
+    private void txtMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMesaActionPerformed
+
+    private void btnClienteNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteNuevoActionPerformed
+        // TODO add your handling code here:
+        this.txtNombreCliente.setEditable(true);
+        this.txtApellidosCliente.setEditable(true);
+        this.txtDni.setEditable(true);
+        this.txtDireccion.setEditable(true);
+        this.txtEmail.setEditable(true);
+    }//GEN-LAST:event_btnClienteNuevoActionPerformed
+
+    private void btnClienteExistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteExistenteActionPerformed
+        // TODO add your handling code here:
+        this.txtNombreCliente.setEditable(false);
+        this.txtNombreCliente.setText("");
+        this.txtApellidosCliente.setEditable(false);
+        this.txtApellidosCliente.setText("");
+        this.txtDni.setEditable(true);
+        this.txtDni.setText("");
+        this.txtDireccion.setEditable(false);
+        this.txtDireccion.setText("");
+        this.txtEmail.setEditable(false);
+        this.txtEmail.setText("");
+    }//GEN-LAST:event_btnClienteExistenteActionPerformed
+
+    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
+        // TODO add your handling code here:
+        this.Aviso.setVisible(false);
+    }//GEN-LAST:event_txtNombreClienteActionPerformed
+
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+        // TODO add your handling code here:
+        this.Aviso.setVisible(false);
+        this.Aviso1.setVisible(false);
+    }//GEN-LAST:event_txtDniActionPerformed
 
     private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
         // TODO add your handling code here:
@@ -336,6 +463,10 @@ public class VNuevaFactura extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Aviso;
+    private javax.swing.JLabel Aviso1;
+    private javax.swing.JButton btnClienteExistente;
+    private javax.swing.JButton btnClienteNuevo;
     private javax.swing.JButton btnGuardarNewFactura;
     private javax.swing.JButton btnSalirNewFactura;
     private javax.swing.JLabel jLabel10;

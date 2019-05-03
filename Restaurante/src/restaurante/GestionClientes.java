@@ -25,5 +25,9 @@ public class GestionClientes {
     public void anadirCliente(Cliente cli){
         this.fbd.anadirCliente(cli);
     }
+    
+    public Cliente obtenerCliente(String dni){
+        return this.fbd.obtenerCliente(dni);
+    }
 
 }
