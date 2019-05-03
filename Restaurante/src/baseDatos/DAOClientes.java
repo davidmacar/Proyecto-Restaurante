@@ -22,6 +22,41 @@ public class DAOClientes extends AbstractDAO {
         super.setConexion(conexion);
         super.setFachadaAplicacion(fa);
     }
+    
+    public void anadirCliente(Cliente cli) {
+        Connection con;
+        PreparedStatement stmCliente = null;
+        String statement = "insert into cliente "
+                            + "values ?, ?, ?, ?, ?, ?";
+
+        con = super.getConexion();
+
+        try {
+            stmCliente = con.prepareStatement(statement);
+            stmCliente.setString(1, cli.getDni());
+            stmCliente.setString(2, cli.getNombre());
+            stmCliente.setString(3, cli.getApellido1());
+            stmCliente.setString(4, cli.getApellido2());
+            stmCliente.setString(5, cli.geteMail());
+            stmCliente.setString(6, cli.getDireccion());
+            stmCliente.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                if (stmCliente != null) {
+                    stmCliente.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Imposible cerrar cursores");
+                System.out.println("");
+            }
+        }
+    }
 /*
     public Cliente obtenerClientes(String ID, String nombre) {
         Connection con;

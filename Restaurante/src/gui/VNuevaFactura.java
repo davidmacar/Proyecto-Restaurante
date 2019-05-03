@@ -29,7 +29,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
         this.fap = fap;
         this.mesa = mesa;
         this.venta = venta;
-        //this.txtIdFactura.setText(this.fap.obtenerIdFactura());
+        this.txtIdFactura.setText(String.valueOf(this.fap.obtenerIdFactura()));
         this.txtFecha.setText(this.fap.obtenerFechaActual());
         this.txtMesa.setText(String.valueOf(this.mesa));
         this.txtTotal.setText(String.valueOf(this.fap.precioMesa(fap.obtenerMesa(mesa))));

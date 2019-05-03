@@ -112,7 +112,7 @@ public class DAOFacturas extends AbstractDAO {
             stmFactura = con.prepareStatement(statement);
             rsFactura = stmFactura.executeQuery();
             if (rsFactura.next()) {
-                id = String.valueOf(rsFactura.getInt("id_factura") + 1);
+                id = String.valueOf(rsFactura.getInt("max") + 1);
             }
 
         } catch (SQLException e) {
@@ -154,7 +154,7 @@ public class DAOFacturas extends AbstractDAO {
         return factura;
     }
 
-    List<Factura> obtenerFacturas(int id, String cliente) {
+    public List<Factura> obtenerFacturas(int id, String cliente) {
         List<Factura> resultado = new ArrayList<Factura>();
         Connection con;
         PreparedStatement stmFacturas = null;
@@ -191,7 +191,7 @@ public class DAOFacturas extends AbstractDAO {
         return resultado;
     }
 
-    List<Factura> obtenerFacturas() {
+    public List<Factura> obtenerFacturas() {
        List<Factura> resultado = new ArrayList<Factura>();
         Connection con;
         PreparedStatement stmFacturas = null;
@@ -224,5 +224,37 @@ public class DAOFacturas extends AbstractDAO {
         return resultado;
     } 
     
+    public void anadirFactura(Factura fac) {
+        Connection con;
+        PreparedStatement stmFactura = null;
+
+        String statement = "insert into facturas(venta, cliente, fecha, precio) "
+                            + "values ?, ?, NOW()::timestamp, ?";
+
+        con = super.getConexion();
+
+        try {
+            stmFactura = con.prepareStatement(statement);
+            stmFactura.setInt(1, fac.getVenta());
+            stmFactura.setString(2, fac.getCliente());
+            stmFactura.setFloat(3, fac.getPrecio());
+            stmFactura.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                if (stmFactura != null) {
+                    stmFactura.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Imposible cerrar cursores");
+                System.out.println("");
+            }
+        }
+    }
 
 }

@@ -152,10 +152,10 @@ public class FachadaBaseDatos {
         return this.daoFacturas.obtenerIdFactura();
     }
     public void anadirFactura(Factura fact){
-        //this.daoFacturas.anadirFactura(fact);
+        this.daoFacturas.anadirFactura(fact);
     }
     public void anadirCliente(Cliente cli){
-        //this.daoClientes.anadirCliente(cli);
+        this.daoClientes.anadirCliente(cli);
     }
 
 }

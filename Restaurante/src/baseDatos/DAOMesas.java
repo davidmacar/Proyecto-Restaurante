@@ -123,7 +123,7 @@ public class DAOMesas extends AbstractDAO {
 
         try {
         stmInsertar=con.prepareStatement( "INSERT INTO atender(mesa, camarero, id_venta, fecha_venta, precio) " +
-                                        "VALUES (?, ?, nextval('controla_secuencia_idVenta'), NOW()::timestamp, ?)");
+                                        "VALUES (?, ?, nextval('controla_secuencia_idventa'), NOW()::timestamp, ?)");
         stmInsertar.setInt(1, mesa.getNum_mesa());
         stmInsertar.setString(2, camarero);
         stmInsertar.setFloat(3, precio);
@@ -182,7 +182,7 @@ public class DAOMesas extends AbstractDAO {
         
         try {
             ResultSet rsServicio = null;
-            stmServicio = con.prepareStatement("SELECT last_value as number FROM 'controla_secuencia_idfactura'");
+            stmServicio = con.prepareStatement("SELECT last_value as number FROM controla_secuencia_idfactura");
             rsServicio = stmServicio.executeQuery();
             if(rsServicio.next()){
                 ret = rsServicio.getInt("number");
