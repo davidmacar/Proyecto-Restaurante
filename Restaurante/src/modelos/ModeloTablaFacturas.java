@@ -19,7 +19,7 @@ public class ModeloTablaFacturas extends AbstractTableModel{
    
     
     public ModeloTablaFacturas(){
-        this.facturas=new java.util.ArrayList<>();
+        this.facturas=new java.util.ArrayList<Factura>();
         
     }
 
@@ -48,9 +48,16 @@ public class ModeloTablaFacturas extends AbstractTableModel{
     }
 
     //@Override
-    public Class getColumnClass(){
-        Class clase= java.lang.String.class;
-        return clase;
+    public Class getColumnClass(int col){
+        Class nombre=null;
+        switch (col){
+        case 0: nombre= java.lang.Integer.class; break;
+        case 1: nombre= java.lang.Integer.class; break;
+        case 2: nombre= java.lang.String.class; break;
+        case 3: nombre= java.lang.String.class; break;
+        case 4: nombre= java.lang.Float.class; break;
+        }
+        return nombre;
     }
 
     @Override
@@ -61,21 +68,20 @@ public class ModeloTablaFacturas extends AbstractTableModel{
     @Override
     public Object getValueAt(int row, int col){
         
-        Class clase=null;
+        Object clase=null;
 
         switch (col){
-            case 0: clase= java.lang.String.class; break;
-            case 1: clase= java.lang.String.class; break;
-            case 2: clase=java.lang.String.class; break;
-            case 3: clase=java.lang.String.class; break;
-            case 4: clase= java.lang.String.class; break;
-            case 5: clase= java.lang.String.class; break;
+            case 0: clase= facturas.get(row).getId(); break;
+            case 1: clase= facturas.get(row).getVenta(); break;
+            case 2: clase= facturas.get(row).getCliente(); break;
+            case 3: clase= facturas.get(row).getFecha(); break;
+            case 4: clase= facturas.get(row).getPrecio(); break;
             
         }
         return clase;
     }
 
-    public void setFilas(List<Factura> facturas) {
+    public void setFilas(java.util.List<Factura> facturas) {
     this.facturas = facturas;
     fireTableDataChanged();
     }

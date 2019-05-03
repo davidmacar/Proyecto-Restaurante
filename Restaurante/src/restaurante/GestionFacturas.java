@@ -25,7 +25,7 @@ public class GestionFacturas {
         this.fgui = fgui;
     }
 
-    public List<Factura> obtenerFacturas() {
+    public java.util.List<Factura> obtenerFacturas() {
         return this.fbd.obtenerFacturas();
     }
     public String obtenerFechaActual(){

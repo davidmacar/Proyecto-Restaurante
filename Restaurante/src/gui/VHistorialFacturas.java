@@ -15,9 +15,9 @@ import restaurante.FachadaAplicacion;
  */
 public class VHistorialFacturas extends javax.swing.JDialog {
     
-    FachadaAplicacion fap;
-    VCamarero vcam;
-    ModeloTablaFacturas mtf;
+    private FachadaAplicacion fap;
+    private VCamarero vcam;
+    private ModeloTablaFacturas mtf;
 
     /**
      * Creates new form VFactura
@@ -28,18 +28,20 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         this.fap = fap;
         initComponents();
         this.mtf = new ModeloTablaFacturas();
-        //this.actualizarModelo();
+        this.actualizarModelo();
     }
 
     private void actualizarModelo() {
 
         mtf = (ModeloTablaFacturas) tablaFacturas.getModel();
-        
+        mtf.setFilas(fap.obtenerFacturas());
+        /*
         if(!txtBuscarId.getText().isEmpty()){
             //mtf.setFilas(fap.obtenerFacturas(Integer.parseInt(txtBuscarId.getText()), txtBuscarCliente.getText()));
         } else{
             mtf.setFilas(fap.obtenerFacturas());
         }
+        */
     }
     
     /**

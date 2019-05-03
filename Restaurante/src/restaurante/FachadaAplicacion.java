@@ -131,7 +131,7 @@ public class FachadaAplicacion {
         gm.eliminarMesaCobrada(mesa);
     }
 
-    public void vistaFactura(VCamarero vcam) {
+    public void vistaFactura(javax.swing.JDialog vcam) {
         this.fgui.vistaFactura(vcam);
     }
     
@@ -142,7 +142,7 @@ public class FachadaAplicacion {
     public java.util.List<Factura> obtenerFacturas(){
         return gf.obtenerFacturas();
     }
-    public void vistaFactura(VCajero ventana, int mesa, int servicio, float precio){
+    public void vistaFactura(javax.swing.JDialog ventana, int mesa, int servicio, float precio){
         this.fgui.vistaFactura(ventana, mesa, servicio, precio);
     }
     public String obtenerFechaActual(){
@@ -167,5 +167,9 @@ public class FachadaAplicacion {
         this.fgui.fap.vistaFacturaNueva(hist);
     }
 */
+    
+    public void VElegirFactura(java.awt.Dialog parent, Factura factura) {
+        this.fgui.VElegirFactura(parent, factura);
+    }
     
 }

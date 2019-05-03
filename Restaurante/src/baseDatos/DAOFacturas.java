@@ -172,7 +172,7 @@ public class DAOFacturas extends AbstractDAO {
             stmFacturas.setString(2, cliente);
             rsFacturas = stmFacturas.executeQuery();
             while (rsFacturas.next()) {
-                Factura ej = new Factura(rsFacturas.getInt("venta"),
+                Factura ej = new Factura(rsFacturas.getInt("id_factura"), rsFacturas.getInt("venta"),
                         rsFacturas.getString("cliente"), rsFacturas.getString("fecha"), rsFacturas.getFloat("precio"), rsFacturas.getInt("mesa"));
             }
         } catch (SQLException e) {
@@ -191,22 +191,24 @@ public class DAOFacturas extends AbstractDAO {
         return resultado;
     }
 
-    public List<Factura> obtenerFacturas() {
-       List<Factura> resultado = new ArrayList<Factura>();
+    public java.util.List<Factura> obtenerFacturas() {
+        java.util.List<Factura> resultado = new java.util.ArrayList<Factura>();
         Connection con;
         PreparedStatement stmFacturas = null;
-        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, m.mesa "
-                + "from facturas as f, cliente as c, atender as a, mesas as m";
         ResultSet rsFacturas;
 
         con = super.getConexion();
 
         try {
-            stmFacturas = con.prepareStatement(statement);
+            stmFacturas = con.prepareStatement("select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, m.num_mesa " +
+                            "from facturas f inner join cliente c ON (cliente=dni) " +
+                            "	inner join atender as a ON (venta = id_venta) " +
+                            "	inner join mesas as m ON (mesa=num_mesa) ");
             rsFacturas = stmFacturas.executeQuery();
             while (rsFacturas.next()) {
-                Factura ej = new Factura(rsFacturas.getInt("venta"),
-                        rsFacturas.getString("cliente"), rsFacturas.getString("fecha"), rsFacturas.getFloat("precio"), rsFacturas.getInt("mesa"));
+                Factura factura = new Factura(rsFacturas.getInt("id_factura"), rsFacturas.getInt("venta"),
+                        rsFacturas.getString("cliente"), rsFacturas.getString("fecha"), rsFacturas.getFloat("precio"), rsFacturas.getInt("num_mesa"));
+                resultado.add(factura);
             }
         } catch (SQLException e) {
             e.printStackTrace();

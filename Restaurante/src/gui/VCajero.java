@@ -119,8 +119,10 @@ public class VCajero extends javax.swing.JDialog {
         
         this.venta = this.fap.cobrarMesa(mesa, "11111111A", precio); 
         //this.fap.eliminaMesaCobrada(mesa);
+        Factura factura = new Factura(0, this.venta, null, null, this.precio, this.mesa.getNum_mesa());
+        this.fap.VElegirFactura(this, factura);
         this.vcam.actualizarMesas();
-        //this.setVisible(false);
+        this.setVisible(false);
         //vcam.setVisible(true);
     }//GEN-LAST:event_btnCobrarActionPerformed
 
@@ -140,7 +142,7 @@ public class VCajero extends javax.swing.JDialog {
 
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
         //HAY QUE COBRAR PRIMERO PARA FACTURAR PORQUE SE NECESITA EL ID DE LA VENTA
-        this.fap.vistaFactura(this, this.mesa.getNum_mesa(), this.venta, this.precio);
+        //this.fap.vistaFactura(this, this.mesa.getNum_mesa(), this.venta, this.precio);
     }//GEN-LAST:event_btnFacturarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

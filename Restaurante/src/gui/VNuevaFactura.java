@@ -37,7 +37,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
         this.txtDni.setEditable(true);
         this.txtDireccion.setEditable(true);
         this.txtEmail.setEditable(true);
-        this.Aviso.setVisible(true);
+        this.Aviso.setVisible(false);
         this.Aviso1.setVisible(false);
         this.txtIdFactura.setText(String.valueOf(this.fap.obtenerIdFactura()));
         this.txtFecha.setText(this.fap.obtenerFechaActual());
@@ -100,6 +100,11 @@ public class VNuevaFactura extends javax.swing.JDialog {
         getContentPane().add(btnGuardarNewFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 160, -1, -1));
 
         btnSalirNewFactura.setText("Salir");
+        btnSalirNewFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirNewFacturaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSalirNewFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 300, -1, -1));
 
         jLabel6.setText("Datos Cliente");
@@ -234,7 +239,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
     }//GEN-LAST:event_txtTotalActionPerformed
 
     private void btnGuardarNewFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarNewFacturaActionPerformed
-        Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
+        Factura fact = new Factura(0,this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
                                     this.precio, this.mesa);
         String[] apellidos;
         apellidos = this.txtApellidosCliente.getText().split(" ");
@@ -271,6 +276,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 this.fap.anadirFactura(fact);
             }
         }*/
+        this.setVisible(false);
     }//GEN-LAST:event_btnGuardarNewFacturaActionPerformed
 
     private void txtMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMesaActionPerformed
@@ -314,6 +320,12 @@ public class VNuevaFactura extends javax.swing.JDialog {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void btnSalirNewFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirNewFacturaActionPerformed
+        // TODO add your handling code her:
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_btnSalirNewFacturaActionPerformed
 
     /**
      * @param args the command line arguments

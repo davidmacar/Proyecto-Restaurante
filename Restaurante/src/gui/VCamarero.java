@@ -204,7 +204,7 @@ public class VCamarero extends javax.swing.JDialog {
 
     private void btnFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturasActionPerformed
         // TODO add your handling code here:
-        fap.vistaFactura(this);
+        this.fap.vistaFactura(this);
     }//GEN-LAST:event_btnFacturasActionPerformed
     
     public void actualizarMesas(){
