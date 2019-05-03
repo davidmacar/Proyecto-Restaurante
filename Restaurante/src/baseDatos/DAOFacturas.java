@@ -229,7 +229,7 @@ public class DAOFacturas extends AbstractDAO {
         PreparedStatement stmFactura = null;
 
         String statement = "insert into facturas(venta, cliente, fecha, precio) "
-                            + "values ?, ?, NOW()::timestamp, ?";
+                            + "values (?, ?, NOW()::timestamp, ?)";
 
         con = super.getConexion();
 

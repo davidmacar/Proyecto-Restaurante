@@ -19,21 +19,23 @@ public class VNuevaFactura extends javax.swing.JDialog {
     private VCamarero vcam;
     private int mesa;
     private int venta;
+    private float precio;
 
     /**
      * Creates new form VNuevaFactura
      */
-    public VNuevaFactura(java.awt.Dialog parent, boolean modal,FachadaAplicacion fap, int mesa, int venta) {
+    public VNuevaFactura(java.awt.Dialog parent, boolean modal,FachadaAplicacion fap, int mesa, int venta, float precio) {
         super(parent,modal);
         initComponents();
         this.fap = fap;
         this.mesa = mesa;
         this.venta = venta;
+        this.precio = precio;
         this.txtIdFactura.setText(String.valueOf(this.fap.obtenerIdFactura()));
         this.txtFecha.setText(this.fap.obtenerFechaActual());
         this.txtMesa.setText(String.valueOf(this.mesa));
-        this.txtTotal.setText(String.valueOf(this.fap.precioMesa(fap.obtenerMesa(mesa))));
-        this.txtIva.setText(String.format("%.2f", ((this.fap.precioMesa(fap.obtenerMesa(mesa)) / 1.21) * 0.21)));
+        this.txtTotal.setText(String.valueOf(precio));
+        this.txtIva.setText(String.format("%.2f",(precio / 1.21) * 0.21));
     }
 
 
@@ -99,13 +101,38 @@ public class VNuevaFactura extends javax.swing.JDialog {
 
         jLabel12.setText("Apellidos:");
 
+        txtApellidosCliente.setText("Diaz Costas");
+
+        txtDni.setText("69548624K");
+        txtDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDniActionPerformed(evt);
+            }
+        });
+
+        txtNombreCliente.setText("Pepe");
+        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreClienteActionPerformed(evt);
+            }
+        });
+
+        txtEmail.setText("sdfhsdhsdfghsdgh");
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
+        txtDireccion.setText("asdgasfgsdfgdsg");
+
         jLabel13.setText("Mesa:");
 
         jLabel15.setText("ID Factura:");
 
         jLabel16.setText("Fecha:");
 
-        jLabel17.setText("IVA:");
+        jLabel17.setText("IVA (21%):");
 
         jLabel19.setText("Total:");
 
@@ -169,7 +196,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -281,14 +308,27 @@ public class VNuevaFactura extends javax.swing.JDialog {
 
     private void btnGuardarNewFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarNewFacturaActionPerformed
         Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
-                                    this.fap.precioMesa(this.fap.obtenerMesa(mesa)), this.mesa);
+                                    this.precio, this.mesa);
+        String[] apellidos;
+        apellidos = this.txtApellidosCliente.getText().split(" ");
         Cliente cli = new Cliente(this.txtDni.getText(), this.txtNombreCliente.getText(), 
-                                    (this.txtApellidosCliente.getText().split(" "))[0], 
-                                    (this.txtApellidosCliente.getText().split(" "))[1], 
+                                    apellidos[0], apellidos[1], 
                                     this.txtEmail.getText(), this.txtDireccion.getText());
-        this.fap.anadirFactura(fact);
         this.fap.anadirCliente(cli);
+        this.fap.anadirFactura(fact);
     }//GEN-LAST:event_btnGuardarNewFacturaActionPerformed
+
+    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreClienteActionPerformed
+
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     /**
      * @param args the command line arguments

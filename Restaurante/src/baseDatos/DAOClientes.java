@@ -27,7 +27,7 @@ public class DAOClientes extends AbstractDAO {
         Connection con;
         PreparedStatement stmCliente = null;
         String statement = "insert into cliente "
-                            + "values ?, ?, ?, ?, ?, ?";
+                            + "values (?, ?, ?, ?, ?, ?)";
 
         con = super.getConexion();
 

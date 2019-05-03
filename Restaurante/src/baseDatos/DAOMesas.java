@@ -115,8 +115,6 @@ public class DAOMesas extends AbstractDAO {
     public int cobrarMesa(Mesa mesa, String camarero, Float precio){
         Connection con;
         PreparedStatement stmInsertar=null;
-        PreparedStatement stmBorrarBebida=null;
-        PreparedStatement stmBorrarPlato=null;
         PreparedStatement stmServicio=null;
         int ret = -1;
         con=super.getConexion();
@@ -144,48 +142,12 @@ public class DAOMesas extends AbstractDAO {
           }
         }
         
-        
-        try {
-            stmBorrarPlato = con.prepareStatement("delete from tenerplato " +
-                                            "where mesa=?");
-            stmBorrarPlato.setInt(1, mesa.getNum_mesa());
-            stmBorrarPlato.executeUpdate();
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
-        } finally {
-            try {
-                stmBorrarPlato.close();
-            } catch (SQLException e) {
-                System.out.println("Imposible cerrar cursores");
-            }
-        }
-        
-        
-        try {
-            stmBorrarBebida = con.prepareStatement("delete from tenerbebida " +
-                                            "where mesa=?");
-            stmBorrarBebida.setInt(1, mesa.getNum_mesa());
-            stmBorrarBebida.executeUpdate();
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
-        } finally {
-            try {
-                stmBorrarBebida.close();
-            } catch (SQLException e) {
-                System.out.println("Imposible cerrar cursores");
-            }
-        }
-        
         try {
             ResultSet rsServicio = null;
-            stmServicio = con.prepareStatement("SELECT last_value as number FROM controla_secuencia_idfactura");
+            stmServicio = con.prepareStatement("SELECT max(id_venta) from atender");
             rsServicio = stmServicio.executeQuery();
             if(rsServicio.next()){
-                ret = rsServicio.getInt("number");
+                ret = rsServicio.getInt("max");
             }
 
         } catch (SQLException e) {
@@ -193,7 +155,7 @@ public class DAOMesas extends AbstractDAO {
             // this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmBorrarPlato.close();
+                stmServicio.close();
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
