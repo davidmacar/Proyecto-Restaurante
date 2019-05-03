@@ -29,6 +29,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
         this.fap = fap;
         this.mesa = mesa;
         this.venta = venta;
+        this.txtIdFactura.setText(String.valueOf(this.fap.obtenerIdFactura()));
         
         this.txtNombreCliente.setEditable(false);
         this.txtApellidosCliente.setEditable(false);
