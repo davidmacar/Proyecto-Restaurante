@@ -132,7 +132,7 @@ public class DAOClientes extends AbstractDAO {
         Cliente cliente = null;
         PreparedStatement stmEmpleado = null;
         String statement = "select * "
-                + "from clientes "
+                + "from cliente "
                 + "where dni = ? ";
         ResultSet rsEmpleado;
 
