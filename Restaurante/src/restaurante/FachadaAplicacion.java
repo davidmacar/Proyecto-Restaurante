@@ -161,4 +161,11 @@ public class FachadaAplicacion {
     public Cliente obtenerCliente(String dni){
         return this.gc.obtenerCliente(dni);
     }
+    
+    /*
+    public void vistaFacturaNueva(VHistorialFacturas hist); {
+        this.fgui.fap.vistaFacturaNueva(hist);
+    }
+*/
+    
 }
