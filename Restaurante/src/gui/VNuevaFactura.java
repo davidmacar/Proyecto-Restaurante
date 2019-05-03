@@ -31,16 +31,15 @@ public class VNuevaFactura extends javax.swing.JDialog {
         this.mesa = mesa;
         this.venta = venta;
         this.precio = precio;
-        this.txtIdFactura.setText(String.valueOf(this.fap.obtenerIdFactura()));
         
-        this.txtNombreCliente.setEditable(false);
-        this.txtApellidosCliente.setEditable(false);
-        this.txtDni.setEditable(false);
-        this.txtDireccion.setEditable(false);
-        this.txtEmail.setEditable(false);
-        this.Aviso.setVisible(false);
+        this.txtNombreCliente.setEditable(true);
+        this.txtApellidosCliente.setEditable(true);
+        this.txtDni.setEditable(true);
+        this.txtDireccion.setEditable(true);
+        this.txtEmail.setEditable(true);
+        this.Aviso.setVisible(true);
         this.Aviso1.setVisible(false);
-        //this.txtIdFactura.setText(this.fap.obtenerIdFactura());
+        this.txtIdFactura.setText(String.valueOf(this.fap.obtenerIdFactura()));
         this.txtFecha.setText(this.fap.obtenerFechaActual());
         this.txtMesa.setText(String.valueOf(this.mesa));
         this.txtTotal.setText(String.valueOf(precio));
@@ -90,6 +89,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
         Aviso1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnGuardarNewFactura.setText("Guardar");
         btnGuardarNewFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -97,44 +97,67 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 btnGuardarNewFacturaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnGuardarNewFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 160, -1, -1));
 
         btnSalirNewFactura.setText("Salir");
+        getContentPane().add(btnSalirNewFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 300, -1, -1));
 
         jLabel6.setText("Datos Cliente");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         jLabel7.setText("Datos Factura");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, -1, -1));
 
         jLabel8.setText("Nombre:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel9.setText("DNI:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
         jLabel10.setText("Direccion:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
 
         jLabel11.setText("E-mail:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         jLabel12.setText("Apellidos:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
-        txtDni.addActionListener(new java.awt.event.ActionListener() {
+        txtApellidosCliente.setText("Diaz Costas");
+        getContentPane().add(txtApellidosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
+
+        txtDni.setText("69548624K");
+        getContentPane().add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
+
+        txtNombreCliente.setText("Pepe");
+        getContentPane().add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+
+        txtEmail.setText("sdfhsdhsdfghsdgh");
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDniActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, -1));
 
-        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreClienteActionPerformed(evt);
-            }
-        });
+        txtDireccion.setText("asdgasfgsdfgdsg");
+        getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, -1, -1));
 
         jLabel13.setText("Mesa:");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 56, -1, -1));
 
         jLabel15.setText("ID Factura:");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, -1, -1));
 
         jLabel16.setText("Fecha:");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, -1, -1));
 
         jLabel17.setText("IVA (21%):");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, -1, -1));
 
         jLabel19.setText("Total:");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, -1, -1));
 
         txtIdFactura.setEditable(false);
         txtIdFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +165,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 txtIdFacturaActionPerformed(evt);
             }
         });
+        getContentPane().add(txtIdFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, -1, -1));
 
         txtFecha.setEditable(false);
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +173,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 txtFechaActionPerformed(evt);
             }
         });
+        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, -1, -1));
 
         txtMesa.setEditable(false);
         txtMesa.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +181,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 txtMesaActionPerformed(evt);
             }
         });
+        getContentPane().add(txtMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, -1, -1));
 
         txtTotal.setEditable(false);
         txtTotal.addActionListener(new java.awt.event.ActionListener() {
@@ -163,8 +189,10 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 txtTotalActionPerformed(evt);
             }
         });
+        getContentPane().add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 280, -1, -1));
 
         txtIva.setEditable(false);
+        getContentPane().add(txtIva, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, -1, -1));
 
         btnClienteNuevo.setText("Nuevo");
         btnClienteNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -172,6 +200,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 btnClienteNuevoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnClienteNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         btnClienteExistente.setText("Existente");
         btnClienteExistente.addActionListener(new java.awt.event.ActionListener() {
@@ -179,187 +208,15 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 btnClienteExistenteActionPerformed(evt);
             }
         });
+        getContentPane().add(btnClienteExistente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         Aviso.setForeground(new java.awt.Color(255, 0, 0));
         Aviso.setText("El cliente ya existe");
+        getContentPane().add(Aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
 
         Aviso1.setForeground(new java.awt.Color(255, 0, 0));
         Aviso1.setText("El cliente no existe");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel8))
-                                .addGap(14, 14, 14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtApellidosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(68, 68, 68)
-                                .addComponent(jLabel14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
-                                        .addComponent(jLabel15))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel13)))
-                                .addGap(13, 13, 13)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtIdFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addComponent(btnSalirNewFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel6)
-                        .addGap(234, 234, 234)
-                        .addComponent(jLabel7))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel8))
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtApellidosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnClienteNuevo)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Aviso)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnClienteExistente)
-                                        .addGap(138, 138, 138)
-                                        .addComponent(jLabel7)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(55, 55, 55)
-                                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(83, 83, 83)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addGap(43, 43, 43)
-                                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel19)
-                                            .addComponent(jLabel17))
-                                        .addGap(49, 49, 49)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(30, 30, 30)
-                                        .addComponent(btnSalirNewFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11))
-                                .addGap(14, 14, 14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(Aviso1)))))
-                        .addContainerGap(16, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(btnClienteNuevo)
-                        .addComponent(btnClienteExistente))
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Aviso)
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtApellidosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel14))
-                    .addComponent(jLabel15)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtIdFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13)))
-                    .addComponent(btnGuardarNewFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel16)))
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel19))
-                    .addComponent(btnSalirNewFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Aviso1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(Aviso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -377,7 +234,16 @@ public class VNuevaFactura extends javax.swing.JDialog {
     }//GEN-LAST:event_txtTotalActionPerformed
 
     private void btnGuardarNewFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarNewFacturaActionPerformed
-        if(this.txtNombreCliente.isEditable() == true){
+        Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
+                                    this.precio, this.mesa);
+        String[] apellidos;
+        apellidos = this.txtApellidosCliente.getText().split(" ");
+        Cliente cli = new Cliente(this.txtDni.getText(), this.txtNombreCliente.getText(), 
+                                    apellidos[0], apellidos[1], 
+                                    this.txtEmail.getText(), this.txtDireccion.getText());
+        this.fap.anadirCliente(cli);
+        this.fap.anadirFactura(fact);
+        /*if(this.txtNombreCliente.isEditable() == true){
         Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
                                     this.precio, this.mesa);
         String[] apellidos;
@@ -404,7 +270,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
             else{
                 this.fap.anadirFactura(fact);
             }
-        }
+        }*/
     }//GEN-LAST:event_btnGuardarNewFacturaActionPerformed
 
     private void txtMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMesaActionPerformed
@@ -434,24 +300,16 @@ public class VNuevaFactura extends javax.swing.JDialog {
         this.txtEmail.setText("");
     }//GEN-LAST:event_btnClienteExistenteActionPerformed
 
-    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
+    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
         this.Aviso.setVisible(false);
-    }//GEN-LAST:event_txtNombreClienteActionPerformed
+    }                                                
 
-    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
         this.Aviso.setVisible(false);
         this.Aviso1.setVisible(false);
-    }//GEN-LAST:event_txtDniActionPerformed
-
-    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreClienteActionPerformed
-
-    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDniActionPerformed
+    }                                      
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
