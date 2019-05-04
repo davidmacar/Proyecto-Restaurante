@@ -161,5 +161,14 @@ public class FachadaBaseDatos {
     public Cliente obtenerCliente(String dni){
         return this.daoClientes.obtenerCliente(dni);
     }
+    public ArrayList<Factura> obtenerFacturasIdCliente(String id, String cliente){
+        return this.daoFacturas.obtenerFacturasIdCliente(id, cliente);
+    }
+    public ArrayList<Factura> obtenerFacturasCliente(String cliente){
+        return this.daoFacturas.obtenerFacturasCliente(cliente);
+    }
+    public ArrayList<Factura> obtenerFacturasId(String id){
+        return this.daoFacturas.obtenerFacturasId(id);
+    }
 
 }

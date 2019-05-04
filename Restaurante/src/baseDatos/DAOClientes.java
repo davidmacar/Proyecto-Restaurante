@@ -144,7 +144,7 @@ public class DAOClientes extends AbstractDAO {
             rsEmpleado = stmEmpleado.executeQuery();
             if (rsEmpleado.next()) {
                 cliente = new Cliente(rsEmpleado.getString("dni"), rsEmpleado.getString("nombre"),
-                        rsEmpleado.getString("apellido_1"), rsEmpleado.getString("apellido_2"), rsEmpleado.getString("e_mail"), 
+                        rsEmpleado.getString("apellido1"), rsEmpleado.getString("apellido2"), rsEmpleado.getString("email"), 
                         rsEmpleado.getString("direccion"));
             }
 
@@ -160,10 +160,9 @@ public class DAOClientes extends AbstractDAO {
             } catch (SQLException e) {
                 e.printStackTrace();
                 System.out.println("Imposible cerrar cursores");
-                System.out.println("");
             }
         }
-        System.out.println(cliente.toString());
+       
         return cliente;
     }
 }

@@ -37,8 +37,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
         this.txtDni.setEditable(true);
         this.txtDireccion.setEditable(true);
         this.txtEmail.setEditable(true);
-        this.Aviso.setVisible(false);
-        this.Aviso1.setVisible(false);
+        this.aviso.setVisible(false);
+        this.aviso1.setVisible(false);
         this.txtIdFactura.setText(String.valueOf(this.fap.obtenerIdFactura()));
         this.txtFecha.setText(this.fap.obtenerFechaActual());
         this.txtMesa.setText(String.valueOf(this.mesa));
@@ -83,8 +83,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
         txtMesa = new javax.swing.JTextField();
         txtTotal = new javax.swing.JTextField();
         txtIva = new javax.swing.JTextField();
-        Aviso = new javax.swing.JLabel();
-        Aviso1 = new javax.swing.JLabel();
+        aviso = new javax.swing.JLabel();
+        aviso1 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JToggleButton();
         btnExistente = new javax.swing.JToggleButton();
 
@@ -199,13 +199,13 @@ public class VNuevaFactura extends javax.swing.JDialog {
         txtIva.setEditable(false);
         getContentPane().add(txtIva, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, -1, -1));
 
-        Aviso.setForeground(new java.awt.Color(255, 0, 0));
-        Aviso.setText("El cliente ya existe");
-        getContentPane().add(Aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
+        aviso.setForeground(new java.awt.Color(255, 0, 0));
+        aviso.setText("El cliente ya existe");
+        getContentPane().add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
 
-        Aviso1.setForeground(new java.awt.Color(255, 0, 0));
-        Aviso1.setText("El cliente no existe");
-        getContentPane().add(Aviso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
+        aviso1.setForeground(new java.awt.Color(255, 0, 0));
+        aviso1.setText("El cliente no existe");
+        getContentPane().add(aviso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -241,23 +241,38 @@ public class VNuevaFactura extends javax.swing.JDialog {
     private void btnGuardarNewFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarNewFacturaActionPerformed
         Factura fact = new Factura(0,this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
                                     this.precio, this.mesa);
-        String[] apellidos;
+        /*String[] apellidos;
         apellidos = this.txtApellidosCliente.getText().split(" ");
         Cliente cli = new Cliente(this.txtDni.getText(), this.txtNombreCliente.getText(), 
                                     apellidos[0], apellidos[1], 
-                                    this.txtEmail.getText(), this.txtDireccion.getText());
-        this.fap.anadirCliente(cli);
-        this.fap.anadirFactura(fact);
+                                    this.txtEmail.getText(), this.txtDireccion.getText());*/
         
         if(this.btnExistente.isSelected()){
-            
+            if(this.txtDni.getText() != null || this.txtDni.getText() != ""){
+                if(this.fap.obtenerCliente(this.txtDni.getText()) != null){
+                    this.fap.anadirFactura(fact);  
+                }
+                else
+                    this.aviso1.setVisible(true);
+            }
         }
         else if(this.btnNuevo.isSelected()){
-            
+            if(this.txtDni.getText() != null || this.txtDni.getText() != ""){
+                if(this.fap.obtenerCliente(this.txtDni.getText()) == null){
+                
+                    String[] apellidos;
+                    apellidos = this.txtApellidosCliente.getText().split(" ");
+                    Cliente cli = new Cliente(this.txtDni.getText(), this.txtNombreCliente.getText(), 
+                                                apellidos[0], apellidos[1], 
+                                                this.txtEmail.getText(), this.txtDireccion.getText());
+                    this.fap.anadirCliente(cli);
+                    this.fap.anadirFactura(fact);   
+                }
+                else 
+                    this.aviso.setVisible(true);
+            }
         }
-        else{
-            
-        }
+
         /*if(this.txtNombreCliente.isEditable() == true){
         Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
                                     this.precio, this.mesa);
@@ -286,7 +301,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 this.fap.anadirFactura(fact);
             }
         }*/
-        this.setVisible(false);
+        if(!this.aviso.isVisible() && !this.aviso1.isVisible())
+            this.setVisible(false);
     }//GEN-LAST:event_btnGuardarNewFacturaActionPerformed
 
     private void txtMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMesaActionPerformed
@@ -295,13 +311,13 @@ public class VNuevaFactura extends javax.swing.JDialog {
 
     private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
-        this.Aviso.setVisible(false);
+        this.aviso.setVisible(false);
     }                                                
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
-        this.Aviso.setVisible(false);
-        this.Aviso1.setVisible(false);
+        this.aviso.setVisible(false);
+        this.aviso1.setVisible(false);
     }                                      
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -321,6 +337,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
         this.txtDireccion.setEditable(true);
         this.txtEmail.setEditable(true);
         this.btnExistente.setSelected(false);
+        this.aviso.setVisible(false);
+        this.aviso1.setVisible(false);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnExistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExistenteActionPerformed
@@ -336,6 +354,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
         this.txtEmail.setEditable(false);
         this.txtEmail.setText("");
         this.btnNuevo.setSelected(false);
+        this.aviso.setVisible(false);
+        this.aviso1.setVisible(false);
     }//GEN-LAST:event_btnExistenteActionPerformed
 
     /**
@@ -344,8 +364,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Aviso;
-    private javax.swing.JLabel Aviso1;
+    private javax.swing.JLabel aviso;
+    private javax.swing.JLabel aviso1;
     private javax.swing.JToggleButton btnExistente;
     private javax.swing.JButton btnGuardarNewFactura;
     private javax.swing.JToggleButton btnNuevo;

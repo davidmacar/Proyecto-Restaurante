@@ -162,11 +162,15 @@ public class FachadaAplicacion {
         return this.gc.obtenerCliente(dni);
     }
     
-    /*
-    public void vistaFacturaNueva(VHistorialFacturas hist); {
-        this.fgui.fap.vistaFacturaNueva(hist);
+    public ArrayList<Factura> obtenerFacturasIdCliente(String id, String cliente){
+        return this.gf.obtenerFacturasIdCliente(id, cliente);
     }
-*/
+    public ArrayList<Factura> obtenerFacturasCliente(String cliente){
+        return this.gf.obtenerFacturasCliente(cliente);
+    }
+    public ArrayList<Factura> obtenerFacturasId(String id){
+        return this.gf.obtenerFacturasId(id);
+    }
     
     public void VElegirFactura(java.awt.Dialog parent, Factura factura) {
         this.fgui.VElegirFactura(parent, factura);

@@ -5,9 +5,11 @@
  */
 package gui;
 
+import java.util.ArrayList;
 import modelos.ModeloTablaClientes;
 import modelos.ModeloTablaFacturas;
 import restaurante.FachadaAplicacion;
+import restaurante.Factura;
 
 /**
  *
@@ -17,7 +19,6 @@ public class VHistorialFacturas extends javax.swing.JDialog {
     
     private FachadaAplicacion fap;
     private VCamarero vcam;
-    private ModeloTablaFacturas mtf;
 
     /**
      * Creates new form VFactura
@@ -27,21 +28,17 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         //this.vcam = (VCamarero) parent;
         this.fap = fap;
         initComponents();
-        this.mtf = new ModeloTablaFacturas();
         this.actualizarModelo();
     }
 
     private void actualizarModelo() {
-
-        mtf = (ModeloTablaFacturas) tablaFacturas.getModel();
+        ModeloTablaFacturas mtf = (ModeloTablaFacturas) this.tablaFacturas.getModel();
         mtf.setFilas(fap.obtenerFacturas());
-        /*
-        if(!txtBuscarId.getText().isEmpty()){
-            //mtf.setFilas(fap.obtenerFacturas(Integer.parseInt(txtBuscarId.getText()), txtBuscarCliente.getText()));
-        } else{
-            mtf.setFilas(fap.obtenerFacturas());
-        }
-        */
+    }
+    
+    private void actualizarModelo(ArrayList<Factura> facturas) {
+        ModeloTablaFacturas mtf = (ModeloTablaFacturas) this.tablaFacturas.getModel();
+        mtf.setFilas(facturas);
     }
     
     /**
@@ -198,11 +195,24 @@ public class VHistorialFacturas extends javax.swing.JDialog {
 
     private void btnBuscarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFacturaActionPerformed
         // TODO add your handling code here:
-        actualizarModelo();
+        ArrayList<Factura> facturas;
+        if(this.txtBuscarId.getText() != null && this.txtBuscarId.getText() != ""
+                && this.txtBuscarCliente.getText() != null && this.txtBuscarCliente.getText() != ""){
+            facturas = this.fap.obtenerFacturasIdCliente.txtBuscarId.getText(), this.txtBuscarCliente.getText());
+        }
+        else if(this.txtBuscarId.getText() != null && this.txtBuscarId.getText() != ""){
+            facturas = this.fap.obtenerFacturasId(this.txtBuscarId.getText());
+        }
+        else if(this.txtBuscarCliente.getText() != null && this.txtBuscarCliente.getText() != ""){
+            facturas = this.fap.botenerFacturasCliente(this.txtBuscarCliente.getText());
+        }
+        this.actualizarModelo(facturas);
+        
+        /*actualizarModelo();
         if (mtf.getRowCount() > 0) {
             tablaFacturas.setRowSelectionInterval(0, 0);
 
-        }
+        }*/
 
     }//GEN-LAST:event_btnBuscarFacturaActionPerformed
 /**/
