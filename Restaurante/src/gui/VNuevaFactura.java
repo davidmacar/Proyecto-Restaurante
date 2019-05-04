@@ -83,10 +83,10 @@ public class VNuevaFactura extends javax.swing.JDialog {
         txtMesa = new javax.swing.JTextField();
         txtTotal = new javax.swing.JTextField();
         txtIva = new javax.swing.JTextField();
-        btnClienteNuevo = new javax.swing.JButton();
-        btnClienteExistente = new javax.swing.JButton();
         Aviso = new javax.swing.JLabel();
         Aviso1 = new javax.swing.JLabel();
+        btnNuevo = new javax.swing.JToggleButton();
+        btnExistente = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -199,22 +199,6 @@ public class VNuevaFactura extends javax.swing.JDialog {
         txtIva.setEditable(false);
         getContentPane().add(txtIva, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, -1, -1));
 
-        btnClienteNuevo.setText("Nuevo");
-        btnClienteNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClienteNuevoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnClienteNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
-
-        btnClienteExistente.setText("Existente");
-        btnClienteExistente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClienteExistenteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnClienteExistente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
-
         Aviso.setForeground(new java.awt.Color(255, 0, 0));
         Aviso.setText("El cliente ya existe");
         getContentPane().add(Aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
@@ -222,6 +206,22 @@ public class VNuevaFactura extends javax.swing.JDialog {
         Aviso1.setForeground(new java.awt.Color(255, 0, 0));
         Aviso1.setText("El cliente no existe");
         getContentPane().add(Aviso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
+
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        btnExistente.setText("Existente");
+        btnExistente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExistenteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExistente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -248,6 +248,16 @@ public class VNuevaFactura extends javax.swing.JDialog {
                                     this.txtEmail.getText(), this.txtDireccion.getText());
         this.fap.anadirCliente(cli);
         this.fap.anadirFactura(fact);
+        
+        if(this.btnExistente.isSelected()){
+            
+        }
+        else if(this.btnNuevo.isSelected()){
+            
+        }
+        else{
+            
+        }
         /*if(this.txtNombreCliente.isEditable() == true){
         Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
                                     this.precio, this.mesa);
@@ -283,29 +293,6 @@ public class VNuevaFactura extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMesaActionPerformed
 
-    private void btnClienteNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteNuevoActionPerformed
-        // TODO add your handling code here:
-        this.txtNombreCliente.setEditable(true);
-        this.txtApellidosCliente.setEditable(true);
-        this.txtDni.setEditable(true);
-        this.txtDireccion.setEditable(true);
-        this.txtEmail.setEditable(true);
-    }//GEN-LAST:event_btnClienteNuevoActionPerformed
-
-    private void btnClienteExistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteExistenteActionPerformed
-        // TODO add your handling code here:
-        this.txtNombreCliente.setEditable(false);
-        this.txtNombreCliente.setText("");
-        this.txtApellidosCliente.setEditable(false);
-        this.txtApellidosCliente.setText("");
-        this.txtDni.setEditable(true);
-        this.txtDni.setText("");
-        this.txtDireccion.setEditable(false);
-        this.txtDireccion.setText("");
-        this.txtEmail.setEditable(false);
-        this.txtEmail.setText("");
-    }//GEN-LAST:event_btnClienteExistenteActionPerformed
-
     private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
         this.Aviso.setVisible(false);
@@ -327,6 +314,30 @@ public class VNuevaFactura extends javax.swing.JDialog {
         
     }//GEN-LAST:event_btnSalirNewFacturaActionPerformed
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        this.txtNombreCliente.setEditable(true);
+        this.txtApellidosCliente.setEditable(true);
+        this.txtDni.setEditable(true);
+        this.txtDireccion.setEditable(true);
+        this.txtEmail.setEditable(true);
+        this.btnExistente.setSelected(false);
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnExistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExistenteActionPerformed
+        
+        this.txtNombreCliente.setEditable(false);
+        this.txtNombreCliente.setText("");
+        this.txtApellidosCliente.setEditable(false);
+        this.txtApellidosCliente.setText("");
+        this.txtDni.setEditable(true);
+        //this.txtDni.setText("");
+        this.txtDireccion.setEditable(false);
+        this.txtDireccion.setText("");
+        this.txtEmail.setEditable(false);
+        this.txtEmail.setText("");
+        this.btnNuevo.setSelected(false);
+    }//GEN-LAST:event_btnExistenteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -335,9 +346,9 @@ public class VNuevaFactura extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Aviso;
     private javax.swing.JLabel Aviso1;
-    private javax.swing.JButton btnClienteExistente;
-    private javax.swing.JButton btnClienteNuevo;
+    private javax.swing.JToggleButton btnExistente;
     private javax.swing.JButton btnGuardarNewFactura;
+    private javax.swing.JToggleButton btnNuevo;
     private javax.swing.JButton btnSalirNewFactura;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

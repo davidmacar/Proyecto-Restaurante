@@ -49,7 +49,7 @@ public class VMenu extends javax.swing.JDialog {
         }
         for(Bebida b : fap.obtenerBebidasMesa(this.mesa.getNum_mesa())){
             pedido.add(b.getNombre());
-        }
+        }       
         mls.setElementos(pedido);
     }
 

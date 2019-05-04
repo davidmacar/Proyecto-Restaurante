@@ -61,7 +61,6 @@ public class VCajero extends javax.swing.JDialog {
         txtCantidad = new javax.swing.JLabel();
         txtCambio = new javax.swing.JLabel();
         txtMesa = new javax.swing.JLabel();
-        btnFacturar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -72,7 +71,7 @@ public class VCajero extends javax.swing.JDialog {
                 btnCobrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 100, 70));
+        getContentPane().add(btnCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 100, 70));
 
         labCantidad.setText("Cantidad:");
         getContentPane().add(labCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
@@ -104,14 +103,6 @@ public class VCajero extends javax.swing.JDialog {
         getContentPane().add(txtCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 60, 10));
         getContentPane().add(txtMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 20, 10));
 
-        btnFacturar.setText("Facturar");
-        btnFacturar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFacturarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnFacturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 131, 100, 70));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,15 +131,9 @@ public class VCajero extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnOkActionPerformed
 
-    private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
-        //HAY QUE COBRAR PRIMERO PARA FACTURAR PORQUE SE NECESITA EL ID DE LA VENTA
-        //this.fap.vistaFactura(this, this.mesa.getNum_mesa(), this.venta, this.precio);
-    }//GEN-LAST:event_btnFacturarActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aviso;
     private javax.swing.JButton btnCobrar;
-    private javax.swing.JButton btnFacturar;
     private javax.swing.JButton btnOk;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel labCambio;
