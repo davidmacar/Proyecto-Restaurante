@@ -195,16 +195,19 @@ public class VHistorialFacturas extends javax.swing.JDialog {
 
     private void btnBuscarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFacturaActionPerformed
         // TODO add your handling code here:
-        ArrayList<Factura> facturas;
-        if(this.txtBuscarId.getText() != null && this.txtBuscarId.getText() != ""
-                && this.txtBuscarCliente.getText() != null && this.txtBuscarCliente.getText() != ""){
-            facturas = this.fap.obtenerFacturasIdCliente.txtBuscarId.getText(), this.txtBuscarCliente.getText());
+        ArrayList<Factura> facturas = new ArrayList();
+        if(this.txtBuscarId.getText() != null && !this.txtBuscarId.getText().equals("")
+                && this.txtBuscarCliente.getText() != null && !this.txtBuscarCliente.getText().equals("")){
+            facturas = this.fap.obtenerFacturasIdCliente(txtBuscarId.getText(), this.txtBuscarCliente.getText());
         }
-        else if(this.txtBuscarId.getText() != null && this.txtBuscarId.getText() != ""){
+        else if(this.txtBuscarId.getText() != null && !this.txtBuscarId.getText().equals("")){
             facturas = this.fap.obtenerFacturasId(this.txtBuscarId.getText());
         }
-        else if(this.txtBuscarCliente.getText() != null && this.txtBuscarCliente.getText() != ""){
-            facturas = this.fap.botenerFacturasCliente(this.txtBuscarCliente.getText());
+        else if(this.txtBuscarCliente.getText() != null && !this.txtBuscarCliente.getText().equals("")){
+            facturas = this.fap.obtenerFacturasCliente(this.txtBuscarCliente.getText());
+        }
+        else{
+            facturas = (ArrayList) this.fap.obtenerFacturas();
         }
         this.actualizarModelo(facturas);
         

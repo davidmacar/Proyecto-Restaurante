@@ -138,9 +138,9 @@ public class FachadaBaseDatos {
     }
 
 
-    public List<Factura> obtenerFacturas(int id, String cliente) {
+    /*public List<Factura> obtenerFacturas(int id, String cliente) {
         return daoFacturas.obtenerFacturas(id, cliente);
-    }
+    }*/
 
     public List<Factura> obtenerFacturas() {
         return daoFacturas.obtenerFacturas();

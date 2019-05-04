@@ -23,13 +23,48 @@ public class DAOFacturas extends AbstractDAO {
         super.setFachadaAplicacion(fa);
     }
     
-    public List<Factura> obtenerFacturasIdCliente(String id, String cliente) {
-        List<Factura> resultado = new ArrayList<Factura>();
+    public java.util.List<Factura> obtenerFacturas() {
+        java.util.List<Factura> resultado = new java.util.ArrayList<Factura>();
         Connection con;
         PreparedStatement stmFacturas = null;
-        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, m.mesa "
+        ResultSet rsFacturas;
+
+        con = super.getConexion();
+
+        try {
+            stmFacturas = con.prepareStatement("select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, m.num_mesa " +
+                            "from facturas f inner join cliente c ON (cliente=dni) " +
+                            "inner join atender as a ON (venta = id_venta) " +
+                            "inner join mesas as m ON (mesa=num_mesa) ");
+            rsFacturas = stmFacturas.executeQuery();
+            while (rsFacturas.next()) {
+                Factura factura = new Factura(rsFacturas.getInt("id_factura"), rsFacturas.getInt("venta"),
+                        rsFacturas.getString("cliente"), rsFacturas.getString("fecha"), rsFacturas.getFloat("precio"), rsFacturas.getInt("num_mesa"));
+                resultado.add(factura);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            ;
+        } finally {
+            try {
+                stmFacturas.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Imposible cerrar cursores");
+                System.out.println("");
+            }
+        }
+        return resultado;
+    } 
+    
+    public ArrayList<Factura> obtenerFacturasIdCliente(String id, String cliente) {
+        ArrayList<Factura> resultado = new ArrayList();
+        Connection con;
+        PreparedStatement stmFacturas = null;
+        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, a.mesa "
                 + "from facturas as f, cliente as c, atender as a, mesas as m "
-                + "where f.cliente = c.dni and f.venta = a.id_venta and a.mesa = m-num_mesa "
+                + "where f.cliente = c.dni and f.venta = a.id_venta and a.mesa = m.num_mesa "
                 + "and f.id_factura = ? and f.cliente = ?";
         ResultSet rsFacturas;
 
@@ -37,7 +72,7 @@ public class DAOFacturas extends AbstractDAO {
 
         try {
             stmFacturas = con.prepareStatement(statement);
-            stmFacturas.setInt(1, Integer.getInteger(id));
+            stmFacturas.setInt(1, Integer.parseInt(id));
             stmFacturas.setString(2, cliente);
             rsFacturas = stmFacturas.executeQuery();
             while (rsFacturas.next()) {
@@ -61,10 +96,10 @@ public class DAOFacturas extends AbstractDAO {
     
     public ArrayList<Factura> obtenerFacturasCliente(String cliente) {
         Connection con;
-        ArrayList<Factura> facturas = null;
+        ArrayList<Factura> facturas = new ArrayList();
         PreparedStatement stmFactura = null;
 
-        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, m.mesa "
+        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, a.mesa "
                 + "from facturas as f, cliente as c, atender as a, mesas as m "
                 + "where f.cliente = c.dni and f.venta = a.id_venta and a.mesa = m.num_mesa "
                 + "and f.cliente = ?";
@@ -77,9 +112,8 @@ public class DAOFacturas extends AbstractDAO {
             stmFactura.setString(1, cliente);
             rsFactura = stmFactura.executeQuery();
             while (rsFactura.next()) {
-                facturas.add(new Factura(rsFactura.getInt("id_factura"),
-                        rsFactura.getInt("venta"), rsFactura.getString("cliente"),
-                        rsFactura.getDate("fecha").toString(), rsFactura.getFloat("precio")));
+                facturas.add(new Factura(rsFactura.getInt("id_factura"), rsFactura.getInt("venta"),
+                        rsFactura.getString("cliente"), rsFactura.getDate("fecha").toString(), rsFactura.getFloat("precio"), rsFactura.getInt("mesa")));
             }
 
         } catch (SQLException e) {
@@ -101,24 +135,24 @@ public class DAOFacturas extends AbstractDAO {
     
     public ArrayList<Factura> obtenerFacturasId(String id) {
         Connection con;
-        ArrayList<Factura> facturas = null;
+        ArrayList<Factura> facturas = new ArrayList();
         PreparedStatement stmFactura = null;
 
-        String statement = "select * "
-                + "from facturas "
-                + "where id_factura = ?";
+        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, a.mesa "
+                + "from facturas as f, cliente as c, atender as a, mesas as m "
+                + "where f.cliente = c.dni and f.venta = a.id_venta and a.mesa = m.num_mesa "
+                + "and f.id_factura = ?";
         ResultSet rsFactura;
 
         con = super.getConexion();
 
         try {
             stmFactura = con.prepareStatement(statement);
-            stmFactura.setInt(1, Integer.getInteger(id));
+            stmFactura.setInt(1, Integer.parseInt(id));
             rsFactura = stmFactura.executeQuery();
             while (rsFactura.next()) {
-                facturas.add(new Factura(rsFactura.getInt("id_factura"),
-                        rsFactura.getInt("venta"), rsFactura.getString("cliente"),
-                        rsFactura.getDate("fecha").toString(), rsFactura.getFloat("precio")));
+                facturas.add(new Factura(rsFactura.getInt("id_factura"), rsFactura.getInt("venta"),
+                        rsFactura.getString("cliente"), rsFactura.getDate("fecha").toString(), rsFactura.getFloat("precio"), rsFactura.getInt("mesa")));
             }
 
         } catch (SQLException e) {
@@ -225,41 +259,6 @@ public class DAOFacturas extends AbstractDAO {
 
         return factura;
     }
-
-    public java.util.List<Factura> obtenerFacturas() {
-        java.util.List<Factura> resultado = new java.util.ArrayList<Factura>();
-        Connection con;
-        PreparedStatement stmFacturas = null;
-        ResultSet rsFacturas;
-
-        con = super.getConexion();
-
-        try {
-            stmFacturas = con.prepareStatement("select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, m.num_mesa " +
-                            "from facturas f inner join cliente c ON (cliente=dni) " +
-                            "	inner join atender as a ON (venta = id_venta) " +
-                            "	inner join mesas as m ON (mesa=num_mesa) ");
-            rsFacturas = stmFacturas.executeQuery();
-            while (rsFacturas.next()) {
-                Factura factura = new Factura(rsFacturas.getInt("id_factura"), rsFacturas.getInt("venta"),
-                        rsFacturas.getString("cliente"), rsFacturas.getString("fecha"), rsFacturas.getFloat("precio"), rsFacturas.getInt("num_mesa"));
-                resultado.add(factura);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-            ;
-        } finally {
-            try {
-                stmFacturas.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-                System.out.println("Imposible cerrar cursores");
-                System.out.println("");
-            }
-        }
-        return resultado;
-    } 
     
     public void anadirFactura(Factura fac) {
         Connection con;
