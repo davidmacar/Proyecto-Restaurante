@@ -142,8 +142,8 @@ public class FachadaAplicacion {
     public java.util.List<Factura> obtenerFacturas(){
         return gf.obtenerFacturas();
     }
-    public void vistaFactura(javax.swing.JDialog ventana, int mesa, int servicio, float precio){
-        this.fgui.vistaFactura(ventana, mesa, servicio, precio);
+    public void vistaFactura(javax.swing.JDialog ventana, Factura factura){
+        this.fgui.vistaFactura(ventana, factura);
     }
     public String obtenerFechaActual(){
         return this.gf.obtenerFechaActual();

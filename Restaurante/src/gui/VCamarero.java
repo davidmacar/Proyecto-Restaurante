@@ -174,16 +174,11 @@ public class VCamarero extends javax.swing.JDialog {
             return;
         }
         Mesa mesa = fap.obtenerMesa(Integer.parseInt(this.listMesas.getSelectedValue()));
-        fap.vistaCajero(this, mesa, this.camarero);
+        this.fap.vistaCajero(this, mesa, this.camarero);
        
-        listMesas.setSelectedIndex(0);
+        this.listMesas.setSelectedIndex(0);
         actualizarPlatos();
         actualizarBebidas();
-        
-        
-        
-        
-        
     }//GEN-LAST:event_btnCobrarActionPerformed
 
     private void listMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasMouseClicked

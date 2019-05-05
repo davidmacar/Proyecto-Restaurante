@@ -41,8 +41,8 @@ public class FachadaGui extends IOException{
         VProducto vprod = new VProducto(ventana, true, this.fap, obj);
         vprod.setVisible(true);
     }
-    public void vistaFactura(javax.swing.JDialog ventana, int mesa, int servicio, float precio){
-        VNuevaFactura vfac = new VNuevaFactura(ventana, true, this.fap, mesa, servicio, precio);
+    public void vistaFactura(javax.swing.JDialog ventana, Factura factura){
+        VNuevaFactura vfac = new VNuevaFactura(ventana, true, this.fap, factura);
         vfac.setVisible(true);
     }
     

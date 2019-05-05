@@ -17,21 +17,16 @@ import restaurante.Mesa;
 public class VNuevaFactura extends javax.swing.JDialog {
     private FachadaAplicacion fap;
     private VCamarero vcam;
-    private int mesa;
-    private int venta;
-    private float precio;
-
+    Factura factura;
+    
     /**
      * Creates new form VNuevaFactura
      */
-    public VNuevaFactura(java.awt.Dialog parent, boolean modal,FachadaAplicacion fap, int mesa, int venta, float precio) {
+    public VNuevaFactura(java.awt.Dialog parent, boolean modal,FachadaAplicacion fap, Factura factura) {
         super(parent,modal);
         initComponents();
         this.fap = fap;
-        this.mesa = mesa;
-        this.venta = venta;
-        this.precio = precio;
-        
+        this.factura = factura;
         this.txtNombreCliente.setEditable(true);
         this.txtApellidosCliente.setEditable(true);
         this.txtDni.setEditable(true);
@@ -41,9 +36,9 @@ public class VNuevaFactura extends javax.swing.JDialog {
         this.aviso1.setVisible(false);
         this.txtIdFactura.setText(String.valueOf(this.fap.obtenerIdFactura()));
         this.txtFecha.setText(this.fap.obtenerFechaActual());
-        this.txtMesa.setText(String.valueOf(this.mesa));
-        this.txtTotal.setText(String.valueOf(precio));
-        this.txtIva.setText(String.format("%.2f",(precio / 1.21) * 0.21));
+        this.txtMesa.setText(String.valueOf(this.factura.getMesa()));
+        this.txtTotal.setText(String.valueOf(this.factura.getPrecio()));
+        this.txtIva.setText(String.format("%.2f",(this.factura.getPrecio() / 1.21) * 0.21));
     }
 
 
@@ -239,18 +234,13 @@ public class VNuevaFactura extends javax.swing.JDialog {
     }//GEN-LAST:event_txtTotalActionPerformed
 
     private void btnGuardarNewFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarNewFacturaActionPerformed
-        Factura fact = new Factura(0,this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
-                                    this.precio, this.mesa);
-        /*String[] apellidos;
-        apellidos = this.txtApellidosCliente.getText().split(" ");
-        Cliente cli = new Cliente(this.txtDni.getText(), this.txtNombreCliente.getText(), 
-                                    apellidos[0], apellidos[1], 
-                                    this.txtEmail.getText(), this.txtDireccion.getText());*/
         
         if(this.btnExistente.isSelected()){
             if(this.txtDni.getText() != null || this.txtDni.getText() != ""){
                 if(this.fap.obtenerCliente(this.txtDni.getText()) != null){
-                    this.fap.anadirFactura(fact);  
+                    this.factura.setCliente(this.txtDni.getText());
+                    this.factura.setFecha(this.fap.obtenerFechaActual());
+                    this.fap.anadirFactura(factura);  
                 }
                 else
                     this.aviso1.setVisible(true);
@@ -266,41 +256,14 @@ public class VNuevaFactura extends javax.swing.JDialog {
                                                 apellidos[0], apellidos[1], 
                                                 this.txtEmail.getText(), this.txtDireccion.getText());
                     this.fap.anadirCliente(cli);
-                    this.fap.anadirFactura(fact);   
+                    this.factura.setCliente(this.txtDni.getText());
+                    this.factura.setFecha(this.fap.obtenerFechaActual());
+                    this.fap.anadirFactura(factura);   
                 }
                 else 
                     this.aviso.setVisible(true);
             }
         }
-
-        /*if(this.txtNombreCliente.isEditable() == true){
-        Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
-                                    this.precio, this.mesa);
-        String[] apellidos;
-        apellidos = this.txtApellidosCliente.getText().split(" ");
-        Cliente cli = new Cliente(this.txtDni.getText(), this.txtNombreCliente.getText(), 
-                                    apellidos[0], apellidos[1], 
-                                    this.txtEmail.getText(), this.txtDireccion.getText());
-            
-        if(fap.obtenerCliente(this.txtDni.getText())!= null){
-                this.Aviso.setVisible(true);
-            }
-            else{
-                this.fap.anadirFactura(fact);
-                this.fap.anadirCliente(cli);
-            }
-        }
-        else{
-            Factura fact = new Factura(this.venta, this.txtDni.getText(), this.fap.obtenerFechaActual(), 
-                                    this.fap.precioMesa(this.fap.obtenerMesa(mesa)), this.mesa);
-            
-            if(fap.obtenerCliente(this.txtDni.getText())== null){
-                this.Aviso1.setVisible(true);
-            }
-            else{
-                this.fap.anadirFactura(fact);
-            }
-        }*/
         if(!this.aviso.isVisible() && !this.aviso1.isVisible())
             this.setVisible(false);
     }//GEN-LAST:event_btnGuardarNewFacturaActionPerformed

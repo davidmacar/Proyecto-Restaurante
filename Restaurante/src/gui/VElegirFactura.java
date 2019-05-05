@@ -87,7 +87,7 @@ public class VElegirFactura extends javax.swing.JDialog {
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         // TODO add your handling code here:
-        this.fap.vistaFactura(this, this.factura.getMesa(), this.factura.getVenta(), this.factura.getPrecio());
+        this.fap.vistaFactura(this, factura);
         this.setVisible(false);
     }//GEN-LAST:event_btnSiActionPerformed
 
