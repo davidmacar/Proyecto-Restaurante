@@ -32,12 +32,12 @@ public class DAOFacturas extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmFacturas = con.prepareStatement("select f.id_factura, a.venta, f.cliente, a.fecha, a.precio, a.mesa "
+            stmFacturas = con.prepareStatement("select f.id_factura, a.id_venta, f.cliente, f.fecha, a.precio, a.mesa "
                                                 + "from facturas as f, atender as a "
                                                 + "where f.id_factura = a.factura");
             rsFacturas = stmFacturas.executeQuery();
             while (rsFacturas.next()) {
-                Factura factura = new Factura(rsFacturas.getInt("id_factura"), rsFacturas.getInt("venta"),
+                Factura factura = new Factura(rsFacturas.getInt("id_factura"), rsFacturas.getInt("id_venta"),
                         rsFacturas.getString("cliente"), rsFacturas.getString("fecha"), rsFacturas.getFloat("precio"), rsFacturas.getInt("mesa"));
                 resultado.add(factura);
             }
@@ -61,7 +61,7 @@ public class DAOFacturas extends AbstractDAO {
         ArrayList<Factura> resultado = new ArrayList();
         Connection con;
         PreparedStatement stmFacturas = null;
-        String statement = "select f.id_factura, a.venta, f.cliente, a.fecha, a.precio, a.mesa "
+        String statement = "select f.id_factura, a.id_venta, f.cliente, f.fecha, a.precio, a.mesa "
                 + "from facturas as f, atender as a "
                 + "where f.id_factura = ? and f.id_factura = a.factura "
                 + "and f.cliente = ?";
@@ -75,7 +75,7 @@ public class DAOFacturas extends AbstractDAO {
             stmFacturas.setString(2, cliente);
             rsFacturas = stmFacturas.executeQuery();
             while (rsFacturas.next()) {
-                resultado.add(new Factura(rsFacturas.getInt("id_factura"), rsFacturas.getInt("venta"),
+                resultado.add(new Factura(rsFacturas.getInt("id_factura"), rsFacturas.getInt("id_venta"),
                         rsFacturas.getString("cliente"), rsFacturas.getDate("fecha").toString(), rsFacturas.getFloat("precio"), rsFacturas.getInt("mesa")));
             }
         } catch (SQLException e) {
@@ -98,7 +98,7 @@ public class DAOFacturas extends AbstractDAO {
         ArrayList<Factura> facturas = new ArrayList();
         PreparedStatement stmFactura = null;
 
-            String statement = "select f.id_factura, a.venta, f.cliente, a.fecha, a.precio, a.mesa "
+            String statement = "select f.id_factura, a.id_venta, f.cliente, f.fecha, a.precio, a.mesa "
                 + "from facturas as f, atender as a "
                 + "where f.id_factura = a.factura "
                 + "and f.cliente = ?";
@@ -111,7 +111,7 @@ public class DAOFacturas extends AbstractDAO {
             stmFactura.setString(1, cliente);
             rsFactura = stmFactura.executeQuery();
             while (rsFactura.next()) {
-                facturas.add(new Factura(rsFactura.getInt("id_factura"), rsFactura.getInt("venta"),
+                facturas.add(new Factura(rsFactura.getInt("id_factura"), rsFactura.getInt("id_venta"),
                         rsFactura.getString("cliente"), rsFactura.getDate("fecha").toString(), rsFactura.getFloat("precio"), rsFactura.getInt("mesa")));
             }
 
@@ -137,7 +137,7 @@ public class DAOFacturas extends AbstractDAO {
         ArrayList<Factura> facturas = new ArrayList();
         PreparedStatement stmFactura = null;
 
-        String statement = "select f.id_factura, a.venta, f.cliente, a.fecha, a.precio, a.mesa "
+        String statement = "select f.id_factura, a.id_venta, f.cliente, f.fecha, a.precio, a.mesa "
                 + "from facturas as f, atender as a "
                 + "where f.id_factura = ? and f.id_factura = a.factura ";
         ResultSet rsFactura;
@@ -149,7 +149,7 @@ public class DAOFacturas extends AbstractDAO {
             stmFactura.setInt(1, Integer.parseInt(id));
             rsFactura = stmFactura.executeQuery();
             while (rsFactura.next()) {
-                facturas.add(new Factura(rsFactura.getInt("id_factura"), rsFactura.getInt("venta"),
+                facturas.add(new Factura(rsFactura.getInt("id_factura"), rsFactura.getInt("id_venta"),
                         rsFactura.getString("cliente"), rsFactura.getDate("fecha").toString(), rsFactura.getFloat("precio"), rsFactura.getInt("mesa")));
             }
 

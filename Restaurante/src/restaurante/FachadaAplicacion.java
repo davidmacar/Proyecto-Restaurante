@@ -131,7 +131,7 @@ public class FachadaAplicacion {
         gm.eliminarMesaCobrada(mesa);
     }
 
-    public void vistaFactura(javax.swing.JDialog vcam) {
+    public void vistaFactura(VCamarero vcam) {
         this.fgui.vistaFactura(vcam);
     }
     

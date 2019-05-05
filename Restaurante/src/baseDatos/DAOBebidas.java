@@ -66,11 +66,10 @@ public class DAOBebidas extends AbstractDAO {
         List<Bebida> resultado = new ArrayList<Bebida>();
         Connection con;
         PreparedStatement stmBebidas = null;
-        String statement = "select distinct on(m.nombre) nombre, b.codigo, m.precio, b.porcentaje_alcohol, b.tipo, t.servicio_bebida  "
+        String statement = "select nombre, b.codigo, m.precio, b.porcentaje_alcohol, b.tipo, t.servicio_bebida  "
                 + "from tener_bebida as t, bebidas as b, materias_primas as m "
                 + "where t.bebida = b.codigo and t.bebida = m.codigo "
-                + "and t.mesa = ? "
-                + "order by m.nombre ";
+                + "and t.mesa = ? ";
         ResultSet rsBebidas;
 
         con = super.getConexion();

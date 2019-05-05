@@ -60,25 +60,16 @@ public class VHistorialFacturas extends javax.swing.JDialog {
         btnSalirFactura = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(null);
 
         jLabel1.setText("ID:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(31, 21, 28, 25);
 
         jLabel2.setText("Cliente");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(235, 26, 50, 15);
 
         txtBuscarId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarIdActionPerformed(evt);
             }
         });
-        getContentPane().add(txtBuscarId);
-        txtBuscarId.setBounds(71, 24, 146, 23);
-        getContentPane().add(txtBuscarCliente);
-        txtBuscarCliente.setBounds(303, 24, 146, 23);
 
         btnBuscarFactura.setText("Buscar");
         btnBuscarFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -86,14 +77,9 @@ public class VHistorialFacturas extends javax.swing.JDialog {
                 btnBuscarFacturaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscarFactura);
-        btnBuscarFactura.setBounds(556, 21, 78, 31);
 
         tablaFacturas.setModel(new ModeloTablaFacturas());
         jScrollPane1.setViewportView(tablaFacturas);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(12, 52, 626, 282);
 
         btnSalirFactura.setText("Salir");
         btnSalirFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -101,8 +87,49 @@ public class VHistorialFacturas extends javax.swing.JDialog {
                 btnSalirFacturaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalirFactura);
-        btnSalirFactura.setBounds(544, 352, 90, 31);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(txtBuscarId, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(txtBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107)
+                .addComponent(btnBuscarFactura))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(544, 544, 544)
+                .addComponent(btnSalirFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(txtBuscarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(txtBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscarFactura))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSalirFactura))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -132,7 +159,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarFacturaActionPerformed
 
     private void btnSalirFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirFacturaActionPerformed
-        this.setVisible(false);
+        //this.setVisible(false);
     }//GEN-LAST:event_btnSalirFacturaActionPerformed
 
 

@@ -51,9 +51,9 @@ public class FachadaGui extends IOException{
         vcaj.setVisible(true);
     }
 
-    public void vistaFactura(javax.swing.JDialog vcam) {
+    public void vistaFactura(VCamarero vcam) {
         VHistorialFacturas vhistfact = new VHistorialFacturas(vcam, true, this.fap);
-            vhistfact.setVisible(true);
+        vhistfact.setVisible(true);
     }
     
     public void VElegirFactura(java.awt.Dialog parent, Factura factura) {

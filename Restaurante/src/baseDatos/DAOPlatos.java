@@ -16,6 +16,7 @@ import restaurante.*;
  *
  * @author davidmacar
  */
+
 public class DAOPlatos extends AbstractDAO{
     public DAOPlatos (Connection conexion, restaurante.FachadaAplicacion fa){
         super.setConexion(conexion);
@@ -24,7 +25,7 @@ public class DAOPlatos extends AbstractDAO{
     
     public java.util.List<Plato> obtenerPlatos(){
         java.util.List<Plato> resultado=new java.util.ArrayList<Plato>();
-        Connection con;
+        Connection con; 
         PreparedStatement stmPlatos=null;
         String statement = "select nombre, apto_veganos, apto_celiacos, tipo, descripcion " +
                             "from platos";
