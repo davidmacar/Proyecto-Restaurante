@@ -141,7 +141,7 @@ public class DAOBebidas extends AbstractDAO {
         return resultado;
     }
 
-    void anadirBebidaMesa(Bebida b, Mesa m) {
+   public void anadirBebidaMesa(Bebida b, Mesa m) {
         Connection con;
         PreparedStatement stmBebidas = null;
 
@@ -165,7 +165,7 @@ public class DAOBebidas extends AbstractDAO {
         }
     }
     
-    void eliminarBebidaMesa(Bebida b, Mesa m) {
+    public void eliminarBebidaMesa(Bebida b, Mesa m) {
         Connection con;
         PreparedStatement stmBebidas = null;
 
