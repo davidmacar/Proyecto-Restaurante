@@ -35,7 +35,6 @@ public class VCamarero extends javax.swing.JDialog {
         initComponents();
         this.txtError.setVisible(false);
         btnCobrar.setEnabled(false);
-        ModeloTablaPlatos mtp = new ModeloTablaPlatos();
         this.actualizarMesas();
         
         ImageIcon image = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/menu.png")));

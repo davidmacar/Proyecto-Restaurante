@@ -10,15 +10,25 @@ package restaurante;
  * @author davidmacar
  */
 public abstract class MateriaPrima {
+    protected int codigo;
     protected String nombre;
-    protected int cantidad;
+    //protected int cantidad;
     protected float precio;
     
     public void MateriaPrima(){
         this.nombre = "";
-        this.cantidad = 0;
+        //this.cantidad = 0;
         this.precio = 0;
     }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -27,13 +37,13 @@ public abstract class MateriaPrima {
         this.nombre = nombre;
     }
 
-    public int getCantidad() {
+    /*public int getCantidad() {
         return cantidad;
     }
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
-    }
+    }*/
 
     public float getPrecio() {
         return precio;

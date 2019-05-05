@@ -267,7 +267,7 @@ public class VMenu extends javax.swing.JDialog {
         if(this.tablaBebidas.isShowing()){
             if(this.tablaBebidas.getSelectedRow()>=0){
                 mtb = (ModeloTablaBebidas) this.tablaBebidas.getModel();
-                Bebida b =mtb.obtenerBebida(this.tablaBebidas.getSelectedColumn(), this.tablaBebidas.getSelectedRow()); 
+                Bebida b = mtb.obtenerBebida(this.tablaBebidas.getSelectedColumn(), this.tablaBebidas.getSelectedRow()); 
                 Mesa m = this.mesa;
                 fap.anadirBebidaMesa(b, m);
                 b.setServicio(this.fap.obtenerServicioBebida(b, m));

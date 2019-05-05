@@ -14,9 +14,10 @@ public class Bebida extends MateriaPrima{
     private String tipo;
     private int servicio;
     
-    public Bebida(String nombre, int cantidad, float precio, int porcentaje_alcohol, String tipo){
+    public Bebida(int codigo, String nombre, float precio, int porcentaje_alcohol, String tipo){
+        this.codigo = codigo;
         this.nombre = nombre;
-        this.cantidad = cantidad;
+        //this.cantidad = cantidad;
         this.precio = precio;
         this.porcentaje_alcohol = porcentaje_alcohol;
         this.tipo = tipo;
@@ -25,7 +26,7 @@ public class Bebida extends MateriaPrima{
     
     public Bebida(){
         this.nombre = "";
-        this.cantidad = 0;
+        //this.cantidad = 0;
         this.precio = 0;
         this.porcentaje_alcohol = 0;
         this.tipo = "";
@@ -46,14 +47,6 @@ public class Bebida extends MateriaPrima{
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
     }
 
     public float getPrecio() {

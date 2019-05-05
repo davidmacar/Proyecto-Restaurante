@@ -24,8 +24,8 @@ public class VHistorialFacturas extends javax.swing.JDialog {
      * Creates new form VFactura
      */
     public VHistorialFacturas(java.awt.Dialog parent, boolean modal, FachadaAplicacion fap) {
-        super(parent,modal);
-        //this.vcam = (VCamarero) parent;
+        super(parent, modal);
+        this.vcam = (VCamarero) parent;
         this.fap = fap;
         initComponents();
         this.actualizarModelo();
@@ -76,9 +76,9 @@ public class VHistorialFacturas extends javax.swing.JDialog {
             }
         });
         getContentPane().add(txtBuscarId);
-        txtBuscarId.setBounds(71, 24, 146, 19);
+        txtBuscarId.setBounds(71, 24, 146, 23);
         getContentPane().add(txtBuscarCliente);
-        txtBuscarCliente.setBounds(303, 24, 146, 19);
+        txtBuscarCliente.setBounds(303, 24, 146, 23);
 
         btnBuscarFactura.setText("Buscar");
         btnBuscarFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +87,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnBuscarFactura);
-        btnBuscarFactura.setBounds(556, 21, 82, 25);
+        btnBuscarFactura.setBounds(556, 21, 78, 31);
 
         tablaFacturas.setModel(new ModeloTablaFacturas());
         jScrollPane1.setViewportView(tablaFacturas);
@@ -102,7 +102,7 @@ public class VHistorialFacturas extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnSalirFactura);
-        btnSalirFactura.setBounds(572, 352, 66, 25);
+        btnSalirFactura.setBounds(544, 352, 90, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -128,15 +128,9 @@ public class VHistorialFacturas extends javax.swing.JDialog {
             facturas = (ArrayList) this.fap.obtenerFacturas();
         }
         this.actualizarModelo(facturas);
-        
-        /*actualizarModelo();
-        if (mtf.getRowCount() > 0) {
-            tablaFacturas.setRowSelectionInterval(0, 0);
-
-        }*/
 
     }//GEN-LAST:event_btnBuscarFacturaActionPerformed
-/**/
+
     private void btnSalirFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirFacturaActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnSalirFacturaActionPerformed

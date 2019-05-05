@@ -24,7 +24,6 @@ public class FachadaBaseDatos {
     private DAOPlatos daoPlatos;
     private DAOBebidas daoBebidas;
     private DAOEmpleados daoEmpleados;
-    private DAOIngredientes daoIngredientes;
     private DAOMesas daoMesas;
     private DAOClientes daoClientes;
     private DAOFacturas daoFacturas;

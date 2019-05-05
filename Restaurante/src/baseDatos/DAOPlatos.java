@@ -66,7 +66,7 @@ public class DAOPlatos extends AbstractDAO{
         Connection con;
         PreparedStatement stmPlatos=null;
         String statement = "select p.nombre, p.apto_veganos, p.apto_celiacos, p.tipo, p.descripcion, t.servicio_plato " +
-                            "from tenerplato as t, platos as p " +
+                            "from tener_plato as t, platos as p " +
                             "where t.plato = p.nombre and t.mesa = ?";
         ResultSet rsPlatos;
 
@@ -151,7 +151,7 @@ public class DAOPlatos extends AbstractDAO{
         con = super.getConexion();
 
         try {
-            stmPlatos = con.prepareStatement("delete from tenerplato " +
+            stmPlatos = con.prepareStatement("delete from tener_plato " +
                                             "where mesa=? and servicio_plato=?");
             stmPlatos.setInt(1, m.getNum_mesa());
             stmPlatos.setInt(2, p.getServicio());
@@ -177,7 +177,7 @@ public class DAOPlatos extends AbstractDAO{
         con = super.getConexion();
 
         try {
-            stmPlatos = con.prepareStatement("insert into tenerplato (mesa, plato) values (?, ?);");
+            stmPlatos = con.prepareStatement("insert into tener_plato (mesa, plato) values (?, ?);");
             stmPlatos.setInt(1, m.getNum_mesa());
             stmPlatos.setString(2, p.getNombre());
             stmPlatos.executeUpdate();
@@ -199,7 +199,7 @@ public class DAOPlatos extends AbstractDAO{
         Connection con;
         PreparedStatement stmPlatos=null;
         String statement = "select servicio_plato  " +
-                            "from tenerplato " + 
+                            "from tener_plato " + 
                             "where plato = ? and mesa = ?";
         ResultSet rsPlatos;
 
@@ -226,7 +226,6 @@ public class DAOPlatos extends AbstractDAO{
           catch (SQLException e){
               e.printStackTrace();
               System.out.println("Imposible cerrar cursores");
-              System.out.println("");
           }
         }
         return resultado;

@@ -67,7 +67,7 @@ public class VAutenticacion extends javax.swing.JFrame {
 
         jLabel2.setText("Contraseña:");
 
-        password.setText("marcos00");
+        password.setText("m");
         password.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 passwordMouseClicked(evt);

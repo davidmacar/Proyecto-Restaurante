@@ -32,14 +32,13 @@ public class DAOFacturas extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmFacturas = con.prepareStatement("select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, m.num_mesa " +
-                            "from facturas f inner join cliente c ON (cliente=dni) " +
-                            "inner join atender as a ON (venta = id_venta) " +
-                            "inner join mesas as m ON (mesa=num_mesa) ");
+            stmFacturas = con.prepareStatement("select f.id_factura, a.venta, f.cliente, a.fecha, a.precio, a.mesa "
+                                                + "from facturas as f, atender as a "
+                                                + "where f.id_factura = a.factura");
             rsFacturas = stmFacturas.executeQuery();
             while (rsFacturas.next()) {
                 Factura factura = new Factura(rsFacturas.getInt("id_factura"), rsFacturas.getInt("venta"),
-                        rsFacturas.getString("cliente"), rsFacturas.getString("fecha"), rsFacturas.getFloat("precio"), rsFacturas.getInt("num_mesa"));
+                        rsFacturas.getString("cliente"), rsFacturas.getString("fecha"), rsFacturas.getFloat("precio"), rsFacturas.getInt("mesa"));
                 resultado.add(factura);
             }
         } catch (SQLException e) {
@@ -62,10 +61,10 @@ public class DAOFacturas extends AbstractDAO {
         ArrayList<Factura> resultado = new ArrayList();
         Connection con;
         PreparedStatement stmFacturas = null;
-        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, a.mesa "
-                + "from facturas as f, cliente as c, atender as a, mesas as m "
-                + "where f.cliente = c.dni and f.venta = a.id_venta and a.mesa = m.num_mesa "
-                + "and f.id_factura = ? and f.cliente = ?";
+        String statement = "select f.id_factura, a.venta, f.cliente, a.fecha, a.precio, a.mesa "
+                + "from facturas as f, atender as a "
+                + "where f.id_factura = ? and f.id_factura = a.factura "
+                + "and f.cliente = ?";
         ResultSet rsFacturas;
 
         con = super.getConexion();
@@ -99,9 +98,9 @@ public class DAOFacturas extends AbstractDAO {
         ArrayList<Factura> facturas = new ArrayList();
         PreparedStatement stmFactura = null;
 
-        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, a.mesa "
-                + "from facturas as f, cliente as c, atender as a, mesas as m "
-                + "where f.cliente = c.dni and f.venta = a.id_venta and a.mesa = m.num_mesa "
+            String statement = "select f.id_factura, a.venta, f.cliente, a.fecha, a.precio, a.mesa "
+                + "from facturas as f, atender as a "
+                + "where f.id_factura = a.factura "
                 + "and f.cliente = ?";
         ResultSet rsFactura;
 
@@ -138,10 +137,9 @@ public class DAOFacturas extends AbstractDAO {
         ArrayList<Factura> facturas = new ArrayList();
         PreparedStatement stmFactura = null;
 
-        String statement = "select f.id_factura, f.venta, f.cliente, f.fecha, a.precio, a.mesa "
-                + "from facturas as f, cliente as c, atender as a, mesas as m "
-                + "where f.cliente = c.dni and f.venta = a.id_venta and a.mesa = m.num_mesa "
-                + "and f.id_factura = ?";
+        String statement = "select f.id_factura, a.venta, f.cliente, a.fecha, a.precio, a.mesa "
+                + "from facturas as f, atender as a "
+                + "where f.id_factura = ? and f.id_factura = a.factura ";
         ResultSet rsFactura;
 
         con = super.getConexion();
@@ -237,44 +235,49 @@ public class DAOFacturas extends AbstractDAO {
         }
         return id;
     }
-
-    public Factura obtenerIVA() {
-        Connection con;
-        Factura factura = null;
-        PreparedStatement stmFactura = null;
-
-        String statement = "select (precio/(1.21)) as sin_iva "
-                + "from  atender";
-        ResultSet rsFactura;
-
-        con = super.getConexion();
-
-        try {
-            stmFactura.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Imposible cerrar cursores");
-            System.out.println("");
-        }
-
-        return factura;
-    }
     
     public void anadirFactura(Factura fac) {
         Connection con;
         PreparedStatement stmFactura = null;
-
-        String statement = "insert into facturas(venta, cliente, fecha, precio) "
-                            + "values (?, ?, NOW()::timestamp, ?)";
+        PreparedStatement stmAtender = null;
+        int id = -1;
+        String statement = "insert into facturas(cliente, fecha) "
+                            + "values (?, NOW()::timestamp) "
+                            + "returning id_factura";
 
         con = super.getConexion();
 
         try {
             stmFactura = con.prepareStatement(statement);
-            stmFactura.setInt(1, fac.getVenta());
-            stmFactura.setString(2, fac.getCliente());
-            stmFactura.setFloat(3, fac.getPrecio());
-            stmFactura.executeUpdate();
+            stmFactura.setString(1, fac.getCliente());
+            ResultSet rsId = stmFactura.executeQuery();
+            if (rsId.next()) {
+                id = rsId.getInt("id_factura");
+            }
+            try{
+                statement = "UPDATE atender "
+                        + "SET factura = ? "
+                        + "WHERE id_venta = ?";
+                stmFactura = con.prepareStatement(statement);
+                stmFactura.setInt(1, id);
+                stmFactura.setInt(2, fac.getVenta());
+                stmFactura.executeUpdate();
+            }
+            catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            } 
+            finally {
+                try {
+                    if (stmAtender != null) {
+                        stmAtender.close();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println("Imposible cerrar cursores");
+                    System.out.println("");
+                }
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

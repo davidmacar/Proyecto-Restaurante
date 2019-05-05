@@ -72,19 +72,19 @@ public class DAOMesas extends AbstractDAO {
         PreparedStatement stmPrecio=null;
 
         ResultSet rsPrecio;
-
         con=super.getConexion();
 
         try {
+            
         stmPrecio=con.prepareStatement( "SELECT sum(round(precio,2)) " +
                                         "FROM( " +
-                                        "SELECT m.num_mesa, mp.nombre, mp.precio " +
-                                        "FROM mesas m, tenerbebida tb, materias_primas mp " +
-                                        "WHERE m.num_mesa=tb.mesa AND tb.bebida = mp.nombre " +
+                                        "SELECT m.num_mesa, mp.codigo, mp.precio " +
+                                        "FROM mesas m, tener_bebida tb, materias_primas mp " +
+                                        "WHERE m.num_mesa=tb.mesa AND tb.bebida = mp.codigo " +
                                         "UNION " +
-                                        "SELECT m.num_mesa, mp.nombre, mp.precio " +
-                                        "FROM mesas m, tenerplato tp, ingrediente_forma_plato ifp, materias_primas mp " +
-                                        "WHERE m.num_mesa=tp.mesa AND tp.plato = ifp.plato AND ifp.ingrediente= mp.nombre) as t " +
+                                        "SELECT m.num_mesa, mp.codigo, mp.precio " +
+                                        "FROM mesas m, tener_plato tp, ingrediente_forma_plato ifp, materias_primas mp " +
+                                        "WHERE m.num_mesa=tp.mesa AND tp.plato = ifp.plato AND ifp.ingrediente= mp.codigo) as t " +
                                         "WHERE t.num_mesa = ?");
         stmPrecio.setInt(1, mesa.getNum_mesa());
         rsPrecio=stmPrecio.executeQuery();
@@ -96,7 +96,7 @@ public class DAOMesas extends AbstractDAO {
 
 
         } catch (SQLException e){
-            e.printStackTrace();;
+            e.printStackTrace();
             System.out.println(e.getMessage());
           //this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         }finally{
@@ -170,7 +170,7 @@ public class DAOMesas extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmMesa = con.prepareStatement("delete from tenerplato " +
+            stmMesa = con.prepareStatement("delete from tener_plato " +
                                             "where mesa=?");
             
             stmMesa.setInt(1, m.getNum_mesa());
@@ -188,7 +188,7 @@ public class DAOMesas extends AbstractDAO {
             }
         }
         try {
-            stmMesa = con.prepareStatement("delete from tenerbebida " +
+            stmMesa = con.prepareStatement("delete from tener_bebida " +
                                             "where mesa=?");
             
             stmMesa.setInt(1, m.getNum_mesa());

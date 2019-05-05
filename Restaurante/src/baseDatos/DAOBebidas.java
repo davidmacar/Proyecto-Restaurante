@@ -28,9 +28,10 @@ public class DAOBebidas extends AbstractDAO {
         List<Bebida> resultado = new ArrayList<Bebida>();
         Connection con;
         PreparedStatement stmBebidas = null;
-        String statement = "select b.nombre, b.tipo, b.porcentaje_alcohol, mp.cantidad, mp.precio "
+        String statement = "select distinct on(mp.nombre) nombre, b.codigo, b.tipo, b.porcentaje_alcohol, mp.precio "
                 + "from bebidas as b, materias_primas as mp "
-                + "where b.nombre = mp.nombre ";
+                + "where b.codigo = mp.codigo "
+                + "order by mp.nombre";
         ResultSet rsBebidas;
 
         con = super.getConexion();
@@ -39,7 +40,7 @@ public class DAOBebidas extends AbstractDAO {
             stmBebidas = con.prepareStatement(statement);
             rsBebidas = stmBebidas.executeQuery();
             while (rsBebidas.next()) {
-                Bebida ej = new Bebida(rsBebidas.getString("nombre"), rsBebidas.getInt("cantidad"),
+                Bebida ej = new Bebida(rsBebidas.getInt("codigo"), rsBebidas.getString("nombre"),
                         rsBebidas.getFloat("precio"), rsBebidas.getInt("porcentaje_alcohol"),
                         rsBebidas.getString("tipo"));
                 resultado.add(ej);
@@ -65,10 +66,11 @@ public class DAOBebidas extends AbstractDAO {
         List<Bebida> resultado = new ArrayList<Bebida>();
         Connection con;
         PreparedStatement stmBebidas = null;
-        String statement = "select b.nombre, m.cantidad, m.precio, b.porcentaje_alcohol, b.tipo, t.servicio_bebida  "
-                + "from tenerbebida as t, bebidas as b, materias_primas as m "
-                + "where t.bebida = b.nombre and t.bebida = m.nombre "
-                + "and t.mesa = ?";
+        String statement = "select distinct on(m.nombre) nombre, b.codigo, m.precio, b.porcentaje_alcohol, b.tipo, t.servicio_bebida  "
+                + "from tener_bebida as t, bebidas as b, materias_primas as m "
+                + "where t.bebida = b.codigo and t.bebida = m.codigo "
+                + "and t.mesa = ? "
+                + "order by m.nombre ";
         ResultSet rsBebidas;
 
         con = super.getConexion();
@@ -78,7 +80,7 @@ public class DAOBebidas extends AbstractDAO {
             stmBebidas.setInt(1, mesa);
             rsBebidas = stmBebidas.executeQuery();
             while (rsBebidas.next()) {
-                Bebida ej = new Bebida(rsBebidas.getString("nombre"), rsBebidas.getInt("cantidad"),
+                Bebida ej = new Bebida(rsBebidas.getInt("codigo"), rsBebidas.getString("nombre"),
                         rsBebidas.getFloat("precio"), rsBebidas.getInt("porcentaje_alcohol"),
                         rsBebidas.getString("tipo"));
                 ej.setServicio(rsBebidas.getInt("servicio_bebida"));
@@ -105,10 +107,11 @@ public class DAOBebidas extends AbstractDAO {
         ArrayList<Bebida> resultado = new ArrayList();
         Connection con;
         PreparedStatement stmBebidas = null;
-        String statement = "select b.nombre, b.tipo, b.porcentaje_alcohol, mp.cantidad, mp.precio "
+        String statement = "select distinct on(mp.nombre) nombre,b.codigo, b.tipo, b.porcentaje_alcohol, mp.precio "
                 + "from bebidas as b, materias_primas as mp "
-                + "where b.nombre = mp.nombre and "
-                + "lower(b.nombre) like lower(?) and lower(mp.nombre) like lower(?)";
+                + "where lower(mp.nombre) like ? "
+                + "and mp.codigo = b.codigo "
+                + "order by mp.nombre";
         ResultSet rsBebidas;
 
         con = super.getConexion();
@@ -116,10 +119,9 @@ public class DAOBebidas extends AbstractDAO {
         try {
             stmBebidas = con.prepareStatement(statement);
             stmBebidas.setString(1, new String("%" + bebida + "%"));
-            stmBebidas.setString(2, new String("%" + bebida + "%"));
             rsBebidas = stmBebidas.executeQuery();
             while (rsBebidas.next()) {
-                Bebida ej = new Bebida(rsBebidas.getString("nombre"), rsBebidas.getInt("cantidad"),
+                Bebida ej = new Bebida(rsBebidas.getInt("codigo"), rsBebidas.getString("nombre"),
                         rsBebidas.getFloat("precio"), rsBebidas.getInt("porcentaje_alcohol"),
                         rsBebidas.getString("tipo"));
                 resultado.add(ej);
@@ -135,7 +137,6 @@ public class DAOBebidas extends AbstractDAO {
             } catch (SQLException e) {
                 e.printStackTrace();
                 System.out.println("Imposible cerrar cursores");
-                System.out.println("");
             }
         }
         return resultado;
@@ -148,9 +149,9 @@ public class DAOBebidas extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmBebidas = con.prepareStatement("insert into tenerbebida (mesa, bebida) values (?, ?)");
+            stmBebidas = con.prepareStatement("insert into tener_bebida (mesa, bebida) values (?, ?)");
             stmBebidas.setInt(1, m.getNum_mesa());
-            stmBebidas.setString(2, b.getNombre());
+            stmBebidas.setInt(2, b.getCodigo());
             stmBebidas.executeUpdate();
 
         } catch (SQLException e) {
@@ -172,7 +173,7 @@ public class DAOBebidas extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmBebidas = con.prepareStatement("delete from tenerbebida " +
+            stmBebidas = con.prepareStatement("delete from tener_bebida " +
                                             "where mesa=? and servicio_bebida=?");
             
             stmBebidas.setInt(1, m.getNum_mesa());
@@ -197,15 +198,15 @@ public class DAOBebidas extends AbstractDAO {
         Connection con;
         PreparedStatement stmBebidas = null;
         String statement = "select servicio_bebida " 
-                            + "from tenerbebida "
-                            + "where bebida = ?  and mesa=?";
+                            + "from tener_bebida "
+                            + "where bebida = ? and mesa=?";
         ResultSet rsBebidas;
 
         con = super.getConexion();
 
         try {
             stmBebidas = con.prepareStatement(statement);
-            stmBebidas.setString(1, bebida.getNombre());
+            stmBebidas.setInt(1, bebida.getCodigo());
             stmBebidas.setInt(2, m.getNum_mesa());
             rsBebidas = stmBebidas.executeQuery();
             if (rsBebidas.next()) {
