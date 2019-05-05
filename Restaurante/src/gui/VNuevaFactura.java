@@ -84,7 +84,7 @@ public class VNuevaFactura extends javax.swing.JDialog {
         btnExistente = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         btnGuardarNewFactura.setText("Guardar");
         btnGuardarNewFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +92,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 btnGuardarNewFacturaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardarNewFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 160, -1, -1));
+        getContentPane().add(btnGuardarNewFactura);
+        btnGuardarNewFactura.setBounds(610, 70, 110, 110);
 
         btnSalirNewFactura.setText("Salir");
         btnSalirNewFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -100,37 +101,48 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 btnSalirNewFacturaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalirNewFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 300, -1, -1));
+        getContentPane().add(btnSalirNewFactura);
+        btnSalirNewFactura.setBounds(610, 190, 110, 110);
 
         jLabel6.setText("Datos Cliente");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(80, 30, 96, 15);
 
         jLabel7.setText("Datos Factura");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, -1, -1));
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(430, 30, 100, 15);
 
         jLabel8.setText("Nombre:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(40, 90, 60, 15);
 
         jLabel9.setText("DNI:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(40, 170, 29, 15);
 
         jLabel10.setText("Direccion:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(40, 240, 70, 15);
 
         jLabel11.setText("E-mail:");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(40, 210, 47, 15);
 
         jLabel12.setText("Apellidos:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(40, 120, 70, 15);
 
         txtApellidosCliente.setText("Diaz Costas");
-        getContentPane().add(txtApellidosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
+        getContentPane().add(txtApellidosCliente);
+        txtApellidosCliente.setBounds(120, 120, 140, 19);
 
         txtDni.setText("69548624K");
-        getContentPane().add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
+        getContentPane().add(txtDni);
+        txtDni.setBounds(120, 160, 140, 19);
 
         txtNombreCliente.setText("Pepe");
-        getContentPane().add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+        getContentPane().add(txtNombreCliente);
+        txtNombreCliente.setBounds(120, 90, 140, 19);
 
         txtEmail.setText("sdfhsdhsdfghsdgh");
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -138,26 +150,34 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 txtEmailActionPerformed(evt);
             }
         });
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, -1));
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(120, 210, 140, 19);
 
         txtDireccion.setText("asdgasfgsdfgdsg");
-        getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, -1, -1));
+        getContentPane().add(txtDireccion);
+        txtDireccion.setBounds(120, 240, 140, 19);
 
         jLabel13.setText("Mesa:");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, -1, -1));
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 56, -1, -1));
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(340, 120, 43, 15);
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(50, 56, 0, 0);
 
         jLabel15.setText("ID Factura:");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, -1, -1));
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(340, 90, 77, 15);
 
         jLabel16.setText("Fecha:");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, -1, -1));
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(340, 160, 47, 15);
 
         jLabel17.setText("IVA (21%):");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, -1, -1));
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(340, 240, 69, 15);
 
         jLabel19.setText("Total:");
-        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, -1, -1));
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(340, 210, 41, 15);
 
         txtIdFactura.setEditable(false);
         txtIdFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +185,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 txtIdFacturaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtIdFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, -1, -1));
+        getContentPane().add(txtIdFactura);
+        txtIdFactura.setBounds(430, 90, 140, 19);
 
         txtFecha.setEditable(false);
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +194,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 txtFechaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, -1, -1));
+        getContentPane().add(txtFecha);
+        txtFecha.setBounds(430, 160, 140, 19);
 
         txtMesa.setEditable(false);
         txtMesa.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +203,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 txtMesaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, -1, -1));
+        getContentPane().add(txtMesa);
+        txtMesa.setBounds(430, 120, 140, 19);
 
         txtTotal.setEditable(false);
         txtTotal.addActionListener(new java.awt.event.ActionListener() {
@@ -189,18 +212,22 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 txtTotalActionPerformed(evt);
             }
         });
-        getContentPane().add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 280, -1, -1));
+        getContentPane().add(txtTotal);
+        txtTotal.setBounds(430, 210, 140, 19);
 
         txtIva.setEditable(false);
-        getContentPane().add(txtIva, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, -1, -1));
+        getContentPane().add(txtIva);
+        txtIva.setBounds(430, 240, 140, 19);
 
         aviso.setForeground(new java.awt.Color(255, 0, 0));
         aviso.setText("El cliente ya existe");
-        getContentPane().add(aviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
+        getContentPane().add(aviso);
+        aviso.setBounds(280, 310, 132, 15);
 
         aviso1.setForeground(new java.awt.Color(255, 0, 0));
         aviso1.setText("El cliente no existe");
-        getContentPane().add(aviso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
+        getContentPane().add(aviso1);
+        aviso1.setBounds(280, 290, 133, 15);
 
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +235,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 btnNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        getContentPane().add(btnNuevo);
+        btnNuevo.setBounds(40, 290, 78, 25);
 
         btnExistente.setText("Existente");
         btnExistente.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +244,8 @@ public class VNuevaFactura extends javax.swing.JDialog {
                 btnExistenteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExistente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        getContentPane().add(btnExistente);
+        btnExistente.setBounds(140, 290, 100, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
