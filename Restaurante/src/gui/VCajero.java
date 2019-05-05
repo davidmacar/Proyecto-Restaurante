@@ -22,14 +22,15 @@ public class VCajero extends javax.swing.JDialog {
     private float precio;
     private Mesa mesa;
     private int venta;
-    
-    public VCajero(java.awt.Dialog parent, boolean modal, FachadaAplicacion fap, Mesa mesa) {
+    private Empleado emp;
+    public VCajero(java.awt.Dialog parent, boolean modal, FachadaAplicacion fap, Mesa mesa, Empleado emp) {
         super(parent, modal);
         this.vcam = (VCamarero) parent;
         this.fap = fap;
         initComponents();
         vcam.actualizarMesas();
         this.mesa = mesa;
+        this.emp = emp;
         aviso.setVisible(false);
         btnCobrar.setEnabled(false);
         this.mesa=mesa;
@@ -107,9 +108,8 @@ public class VCajero extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
-        
-        this.venta = this.fap.cobrarMesa(mesa, "11111111A", precio); 
-        //this.fap.eliminaMesaCobrada(mesa);
+        this.venta = this.fap.cobrarMesa(mesa, this.emp.getDni(), precio); 
+        this.fap.eliminaMesaCobrada(mesa);
         Factura factura = new Factura(0, this.venta, null, null, this.precio, this.mesa.getNum_mesa());
         this.fap.VElegirFactura(this, factura);
         this.vcam.actualizarMesas();

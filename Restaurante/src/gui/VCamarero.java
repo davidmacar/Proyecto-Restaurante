@@ -25,11 +25,13 @@ public class VCamarero extends javax.swing.JDialog {
 
     FachadaAplicacion fap;
     VAutenticacion vaut;
+    Empleado camarero;
     
-    public VCamarero(java.awt.Frame parent, boolean modal, FachadaAplicacion fap){
+    public VCamarero(java.awt.Frame parent, boolean modal, FachadaAplicacion fap, Empleado camarero){
         super(parent, modal);
         this.vaut = (VAutenticacion) parent;
         this.fap = fap;
+        this.camarero = camarero;
         initComponents();
         this.txtError.setVisible(false);
         btnCobrar.setEnabled(false);
@@ -172,7 +174,7 @@ public class VCamarero extends javax.swing.JDialog {
             return;
         }
         Mesa mesa = fap.obtenerMesa(Integer.parseInt(this.listMesas.getSelectedValue()));
-        fap.vistaCajero(this, mesa);
+        fap.vistaCajero(this, mesa, this.camarero);
        
         listMesas.setSelectedIndex(0);
         actualizarPlatos();

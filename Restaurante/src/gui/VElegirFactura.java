@@ -16,10 +16,7 @@ public class VElegirFactura extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.fap = fap;
-        this.factura = factura;
-        
-        
-        
+        this.factura = factura;        
     }
 
     /**

@@ -28,8 +28,8 @@ public class FachadaGui extends IOException{
     public void iniciaInterfaz(){
         this.vac.setVisible(true);
     }
-    public void vistaCamarero(){
-        VCamarero vcam = new VCamarero(this.vac, true, this.fap);
+    public void vistaCamarero(Empleado camarero){
+        VCamarero vcam = new VCamarero(this.vac, true, this.fap, camarero);
         vcam.setVisible(true);
         this.vac.setVisible(false);
     }
@@ -46,10 +46,8 @@ public class FachadaGui extends IOException{
         vfac.setVisible(true);
     }
     
-    
-
-    public void vistaCajero(VCamarero vcam, Mesa mesa) {
-        VCajero vcaj = new VCajero(vcam, true, this.fap, mesa);
+    public void vistaCajero(VCamarero vcam, Mesa mesa, Empleado emp) {
+        VCajero vcaj = new VCajero(vcam, true, this.fap, mesa, emp);
         vcaj.setVisible(true);
     }
 

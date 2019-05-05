@@ -22,10 +22,6 @@ public class GestionEmpleados {
         this.fgui = fgui;
     }
     
-    public void vistaCamarero(){
-        this.fgui.vistaCamarero();
-        
-    }
     public void vistaMenu(VCamarero vcam, Mesa mesa){
         this.fgui.vistaMenu(vcam, mesa);
     }

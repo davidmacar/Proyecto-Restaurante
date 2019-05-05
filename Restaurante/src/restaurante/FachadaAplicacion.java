@@ -48,8 +48,8 @@ public class FachadaAplicacion {
     public void iniciaInterfaz(){
         this.fgui.iniciaInterfaz();
     }
-    public void vistaCamarero(){
-        this.fgui.vistaCamarero();
+    public void vistaCamarero(Empleado camarero){
+        this.fgui.vistaCamarero(camarero);
         
     }
     public void vistaMenu(VCamarero vcam, Mesa mesa){
@@ -98,8 +98,8 @@ public class FachadaAplicacion {
         return gm.precioMesa(mesa);
     }
     
-    public void vistaCajero(VCamarero vcam, Mesa mesa) {
-        this.fgui.vistaCajero(vcam, mesa);
+    public void vistaCajero(VCamarero vcam, Mesa mesa, Empleado emp) {
+        this.fgui.vistaCajero(vcam, mesa, emp);
     }
 
     public void eliminarPlatoMesa(Plato p, Mesa m) {
